@@ -44,7 +44,7 @@ def descartarCartas(seleccionCartas,manoJugador,descartes):
         manoJugador.remove(carta)
     repartir(mazoRonda,len(seleccionCartas),manoJugador)
     descartes-=1
-    seleccionarCartas(manoJugador,descartes)
+    juego(manoJugador,descartes)
 
 #Esta funcion es el nucleo del juego, en donde se seleccionan las cartas y se decide si jugar o descartar.
 #Se inicializa la variable seleccionCartas, la cual es una lista que contiene las cartas seleccionadas por el jugador. Se le muestran las cartas que puede seleccionar.
@@ -55,7 +55,7 @@ def descartarCartas(seleccionCartas,manoJugador,descartes):
 #Cuando sale del while, es decir, cartaSeleccionada sea -1 o el largo de la lista seleccionCartas es menor o igual a 5, se le pide que ingrese si quiere jugar o descartar.
 #Se verifica que la decision se valida y ademas que tenga descartes disponibles. Si una de estas dos no cumple, debe ingresar nuevamente.
 #Dependiendo de la decision tomada, se invoca la función descartarCartas o jugarCartas.
-def seleccionarCartas(manojugador,descartes):
+def juego(manojugador,descartes):
     seleccionCartas=[]
     print("Las cartas en mano son:")
     for i in range(len(manoJugador)):
@@ -81,10 +81,57 @@ def seleccionarCartas(manojugador,descartes):
     elif decision == 2 and descartes > 0:
         print("El jugador decidio descartar sus cartas")
         descartarCartas(seleccionCartas,manoJugador,descartes)
-    
+
+# Funcion de jugarCartas, esta funcion sera la que deduzca la combinación
+def jugarCartas(cartasJugadas):
+
+    return True
+ 
+# Funcion que determinara que combinación se jugo.
+def combinacionnJugada(cartasJugadas):
+    combinacion = []
+    return combinacion
+ 
+#Calculara las fichas que suman las cartas.
+def calcularFichas(cartasJugadas, combinacion):
+    cantidadFichas = 0
+    return cantidadFichas
+ 
+#Calculara el multiplicador de la jugada.
+def calcularMultiplicador(combinacion, jokers):
+    multiplicador = 0
+    return multiplicador
+ 
+#Calculara el puntaje total de la jugada
+def calcularPuntaje(cantidadFichas,multiplicador):
+    totalPuntaje = 0
+    return totalPuntaje
+ 
+#recorrera las cartas en mano y las mostrara en pantalla
+def mostrarCartas(listaCartas):
+    print("mostrará las cartas en mano")
+ 
+#recorrera las cartas seleccionadas y las mostrara en pantalla
+def mostrarCartasSelect(listaCartas):
+    print("mostrará las cartas seleccionadas")
+ 
+#Funcion para seleccionar las cartas. Debera recibir las cartas en mano del jugador e ir seleccionando las cartas que quiere jugar o descartar.
+def seleccionar(manoJugador):
+    cartasSeleccionadas = []
+    return cartasSeleccionadas
+ 
+#Esta función determinara el funcionamiento de la tienda
+def tienda():
+    sobre = 0
+    return sobre
+ 
+ 
+def eleccionAdquisicion():
+    joker = []
+    return joker
     
 
 #Body del programa, para repartir e inicializar el juego.
 repartir(mazoRonda, 10,manoJugador)
 
-seleccionarCartas(manoJugador,descartes)
+juego(manoJugador,descartes)
