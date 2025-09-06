@@ -1,5 +1,28 @@
 import random
 
+## Tuplas: ("A♠",  1,    "♠" ,   11)
+## Diccionario : (Nombre: "A♠", Valor: 1, Palo:"♠", fichas:11)
+'''
+    A   = 1
+    2   = 2
+    3   = 3
+    4   = 4
+    5   = 5
+    6   = 6
+    7   = 7
+    8   = 8
+    9   = 9
+    10  = 10 
+    J   = 11 
+    Q   = 12
+    K   = 13
+
+    Escalera minima: A 2 3 4 5
+    Escalera maxima 9 10 J Q K
+'''
+
+
+
 #Variables declaradas
 #mazoCompleto: contiene todas las cartas del mazo.
 #manos: cantidad de veces que puede jugar combinaciones el user.
@@ -57,18 +80,18 @@ def descartarCartas(seleccionCartas,manoJugador,descartes):
 #Dependiendo de la decision tomada, se invoca la función descartarCartas o jugarCartas.
 def juego(manojugador,descartes):
     seleccionCartas=[]
-    print("Las cartas en mano son:")
-    for i in range(len(manoJugador)):
-        print("carta",i+1,":",manoJugador[i])
+
+    mostrarCartas(manoJugador)
+    
     cartaSeleccionada=int(input("Seleccione una carta:"))
+
     while (cartaSeleccionada != -1) and (len(seleccionCartas) <= 5):
         seleccionCartas.append(manoJugador[cartaSeleccionada-1])
-        print("Las cartas seleccionadas son:")
-        for i in range(len(seleccionCartas)):
-            print("carta",i+1,":",seleccionCartas[i])
-        print("Las cartas en mano son:")
-        for i in range(len(manoJugador)): 
-            print("carta",i+1,":",manoJugador[i])
+        
+        mostrarCartasSelect(manoJugador)
+        
+        mostrarCartas(manoJugador)
+    
         cartaSeleccionada=int(input("Seleccione una carta o -1 para terminar:"))
     decision=int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
     while (decision < 1 or decision > 2) or descartes == 0:
@@ -78,29 +101,21 @@ def juego(manojugador,descartes):
             decision=int(input("Valor invalido! Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
     if decision == 1:
         print("El jugador decidió jugar sus cartas")
+        jugarCartas(seleccionCartas)
     elif decision == 2 and descartes > 0:
         print("El jugador decidio descartar sus cartas")
         descartarCartas(seleccionCartas,manoJugador,descartes)
 
 # Funcion de jugarCartas, esta funcion sera la que deduzca la combinación
 def jugarCartas(cartasJugadas):
-
+    fichas,multiplicador = combinacionJugada(cartasJugadas)
+    print(fichas,multiplicador)
     return True
- 
-# Funcion que determinara que combinación se jugo.
-def combinacionnJugada(cartasJugadas):
-    combinacion = []
-    return combinacion
  
 #Calculara las fichas que suman las cartas.
 def calcularFichas(cartasJugadas, combinacion):
     cantidadFichas = 0
     return cantidadFichas
- 
-#Calculara el multiplicador de la jugada.
-def calcularMultiplicador(combinacion, jokers):
-    multiplicador = 0
-    return multiplicador
  
 #Calculara el puntaje total de la jugada
 def calcularPuntaje(cantidadFichas,multiplicador):
@@ -109,26 +124,137 @@ def calcularPuntaje(cantidadFichas,multiplicador):
  
 #recorrera las cartas en mano y las mostrara en pantalla
 def mostrarCartas(listaCartas):
-    print("mostrará las cartas en mano")
+    print("Las cartas en mano son:")
+    for i in range(len(manoJugador)): 
+        print("carta",i+1,":",manoJugador[i])
  
 #recorrera las cartas seleccionadas y las mostrara en pantalla
 def mostrarCartasSelect(listaCartas):
-    print("mostrará las cartas seleccionadas")
+    print("Las cartas seleccionadas son:")
+    for i in range(len(listaCartas)):
+        print("carta",i+1,":",listaCartas[i])
  
 #Funcion para seleccionar las cartas. Debera recibir las cartas en mano del jugador e ir seleccionando las cartas que quiere jugar o descartar.
 def seleccionar(manoJugador):
     cartasSeleccionadas = []
     return cartasSeleccionadas
  
-#Esta función determinara el funcionamiento de la tienda
-def tienda():
-    sobre = 0
-    return sobre
- 
- 
-def eleccionAdquisicion():
-    joker = []
-    return joker
+
+def dividirPaloValores(cartasJugadas):
+    valores=[]
+    palos=[]
+    for valor, palo, fichas in cartasJugadas:
+        valores.append(valor)
+        palos.append(palo)
+    return valores,palos
+
+    #valores=[1,2,3,4,5]
+    #palos=["♠","♠","♠","♠","♠"]
+
+def escalera(valores):
+    #valores=[1,2,3,4,5]
+    for i in range(len(valores)-1):
+        if valores[i] + 1 != valores[i+1]: 
+            return False
+    return True
+
+def color (palos):
+    for i in range(len(palos)-1):
+        if palos[i] != palos[i+1]:
+            return False
+    return True
+
+def poker(valores):
+    for v in valores:
+        #valores=[1,1,1,1,5]
+        if valores.count(v) == 4:
+            return True
+    return False
+
+def par(valores):
+    #valores=[1,2,3,3,5]
+    for v in valores:
+        if valores.count(v) == 2:
+            return True 
+    return False
+
+def doblePar(valores):
+    cantPares=[]
+    #valores=[2,2,3,3,5]
+    for v in valores:
+        if valores.count(v) == 2:
+            #pares=[2,3]
+            if v not in cantPares:
+                cantPares.append(v)    
+    if len(cantPares) == 2:
+        return True
+    return False
+
+def trio(valores):
+    for v in valores:
+        if valores.count(v) == 3:
+            return True
+    return False
+
+def fullHouse(valores):
+    cantPares=[]
+    cantTrios=[]
+
+    for v in valores:
+        if valores.count(v) == 3:
+            if v not in cantTrios:
+                cantTrios.append(v)
+    for v in valores:
+        if valores.count(v) == 2:
+            if v not in cantPares:
+                cantPares.append(v)
+
+    if len(cantTrios)==1 and len(cantPares)==1:
+        return True
+    else:
+        return False
+
+def combinacionJugada(cartasJugadas):
+
+    valores,palos = dividirPaloValores(cartasJugadas)
+
+    valores.sort()
+
+    es_escalera = escalera(valores)
+    es_poker = poker(valores)
+    es_color = color(palos)
+    es_trio = trio(valores)
+    es_par = par(valores)
+    es_doblePar = doblePar(valores)
+    es_fullHouse = fullHouse(valores)
+
+    if es_escalera and es_color:
+        print("Es: Escalera Corrida")
+        return 100 , 8
+    elif es_poker:
+        print("Es: Poker")
+        return 60 , 7
+    elif es_fullHouse:
+        print("Es: Full house")
+        return 40 , 4
+    elif es_color and (not es_escalera):
+        print("Es: Color")
+        return 35 , 4
+    elif es_escalera and (not es_color):
+        print("Es: Escalera")
+        return 30 ,4
+    elif es_trio:
+        print("Es: Trio")
+        return 30 , 3
+    elif es_doblePar:
+        print("Es: Doble Par")
+        return 20 , 2
+    elif es_par:
+        print("Es: Par")
+        return 10 , 2
+    else:
+        print("Es: Carta Alta")
+        return 5 , 1
     
 
 #Body del programa, para repartir e inicializar el juego.
