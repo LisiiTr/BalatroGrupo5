@@ -31,10 +31,10 @@ import random
 #manoJugador: cartas en mano que tiene el jugador, las cuales puede jugar o descartar.
 
 mazoCompleto=[
-        "A♠","2♠","3♠","4♠","5♠","6♠","7♠","8♠","9♠","10♠","J♠","Q♠","K♠",
-        "A♥","2♥","3♥","4♥","5♥","6♥","7♥","8♥","9♥","10♥","J♥","Q♥","K♥",
-        "A♦","2♦","3♦","4♦","5♦","6♦","7♦","8♦","9♦","10♦","J♦","Q♦","K♦",
-        "A♣","2♣","3♣","4♣","5♣","6♣","7♣","8♣","9♣","10♣","J♣","Q♣","K♣"
+        ("A♠",  1,    "♠" ,   11),("2♠",  2,    "♠" ,   2),("3♠",   3,    "♠" ,    3),("4♠",  4,    "♠" ,    4),("5♠",  5,    "♠" ,   5),("6♠",  6,    "♠" ,   6),("7♠",  7,    "♠" ,   7),("8♠",   8,    "♠" ,    8),("9♠",  9,    "♠" ,    9),("10♠",  10,    "♠" ,   10),("J♠",  11,    "♠" ,   10),("Q♠",  12,    "♠" ,   10),("K♠",  13,    "♠" ,   10),
+        ("A♥",  1,    "♥" ,   11),("2♥",  2,    "♥" ,   2),("3♥",   3,    "♥" ,    3),("4♥",  4,    "♥" ,    4),("5♥",  5,    "♥" ,   5),("6♥",  6,    "♥" ,   6),("7♥",  7,    "♥" ,   7),("8♥",   8,    "♥" ,    8),("9♥",  9,    "♥" ,    9),("10♥",  10,    "♥" ,   10),("J♥",  11,    "♥" ,   10),("Q♥",  12,    "♥" ,   10),("K♥",  13,    "♥" ,   10),
+        ("A♦",  1,    "♦" ,   11),("2♦",  2,    "♦" ,   2),("3♦",   3,    "♦" ,    3),("4♦",  4,    "♦" ,    4),("5♦",  5,    "♦" ,   5),("6♥",  6,    "♦" ,   6),("7♦",  7,    "♦" ,   7),("8♦",   8,    "♦" ,    8),("9♦",  9,    "♦" ,    9),("10♦",  10,    "♦" ,   10),("J♦",  11,    "♦" ,   10),("Q♦",  12,    "♦" ,   10),("K♦",  13,    "♦" ,   10),
+        ("A♣",  1,    "♣" ,   11),("2♣",  2,    "♣" ,   2),("3♣",   3,    "♣" ,    3),("4♣",  4,    "♣" ,    4),("5♣",  5,    "♣" ,   5),("6♣",  6,    "♣" ,   6),("7♣",  7,    "♣" ,   7),("8♣",   8,    "♣" ,    8),("9♣",  9,    "♣" ,    9),("10♣",  10,    "♣" ,   10),("J♣",  11,    "♣" ,   10),("Q♣",  12,    "♣" ,   10),("K♣",  13,    "♣" ,   10),
         ]
 manos = 5
 descartes = 3
@@ -88,7 +88,7 @@ def juego(manojugador,descartes):
     while (cartaSeleccionada != -1) and (len(seleccionCartas) <= 5):
         seleccionCartas.append(manoJugador[cartaSeleccionada-1])
         
-        mostrarCartasSelect(manoJugador)
+        mostrarCartasSelect(seleccionCartas)
         
         mostrarCartas(manoJugador)
     
@@ -143,7 +143,7 @@ def seleccionar(manoJugador):
 def dividirPaloValores(cartasJugadas):
     valores=[]
     palos=[]
-    for valor, palo, fichas in cartasJugadas:
+    for nombre,valor, palo, fichas in cartasJugadas:
         valores.append(valor)
         palos.append(palo)
     return valores,palos
