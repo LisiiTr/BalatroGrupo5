@@ -121,18 +121,23 @@ def juego(manojugador,descartes):
 # Funcion de jugarCartas, esta funcion sera la que deduzca la combinación
 def jugarCartas(cartasJugadas):
     fichas,multiplicador = combinacionJugada(cartasJugadas)
-    print(fichas,multiplicador)
+    fichas += calcularFichas(cartasJugadas)
+    puntaje = calcularPuntaje(fichas,multiplicador)
+    print("Fichas: ",fichas,"/ Multiplicador: ",multiplicador, "/ Puntaje de la jugada: ", puntaje)
     return True
  
 #Calculara las fichas que suman las cartas.
-def calcularFichas(cartasJugadas, combinacion):
+def calcularFichas(cartasJugadas):
+  
     cantidadFichas = 0
+    for carta in cartasJugadas:
+        cantidadFichas += carta[3]
     return cantidadFichas
  
 #Calculara el puntaje total de la jugada
 def calcularPuntaje(cantidadFichas,multiplicador):
-    totalPuntaje = 0
-    return totalPuntaje
+   totalPuntaje = cantidadFichas * multiplicador
+   return totalPuntaje
  
 #recorrera las cartas en mano y las mostrara en pantalla
 def mostrarCartas(listaCartas):
