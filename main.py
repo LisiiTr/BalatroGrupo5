@@ -36,22 +36,42 @@ mazoCompleto=[
         ("A♦",  1,    "♦" ,   11),("2♦",  2,    "♦" ,   2),("3♦",   3,    "♦" ,    3),("4♦",  4,    "♦" ,    4),("5♦",  5,    "♦" ,   5),("6♥",  6,    "♦" ,   6),("7♦",  7,    "♦" ,   7),("8♦",   8,    "♦" ,    8),("9♦",  9,    "♦" ,    9),("10♦",  10,    "♦" ,   10),("J♦",  11,    "♦" ,   10),("Q♦",  12,    "♦" ,   10),("K♦",  13,    "♦" ,   10),
         ("A♣",  1,    "♣" ,   11),("2♣",  2,    "♣" ,   2),("3♣",   3,    "♣" ,    3),("4♣",  4,    "♣" ,    4),("5♣",  5,    "♣" ,   5),("6♣",  6,    "♣" ,   6),("7♣",  7,    "♣" ,   7),("8♣",   8,    "♣" ,    8),("9♣",  9,    "♣" ,    9),("10♣",  10,    "♣" ,   10),("J♣",  11,    "♣" ,   10),("Q♣",  12,    "♣" ,   10),("K♣",  13,    "♣" ,   10),
         ]
-manos = 5
-descartes = 3
+
 mazoRonda = mazoCompleto
 manoJugador = []
 
-#Esta funcion esta pensada para mas adelante poder reinciar los descarte, manos, mazos y demas.
-def nuevaRonda(mazoCompleto):
-    return mazoCompleto
+def crearJugador():
+    jugador={}
+    jugador['nombre']= input("Ingrese el nombre con el que va a jugar:")
+    jugador['puntaje']=0
+    jugador['pozo']= random.randint(300,600)
+    jugador['ronda']=1
+    jugador['manos']=3
+    jugador['descartes']=3
+    return jugador
 
+
+#Esta funcion esta pensada para mas adelante poder reinciar los descarte, manos, mazos y demas.
+def nuevaRonda(jugador,mazoCompleto):
+    manoJugador=[]
+    mazoRonda=mazoCompleto
+    jugador['ronda'] += 1
+    jugador['pozo'] = random.randint(300,600)
+    jugador['puntaje'] = 0
+    jugador['manos']=3
+    jugador['descartes']=3
+    print()
+    print(f"Jugador:{jugador['nombre']} | Pozo:{jugador['pozo']}")
+    print()
+    repartirCartas(mazoRonda,10,manoJugador)
+    juego(jugador,manoJugador)
 #Esta funcion es para repartir las cartas. Recibe como parametros mazoRonda para se sepa las cartas que estan en juego, cantCartas para saber cuantas cartas repartir
 # y mano jugador para agregar las cartas a la mano del jugador
 #Repetimos el proceso la cantidad que me indica cantCartas
 #Selecciono una carta al azar del mazo que se esta jugando en esta ronda
 # #Agrego la carta al azar a la mano del jugador
 #Elimino la carta del mazo en juego
-def repartir(mazoRonda,cantCartas,manoJugador):
+def repartirCartas(mazoRonda,cantCartas,manoJugador):
     for i in range(cantCartas):
         carta = random.choice(mazoRonda)
         manoJugador.append(carta)
@@ -62,12 +82,22 @@ def repartir(mazoRonda,cantCartas,manoJugador):
 #por cada carta seleccionada la elimino de la mano del jugador
 #Invoco la funcion repartir, enviandole el mazo en juego, la cantidad de cartas que debe repartirle (el cual es la cantidad de cartas descartadas), y la mano del jugador.
 #Lo envío nuevamente a la funcion para seleccionar cartas y que decida si jugar o descartar.
-def descartarCartas(seleccionCartas,manoJugador,descartes):
+def descartarCartas(seleccionCartas,manoJugador):
     for carta in seleccionCartas:
         manoJugador.remove(carta)
-    repartir(mazoRonda,len(seleccionCartas),manoJugador)
-    descartes-=1
-    juego(manoJugador,descartes)
+    return manoJugador
+
+
+# Funcion de jugarCartas, esta funcion sera la que deduzca la combinación
+def jugarCartas(jugador,cartasJugadas,manoJugador):
+    fichas,multiplicador = combinacionJugada(cartasJugadas)
+    fichas += calcularFichas(cartasJugadas)
+    puntaje = calcularPuntaje(fichas,multiplicador)
+    jugador['puntaje'] += puntaje
+    for carta in cartasJugadas:
+        manoJugador.remove(carta)
+    print("Fichas: ",fichas," | Multiplicador: ",multiplicador, " | Puntaje de la jugada: ", puntaje)
+    
 
 #Esta funcion es el nucleo del juego, en donde se seleccionan las cartas y se decide si jugar o descartar.
 #Se inicializa la variable seleccionCartas, la cual es una lista que contiene las cartas seleccionadas por el jugador. Se le muestran las cartas que puede seleccionar.
@@ -78,41 +108,53 @@ def descartarCartas(seleccionCartas,manoJugador,descartes):
 #Cuando sale del while, es decir, cartaSeleccionada sea -1 o el largo de la lista seleccionCartas es menor o igual a 5, se le pide que ingrese si quiere jugar o descartar.
 #Se verifica que la decision se valida y ademas que tenga descartes disponibles. Si una de estas dos no cumple, debe ingresar nuevamente.
 #Dependiendo de la decision tomada, se invoca la función descartarCartas o jugarCartas.
-def juego(manojugador,descartes):
-    seleccionCartas=[]
-
-    mostrarCartas(manoJugador)
-    
-    cartaSeleccionada=int(input("Seleccione una carta:"))
-
-    while (cartaSeleccionada != -1) and (len(seleccionCartas) <= 5):
-        seleccionCartas.append(manoJugador[cartaSeleccionada-1])
-        
-        mostrarCartasSelect(seleccionCartas)
-        
+def juego(jugador,manoJugador):
+    while jugador['manos'] != 0 and jugador['puntaje'] < jugador['pozo']:
+        seleccionCartas=[]
         mostrarCartas(manoJugador)
-    
-        cartaSeleccionada=int(input("Seleccione una carta o -1 para terminar:"))
-    decision=int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
-    while (decision < 1 or decision > 2) or descartes == 0:
-        if descartes == 0:
-            decision=int(input("No tiene mas descartes, debes ingresar 1 para jugar:"))
-        else:
-            decision=int(input("Valor invalido! Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
-    if decision == 1:
-        print("El jugador decidió jugar sus cartas")
-        jugarCartas(seleccionCartas)
-    elif decision == 2 and descartes > 0:
-        print("El jugador decidio descartar sus cartas")
-        descartarCartas(seleccionCartas,manoJugador,descartes)
+        cartaSeleccionada=int(input("Seleccione una carta:"))
 
-# Funcion de jugarCartas, esta funcion sera la que deduzca la combinación
-def jugarCartas(cartasJugadas):
-    fichas,multiplicador = combinacionJugada(cartasJugadas)
-    fichas += calcularFichas(cartasJugadas)
-    puntaje = calcularPuntaje(fichas,multiplicador)
-    print("Fichas: ",fichas,"/ Multiplicador: ",multiplicador, "/ Puntaje de la jugada: ", puntaje)
-    return True
+        while (cartaSeleccionada != -1) and (len(seleccionCartas) <= 5):
+            seleccionCartas.append(manoJugador[cartaSeleccionada-1])
+            
+            mostrarCartasSelect(seleccionCartas)
+            
+            mostrarCartas(manoJugador)
+        
+            cartaSeleccionada=int(input("Seleccione una carta o -1 para terminar:"))
+        decision=int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
+        while (decision < 1 or decision > 2) or jugador['descartes'] == 0:
+            if jugador['descartes'] == 0:
+                decision=int(input("No tiene mas descartes, debes ingresar 1 para jugar:"))
+            else:
+                decision=int(input("Valor invalido! Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
+        if decision == 1:
+            print("El jugador decidió jugar sus cartas")
+            jugarCartas(jugador,seleccionCartas,manoJugador)
+            repartirCartas(mazoRonda,len(seleccionCartas),manoJugador)
+            jugador['manos'] -= 1
+        elif decision == 2 and jugador['descartes'] > 0:
+            print("El jugador decidio descartar sus cartas")
+            descartarCartas(seleccionCartas,manoJugador)
+            repartirCartas(mazoRonda,len(seleccionCartas),manoJugador)
+            jugador['descartes'] -= 1
+            
+    if jugador['puntaje'] < jugador['pozo'] and jugador['manos'] == 0:
+        print("¡Te quedaste sin manos y no alcanzate el pozo! Perdiste.")
+        print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
+    elif jugador['puntaje'] >= jugador['pozo']:
+        print("¡Alcanzaste el valor del pozo! Ganaste.")
+        jugar=int(input("Quiere jugar otra ronda? 1 para 'Si' 2 para 'No':"))
+        while jugar != 1 and jugar != 2:
+            print("¡Opción invalida!")
+            jugar=int(input("Quiere jugar otra ronda? 1 para 'Si' 2 para 'No':"))
+        if jugar == 1:
+            nuevaRonda(jugador,mazoCompleto)
+        else:
+            print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
+        
+
+
  
 #Calculara las fichas que suman las cartas.
 def calcularFichas(cartasJugadas):
@@ -124,8 +166,8 @@ def calcularFichas(cartasJugadas):
  
 #Calculara el puntaje total de la jugada
 def calcularPuntaje(cantidadFichas,multiplicador):
-   totalPuntaje = cantidadFichas * multiplicador
-   return totalPuntaje
+    totalPuntaje = cantidadFichas * multiplicador
+    return totalPuntaje
  
 #recorrera las cartas en mano y las mostrara en pantalla
 def mostrarCartas(listaCartas):
@@ -158,16 +200,22 @@ def dividirPaloValores(cartasJugadas):
 
 def escalera(valores):
     #valores=[1,2,3,4,5]
-    for i in range(len(valores)-1):
-        if valores[i] + 1 != valores[i+1]: 
-            return False
-    return True
-
+    if len(valores)==5:
+        for i in range(len(valores)-1):
+            if valores[i] + 1 != valores[i+1]:
+                return False
+        return True
+    else:
+        return False
+ 
 def color (palos):
-    for i in range(len(palos)-1):
-        if palos[i] != palos[i+1]:
-            return False
-    return True
+    if len(palos)==5:
+        for i in range(len(palos)-1):
+            if palos[i] != palos[i+1]:
+                return False
+        return True
+    else:
+        return False
 
 def poker(valores):
     for v in valores:
@@ -263,6 +311,12 @@ def combinacionJugada(cartasJugadas):
     
 
 #Body del programa, para repartir e inicializar el juego.
-repartir(mazoRonda, 10,manoJugador)
+jugador= crearJugador()
 
-juego(manoJugador,descartes)
+print()
+print(f"Jugador:{jugador['nombre']} | Pozo:{jugador['pozo']}")
+print()
+
+repartirCartas(mazoRonda, 10,manoJugador)
+
+juego(jugador,manoJugador)
