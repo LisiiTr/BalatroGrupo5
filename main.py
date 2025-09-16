@@ -140,14 +140,15 @@ def poker(valores):
         if valores.count(v) == 4:
             return True
     return False
-
+ 
 def par(valores):
     """True si hay al menos un par."""
     for v in valores:
         if valores.count(v) == 2:
             return True
+            return True
     return False
-
+ 
 def doblePar(valores):
     """True si hay dos pares distintos."""
     cantPares = []
@@ -162,7 +163,7 @@ def trio(valores):
         if valores.count(v) == 3:
             return True
     return False
-
+ 
 def fullHouse(valores):
     """True si hay un trío + un par."""
     cantPares = []
@@ -179,7 +180,7 @@ def combinacionJugada(cartasJugadas):
     """Devuelve (fichas_base, multiplicador) según la combinación detectada."""
     valores, palos = dividirPaloValores(cartasJugadas)
     valores.sort()
-
+ 
     es_escalera = escalera(valores)
     es_poker = poker(valores)
     es_color = color(palos)
@@ -187,7 +188,7 @@ def combinacionJugada(cartasJugadas):
     es_par = par(valores)
     es_doblePar = doblePar(valores)
     es_fullHouse = fullHouse(valores)
-
+ 
     if es_escalera and es_color:
         print("Es: Escalera Corrida")
         return 100, 8
