@@ -1,8 +1,7 @@
 import random
-
+ 
 ## Tuplas: ("A♠",  1,    "♠" ,   11)
 ## Diccionario : (Nombre: "A♠", Valor: 1, Palo:"♠", fichas:11)
-
 '''
     A   = 1
     2   = 2
@@ -13,43 +12,34 @@ import random
     7   = 7
     8   = 8
     9   = 9
-    10  = 10 
-    J   = 11 
+    10  = 10
+    J   = 11
     Q   = 12
     K   = 13
-
+ 
     Escalera minima: A 2 3 4 5
     Escalera maxima 9 10 J Q K
 '''
-
-mazoCompleto=[
-        "A♠","2♠","3♠","4♠","5♠","6♠","7♠","8♠","9♠","10♠","J♠","Q♠","K♠",
-        "A♥","2♥","3♥","4♥","5♥","6♥","7♥","8♥","9♥","10♥","J♥","Q♥","K♥",
-        "A♦","2♦","3♦","4♦","5♦","6♦","7♦","8♦","9♦","10♦","J♦","Q♦","K♦",
-        "A♣","2♣","3♣","4♣","5♣","6♣","7♣","8♣","9♣","10♣","J♣","Q♣","K♣"
-]
-
+ 
+ 
+ 
 #Variables declaradas
 #mazoCompleto: contiene todas las cartas del mazo.
 #manos: cantidad de veces que puede jugar combinaciones el user.
 #descartes: cantidad de veces que puede descartar el user.
 #mazoRonda: mazo de cada ronda, en donde se van eliminando las cartas que se le dan al jugador.
 #manoJugador: cartas en mano que tiene el jugador, las cuales puede jugar o descartar.
-
+ 
 mazoCompleto=[
-        ("A♠",   1,    "♠" ,   11),("2♠",  2,    "♠" ,   2),("3♠",   3,    "♠" ,    3),("4♠",  4,    "♠" ,    4),("5♠",  5,    "♠" ,   5),("6♠",  6,    "♠" ,   6),("7♠",  7,    "♠" ,   7),
-        ("8♠",   8,    "♠" ,    8),("9♠",  9,    "♠" ,    9),("10♠",  10,    "♠" ,   10),("J♠",  11,    "♠" ,   10),("Q♠",  12,    "♠" ,   10),("K♠",  13,    "♠" ,   10),
-        ("A♥",   1,    "♥" ,   11),("2♥",  2,    "♥" ,   2),("3♥",   3,    "♥" ,    3),("4♥",  4,    "♥" ,    4),("5♥",  5,    "♥" ,   5),("6♥",  6,    "♥" ,   6),("7♥",  7,    "♥" ,   7),
-        ("8♥",   8,    "♥" ,    8),("9♥",  9,    "♥" ,    9),("10♥",  10,    "♥" ,   10),("J♥",  11,    "♥" ,   10),("Q♥",  12,    "♥" ,   10),("K♥",  13,    "♥" ,   10),
-        ("A♦",   1,    "♦" ,   11),("2♦",  2,    "♦" ,   2),("3♦",   3,    "♦" ,    3),("4♦",  4,    "♦" ,    4),("5♦",  5,    "♦" ,   5),("6♥",  6,    "♦" ,   6),("7♦",  7,    "♦" ,   7),
-        ("8♦",   8,    "♦" ,    8),("9♦",  9,    "♦" ,    9),("10♦",  10,    "♦" ,   10),("J♦",  11,    "♦" ,   10),("Q♦",  12,    "♦" ,   10),("K♦",  13,    "♦" ,   10),
-        ("A♣",  1,    "♣" ,   11),("2♣",  2,    "♣" ,   2),("3♣",   3,    "♣" ,    3),("4♣",  4,    "♣" ,    4),("5♣",  5,    "♣" ,   5),("6♣",  6,    "♣" ,   6),("7♣",  7,    "♣" ,   7),
-        ("8♣",   8,    "♣" ,    8),("9♣",  9,    "♣" ,    9),("10♣",  10,    "♣" ,   10),("J♣",  11,    "♣" ,   10),("Q♣",  12,    "♣" ,   10),("K♣",  13,    "♣" ,   10),
+        ("A♠",  1,    "♠" ,   11),("2♠",  2,    "♠" ,   2),("3♠",   3,    "♠" ,    3),("4♠",  4,    "♠" ,    4),("5♠",  5,    "♠" ,   5),("6♠",  6,    "♠" ,   6),("7♠",  7,    "♠" ,   7),("8♠",   8,    "♠" ,    8),("9♠",  9,    "♠" ,    9),("10♠",  10,    "♠" ,   10),("J♠",  11,    "♠" ,   10),("Q♠",  12,    "♠" ,   10),("K♠",  13,    "♠" ,   10),
+        ("A♥",  1,    "♥" ,   11),("2♥",  2,    "♥" ,   2),("3♥",   3,    "♥" ,    3),("4♥",  4,    "♥" ,    4),("5♥",  5,    "♥" ,   5),("6♥",  6,    "♥" ,   6),("7♥",  7,    "♥" ,   7),("8♥",   8,    "♥" ,    8),("9♥",  9,    "♥" ,    9),("10♥",  10,    "♥" ,   10),("J♥",  11,    "♥" ,   10),("Q♥",  12,    "♥" ,   10),("K♥",  13,    "♥" ,   10),
+        ("A♦",  1,    "♦" ,   11),("2♦",  2,    "♦" ,   2),("3♦",   3,    "♦" ,    3),("4♦",  4,    "♦" ,    4),("5♦",  5,    "♦" ,   5),("6♥",  6,    "♦" ,   6),("7♦",  7,    "♦" ,   7),("8♦",   8,    "♦" ,    8),("9♦",  9,    "♦" ,    9),("10♦",  10,    "♦" ,   10),("J♦",  11,    "♦" ,   10),("Q♦",  12,    "♦" ,   10),("K♦",  13,    "♦" ,   10),
+        ("A♣",  1,    "♣" ,   11),("2♣",  2,    "♣" ,   2),("3♣",   3,    "♣" ,    3),("4♣",  4,    "♣" ,    4),("5♣",  5,    "♣" ,   5),("6♣",  6,    "♣" ,   6),("7♣",  7,    "♣" ,   7),("8♣",   8,    "♣" ,    8),("9♣",  9,    "♣" ,    9),("10♣",  10,    "♣" ,   10),("J♣",  11,    "♣" ,   10),("Q♣",  12,    "♣" ,   10),("K♣",  13,    "♣" ,   10),
         ]
-
+ 
 mazoRonda = mazoCompleto
 manoJugador = []
-
+ 
 def crearJugador():
     jugador={}
     jugador['nombre']= input("Ingrese el nombre con el que va a jugar:")
@@ -59,8 +49,8 @@ def crearJugador():
     jugador['manos']=3
     jugador['descartes']=3
     return jugador
-
-
+ 
+ 
 #Esta funcion esta pensada para mas adelante poder reinciar los descarte, manos, mazos y demas.
 def nuevaRonda(jugador,mazoCompleto):
     manoJugador=[]
@@ -86,7 +76,7 @@ def repartirCartas(mazoRonda,cantCartas,manoJugador):
         carta = random.choice(mazoRonda)
         manoJugador.append(carta)
         mazoRonda.remove(carta)
-
+ 
 #Esta funcion es para cuando el jugador posterior a seleccionar las cartas, decide descartarlas.
 #Recibe: seleccionCartas (Las cartas que se seleccionaron), manoJugador(las cartas que tiene el juagdor en la mano) y descartes(la cantidad de descartes que tiene el jugador)
 #por cada carta seleccionada la elimino de la mano del jugador
@@ -96,8 +86,8 @@ def descartarCartas(seleccionCartas,manoJugador):
     for carta in seleccionCartas:
         manoJugador.remove(carta)
     return manoJugador
-
-
+ 
+ 
 # Funcion de jugarCartas, esta funcion sera la que deduzca la combinación
 def jugarCartas(jugador,cartasJugadas,manoJugador):
     fichas,multiplicador = combinacionJugada(cartasJugadas)
@@ -107,8 +97,8 @@ def jugarCartas(jugador,cartasJugadas,manoJugador):
     for carta in cartasJugadas:
         manoJugador.remove(carta)
     print("Fichas: ",fichas," | Multiplicador: ",multiplicador, " | Puntaje de la jugada: ", puntaje)
-    
-
+   
+ 
 #Esta funcion es el nucleo del juego, en donde se seleccionan las cartas y se decide si jugar o descartar.
 #Se inicializa la variable seleccionCartas, la cual es una lista que contiene las cartas seleccionadas por el jugador. Se le muestran las cartas que puede seleccionar.
 # recorriendo las lista manoJugador (las cartas que tiene en mano).
@@ -123,14 +113,14 @@ def juego(jugador,manoJugador):
         seleccionCartas=[]
         mostrarCartas(manoJugador)
         cartaSeleccionada=int(input("Seleccione una carta:"))
-
+ 
         while (cartaSeleccionada != -1) and (len(seleccionCartas) <= 5):
             seleccionCartas.append(manoJugador[cartaSeleccionada-1])
-            
+           
             mostrarCartasSelect(seleccionCartas)
-            
+           
             mostrarCartas(manoJugador)
-        
+       
             cartaSeleccionada=int(input("Seleccione una carta o -1 para terminar:"))
         decision=int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
         while (decision < 1 or decision > 2) or jugador['descartes'] == 0:
@@ -148,7 +138,7 @@ def juego(jugador,manoJugador):
             descartarCartas(seleccionCartas,manoJugador)
             repartirCartas(mazoRonda,len(seleccionCartas),manoJugador)
             jugador['descartes'] -= 1
-            
+           
     if jugador['puntaje'] < jugador['pozo'] and jugador['manos'] == 0:
         print("¡Te quedaste sin manos y no alcanzate el pozo! Perdiste.")
         print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
@@ -162,13 +152,16 @@ def juego(jugador,manoJugador):
             nuevaRonda(jugador,mazoCompleto)
         else:
             print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
-        
-
-
+       
+ 
+ 
  
 #Calculara las fichas que suman las cartas.
-def calcularFichas(cartasJugadas, combinacion):
+def calcularFichas(cartasJugadas):
+ 
     cantidadFichas = 0
+    for carta in cartasJugadas:
+        cantidadFichas += carta[3]
     return cantidadFichas
  
 #Calculara el puntaje total de la jugada
@@ -179,7 +172,7 @@ def calcularPuntaje(cantidadFichas,multiplicador):
 #recorrera las cartas en mano y las mostrara en pantalla
 def mostrarCartas(listaCartas):
     print("Las cartas en mano son:")
-    for i in range(len(manoJugador)): 
+    for i in range(len(manoJugador)):
         print("carta",i+1,":",manoJugador[i])
  
 #recorrera las cartas seleccionadas y las mostrara en pantalla
@@ -193,7 +186,7 @@ def seleccionar(manoJugador):
     cartasSeleccionadas = []
     return cartasSeleccionadas
  
-
+ 
 def dividirPaloValores(cartasJugadas):
     valores=[]
     palos=[]
@@ -201,10 +194,10 @@ def dividirPaloValores(cartasJugadas):
         valores.append(valor)
         palos.append(palo)
     return valores,palos
-
+ 
     #valores=[1,2,3,4,5]
     #palos=["♠","♠","♠","♠","♠"]
-
+ 
 def escalera(valores):
     #valores=[1,2,3,4,5]
     if len(valores)==5:
@@ -223,21 +216,21 @@ def color (palos):
         return True
     else:
         return False
-
+ 
 def poker(valores):
     for v in valores:
         #valores=[1,1,1,1,5]
         if valores.count(v) == 4:
             return True
     return False
-
+ 
 def par(valores):
     #valores=[1,2,3,3,5]
     for v in valores:
         if valores.count(v) == 2:
-            return True 
+            return True
     return False
-
+ 
 def doblePar(valores):
     cantPares=[]
     #valores=[2,2,3,3,5]
@@ -249,17 +242,17 @@ def doblePar(valores):
     if len(cantPares) == 2:
         return True
     return False
-
+ 
 def trio(valores):
     for v in valores:
         if valores.count(v) == 3:
             return True
     return False
-
+ 
 def fullHouse(valores):
     cantPares=[]
     cantTrios=[]
-
+ 
     for v in valores:
         if valores.count(v) == 3:
             if v not in cantTrios:
@@ -268,18 +261,18 @@ def fullHouse(valores):
         if valores.count(v) == 2:
             if v not in cantPares:
                 cantPares.append(v)
-
+ 
     if len(cantTrios)==1 and len(cantPares)==1:
         return True
     else:
         return False
-
+ 
 def combinacionJugada(cartasJugadas):
-
+ 
     valores,palos = dividirPaloValores(cartasJugadas)
-
+ 
     valores.sort()
-
+ 
     es_escalera = escalera(valores)
     es_poker = poker(valores)
     es_color = color(palos)
@@ -287,7 +280,7 @@ def combinacionJugada(cartasJugadas):
     es_par = par(valores)
     es_doblePar = doblePar(valores)
     es_fullHouse = fullHouse(valores)
-
+ 
     if es_escalera and es_color:
         print("Es: Escalera Corrida")
         return 100 , 8
@@ -315,15 +308,15 @@ def combinacionJugada(cartasJugadas):
     else:
         print("Es: Carta Alta")
         return 5 , 1
-    
-
+   
+ 
 #Body del programa, para repartir e inicializar el juego.
 jugador= crearJugador()
-
+ 
 print()
 print(f"Jugador:{jugador['nombre']} | Pozo:{jugador['pozo']}")
 print()
-
+ 
 repartirCartas(mazoRonda, 10,manoJugador)
-
+ 
 juego(jugador,manoJugador)
