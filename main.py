@@ -1,7 +1,7 @@
 import random
  
 ## Tuplas: ("A♠",  1,    "♠" ,   11)
-## Diccionario : (Nombre: "A♠", Valor: 1, Palo:"♠", fichas:11)
+## Diccionario : {Nombre: "A♠", Valor: 1, Palo:"♠", fichas:11}
 '''
     A   = 1
     2   = 2
@@ -92,7 +92,7 @@ def descartarCartas(seleccionCartas,manoJugador):
 def jugarCartas(jugador,cartasJugadas,manoJugador):
     fichas,multiplicador = combinacionJugada(cartasJugadas)
     fichas += calcularFichas(cartasJugadas)
-    puntaje = calcularPuntaje(fichas,multiplicador)
+    puntaje= totalPuntaje(fichas,multiplicador)
     jugador['puntaje'] += puntaje
     for carta in cartasJugadas:
         manoJugador.remove(carta)
@@ -158,16 +158,15 @@ def juego(jugador,manoJugador):
  
 #Calculara las fichas que suman las cartas.
 def calcularFichas(cartasJugadas):
- 
-    cantidadFichas = 0
-    for carta in cartasJugadas:
-        cantidadFichas += carta[3]
+    
+    fichas = [carta[3] for carta in cartasJugadas]
+
+    cantidadFichas = sum(fichas)
+
     return cantidadFichas
  
 #Calculara el puntaje total de la jugada
-def calcularPuntaje(cantidadFichas,multiplicador):
-    totalPuntaje = cantidadFichas * multiplicador
-    return totalPuntaje
+totalPuntaje= lambda cantidadFichas,multiplicador: cantidadFichas * multiplicador
  
 #recorrera las cartas en mano y las mostrara en pantalla
 def mostrarCartas(listaCartas):
@@ -188,11 +187,9 @@ def seleccionar(manoJugador):
  
  
 def dividirPaloValores(cartasJugadas):
-    valores=[]
-    palos=[]
-    for nombre,valor, palo, fichas in cartasJugadas:
-        valores.append(valor)
-        palos.append(palo)
+    valores = [valor for nombre, valor, palo, fichas in cartasJugadas]
+    palos   = [palo  for nombre, valor, palo, fichas in cartasJugadas]
+
     return valores,palos
  
     #valores=[1,2,3,4,5]
