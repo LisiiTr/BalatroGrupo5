@@ -47,11 +47,14 @@ def crearJugador():
     jugador['ronda'] = 1
     jugador['manos'] = 5
     jugador['descartes'] = 3
+    jugador['mazoCompleto'] = crearMazoCompleto()
+    jugador['mazoRonda'] = jugador['mazoCompleto'].copy()  
+    jugador['manoJugador'] = []  
     return jugador
  
-def nuevaRonda(jugador, mazo_base, mazoRonda):
-    manoJugador = []
-    mazoRonda = mazo_base.copy()
+def nuevaRonda(jugador, mazoRonda):
+    jugador['manoJugador'] = []
+    jugador['mazoRonda'] = jugador['mazoCompleto'].copy()
     jugador['ronda'] += 1
     jugador['pozo'] = random.randint(300, 600)
     jugador['puntaje'] = 0
@@ -60,8 +63,8 @@ def nuevaRonda(jugador, mazo_base, mazoRonda):
     print()
     print(f"Jugador: {jugador['nombre']} | Pozo: {jugador['pozo']}")
     print()
-    repartirCartas(mazoRonda, 10, manoJugador)
-    juego(jugador, manoJugador)
+    repartirCartas(10, jugador)
+    juego(jugador)
  
  
  
@@ -79,15 +82,15 @@ def mostrarCartasSelect(listaCartas):
         print(f"Carta seleccionada {i}: {carta['nombre']} | Fichas: {carta['fichas']}")
         i += 1
  
-def repartirCartas(mazoJuego, cantCartas, manoJugador):
+def repartirCartas(cantCartas,jugador):
     for i in range(cantCartas):
-        indice = random.choice(list(mazoJuego))
-        carta = mazoJuego.pop(indice)
-        manoJugador.append(carta)
+        indice = random.choice(list(jugador['mazoRonda']))
+        carta = jugador['mazoRonda'].pop(indice)
+        jugador['manoJugador'].append(carta)
  
  
 # Flujo principal
-def juego(jugador,manoJugador,mazoRonda,mazoCompleto):
+def juego(jugador):
     while jugador['manos'] != 0 and jugador['puntaje'] < jugador['pozo']:
         seleccionCartas=[]
         print()
@@ -96,15 +99,15 @@ def juego(jugador,manoJugador,mazoRonda,mazoCompleto):
         print("----------------------------------------------------------------")
         print()
  
-        mostrarCartas(manoJugador)
+        mostrarCartas(jugador['manoJugador'])
         cartaSeleccionada=int(input("\nSeleccione una carta:"))
  
-        while (cartaSeleccionada != -1) and (len(seleccionCartas) <= 5):
-            seleccionCartas.append(manoJugador[cartaSeleccionada-1])
+        while (cartaSeleccionada != -1) and (len(seleccionCartas) < 4):
+            seleccionCartas.append(jugador['manoJugador'][cartaSeleccionada-1])
            
             mostrarCartasSelect(seleccionCartas)
            
-            mostrarCartas(manoJugador)
+            mostrarCartas(jugador['manoJugador'])
        
             cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
         decision=int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
@@ -115,13 +118,13 @@ def juego(jugador,manoJugador,mazoRonda,mazoCompleto):
                 decision=int(input("Valor invalido! Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
         if decision == 1:
             print("El jugador decidió jugar sus cartas")
-            jugarCartas(jugador,seleccionCartas,manoJugador)
+            jugarCartas(jugador,seleccionCartas)
             jugador['manos'] -= 1
         elif decision == 2 and jugador['descartes'] > 0:
             print("El jugador decidio descartar sus cartas")
-            descartarCartas(seleccionCartas,manoJugador)
+            descartarCartas(seleccionCartas,jugador)
             jugador['descartes'] -= 1
-        repartirCartas(mazoRonda,len(seleccionCartas),manoJugador)
+        repartirCartas(len(seleccionCartas),jugador)
     if jugador['puntaje'] < jugador['pozo'] and jugador['manos'] == 0:
         print("¡Te quedaste sin manos y no alcanzate el pozo! Perdiste.")
         print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
@@ -136,7 +139,7 @@ def juego(jugador,manoJugador,mazoRonda,mazoCompleto):
             print("¡Opción invalida!")
             jugar=int(input("Quiere jugar otra ronda? 1 para 'Si' 2 para 'No':"))
         if jugar == 1:
-            nuevaRonda(jugador,mazoCompleto,mazoRonda)
+            nuevaRonda(jugador)
         else:
             print()
             print("----------------------------------------------------------------")
@@ -145,22 +148,22 @@ def juego(jugador,manoJugador,mazoRonda,mazoCompleto):
             print()
  
 #Descartes
-def descartarCartas(seleccionCartas, manoJugador):
+def descartarCartas(seleccionCartas,jugador):
     for carta in seleccionCartas:
-        manoJugador.remove(carta)
-    return manoJugador
+        jugador['manoJugador'].remove(carta)
+    return jugador['manoJugador']
  
  
 #Funciones de cuando se juega la mano
 totalPuntaje= lambda cantidadFichas,multiplicador: cantidadFichas * multiplicador
  
-def jugarCartas(jugador,cartasJugadas,manoJugador):
+def jugarCartas(jugador,cartasJugadas):
     fichas,multiplicador = combinacionJugada(cartasJugadas)
     fichas += calcularFichas(cartasJugadas)
     puntaje= totalPuntaje(fichas,multiplicador)
     jugador['puntaje'] += puntaje
     for carta in cartasJugadas:
-        manoJugador.remove(carta)
+        jugador['manoJugador'].remove(carta)
     print(f"Fichas: {fichas} | Multiplicador: {multiplicador} | Puntaje de la jugada: {puntaje}")
     print("----------------------------------------------------------------")
     print()
@@ -293,13 +296,11 @@ def fullHouse(valores):
 # Función del programa principal
  
 def main():
-    mazoCompleto = crear_mazo_completo()
-    mazoRonda = mazoCompleto.copy()  
-    manoJugador = []  
+    
     jugador = crearJugador()
  
-    repartirCartas(mazoRonda, 10, manoJugador)
-    juego(jugador, manoJugador,mazoRonda,mazoCompleto)
+    repartirCartas(10, jugador)
+    juego(jugador)
  
  
  
