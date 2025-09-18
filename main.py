@@ -11,7 +11,7 @@ import random
 #                
  
 #Inicializaciín / Reinicio de variables
-def crear_mazo_completo():
+def crearMazoCompleto():
     palos = ["♠", "♥", "♦", "♣"]
     rangos = {
         "A": 1,
@@ -87,7 +87,7 @@ def repartirCartas(mazoJuego, cantCartas, manoJugador):
  
  
 # Flujo principal
-def juego(jugador,manoJugador):
+def juego(jugador,manoJugador,mazoRonda,mazoCompleto):
     while jugador['manos'] != 0 and jugador['puntaje'] < jugador['pozo']:
         seleccionCartas=[]
         print()
@@ -116,14 +116,12 @@ def juego(jugador,manoJugador):
         if decision == 1:
             print("El jugador decidió jugar sus cartas")
             jugarCartas(jugador,seleccionCartas,manoJugador)
-            repartirCartas(mazoRonda,len(seleccionCartas),manoJugador)
             jugador['manos'] -= 1
         elif decision == 2 and jugador['descartes'] > 0:
             print("El jugador decidio descartar sus cartas")
             descartarCartas(seleccionCartas,manoJugador)
-            repartirCartas(mazoRonda,len(seleccionCartas),manoJugador)
             jugador['descartes'] -= 1
-           
+        repartirCartas(mazoRonda,len(seleccionCartas),manoJugador)
     if jugador['puntaje'] < jugador['pozo'] and jugador['manos'] == 0:
         print("¡Te quedaste sin manos y no alcanzate el pozo! Perdiste.")
         print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
@@ -246,7 +244,8 @@ def escalera(valores):
             if valores[i] + 1 != valores[i + 1]:
                 return False
         return True
-    return False
+    else:
+        return False
  
 def color(palos):
     if len(palos) == 5:
@@ -300,7 +299,7 @@ def main():
     jugador = crearJugador()
  
     repartirCartas(mazoRonda, 10, manoJugador)
-    juego(jugador, manoJugador)
+    juego(jugador, manoJugador,mazoRonda,mazoCompleto)
  
  
  
