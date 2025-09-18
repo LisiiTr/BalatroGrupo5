@@ -102,15 +102,19 @@ def juego(jugador):
  
         mostrarCartas(jugador['manoJugador'])
         cartaSeleccionada=int(input("\nSeleccione una carta:"))
- 
-        while (cartaSeleccionada != -1) and (len(seleccionCartas) < 4):
+
+
+        while (cartaSeleccionada != -1) and (len(seleccionCartas) < 5):
+            
             seleccionCartas.append(jugador['manoJugador'][cartaSeleccionada-1])
            
             mostrarCartasSelect(seleccionCartas)
            
-            mostrarCartas(jugador['manoJugador'])
-       
-            cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
+            if len(seleccionCartas) == 5:
+                break
+            else:
+                mostrarCartas(jugador['manoJugador'])
+                cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
         decision=int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
         while (decision < 1 or decision > 2) or jugador['descartes'] == 0:
             if jugador['descartes'] == 0:
@@ -150,9 +154,11 @@ def juego(jugador):
  
 #Descartes
 def descartarCartas(seleccionCartas,jugador):
+    print(jugador['manoJugador'])
     for carta in seleccionCartas:
+        print(carta)
         jugador['manoJugador'].remove(carta)
-    return jugador['manoJugador']
+    return jugador
  
  
 #Funciones de cuando se juega la mano
@@ -170,9 +176,6 @@ def jugarCartas(jugador,cartasJugadas):
     print()
    
 def calcularFichas(cartasJugadas):
- 
- 
- 
     fichas = [carta['fichas'] for carta in cartasJugadas]
     cantidadFichas = sum(fichas)
     return cantidadFichas
@@ -183,6 +186,63 @@ def dividirPaloValores(cartasJugadas):
  
     return valores,palos
  
+ 
+# Combinaciones
+def escalera(valores):
+    if len(valores) == 5:
+        for i in range(len(valores) - 1):
+            if valores[i] + 1 != valores[i + 1]:
+                return False
+        return True
+    else:
+        return False
+ 
+def color(palos):
+    if len(palos) == 5:
+        if palos.count(palos[1]) == 5:
+            return True
+    return False
+ 
+def poker(valores):
+    for v in valores:
+        if valores.count(v) == 4:
+            return True
+    return False
+ 
+def par(valores):
+    for v in valores:
+        if valores.count(v) == 2:
+            return True
+    return False
+ 
+def doblePar(valores):
+    cantPares = []
+    for v in valores:
+        if valores.count(v) == 2:
+            if v not in cantPares:
+                cantPares.append(v)
+    if len(cantPares) == 2:
+        return True
+    else:
+        return False
+ 
+def trio(valores):
+    for v in valores:
+        if valores.count(v) == 3:
+            return True
+    return False
+ 
+def fullHouse(valores):
+    cantPares = []
+    cantTrios = []
+    for v in valores:
+        if valores.count(v) == 3:
+            cantTrios.append(v)
+    for v in valores:
+        if valores.count(v) == 2:
+            cantPares.append(v)
+    return len(cantTrios) == 1 and len(cantPares) == 1
+
 def combinacionJugada(cartasJugadas):
     valores, palos = dividirPaloValores(cartasJugadas)
     valores.sort()
@@ -240,58 +300,6 @@ def combinacionJugada(cartasJugadas):
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Carta Alta")
         return 5, 1
- 
-# Combinaciones
-def escalera(valores):
-    if len(valores) == 5:
-        for i in range(len(valores) - 1):
-            if valores[i] + 1 != valores[i + 1]:
-                return False
-        return True
-    else:
-        return False
- 
-def color(palos):
-    if len(palos) == 5:
-        if palos.count(palos[1]) == 5:
-            return True
-    return False
- 
-def poker(valores):
-    for v in valores:
-        if valores.count(v) == 4:
-            return True
-    return False
- 
-def par(valores):
-    for v in valores:
-        if valores.count(v) == 2:
-            return True
-    return False
- 
-def doblePar(valores):
-    cantPares = []
-    for v in valores:
-        if valores.count(v) == 2:
-            cantPares.append(v)
-    return len(cantPares) == 2
- 
-def trio(valores):
-    for v in valores:
-        if valores.count(v) == 3:
-            return True
-    return False
- 
-def fullHouse(valores):
-    cantPares = []
-    cantTrios = []
-    for v in valores:
-        if valores.count(v) == 3:
-            cantTrios.append(v)
-    for v in valores:
-        if valores.count(v) == 2:
-            cantPares.append(v)
-    return len(cantTrios) == 1 and len(cantPares) == 1
  
  
 # Función del programa principal
