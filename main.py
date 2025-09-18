@@ -1,5 +1,5 @@
 import random
- 
+
 #
 # Representación de carta:
 #   {"nombre": "A♠", "valor": 1, "palo": "♠", "fichas": 11}
@@ -28,16 +28,17 @@ def crearMazoCompleto():
                 "nombre": nombre,
                 "valor": valor,
                 "palo": palo,
-                "fichas": fichas_por_valor(valor),
+                "fichas": fichasValor(valor),
             }
     return mazo
  
-def fichas_por_valor(valor):
+def fichasValor(valor):
     if valor == 1:        
         return 11
-    if 2 <= valor <= 10:
+    elif 2 <= valor <= 10:
         return valor
-    return 10  
+    else: 
+        return 10  
  
 def crearJugador():
     jugador = {}
