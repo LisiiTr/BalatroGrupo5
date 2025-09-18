@@ -241,7 +241,10 @@ def fullHouse(valores):
     for v in valores:
         if valores.count(v) == 2:
             cantPares.append(v)
-    return len(cantTrios) == 1 and len(cantPares) == 1
+    if len(cantTrios) == 1 and len(cantPares) == 1:
+        return True
+    else:
+        return False
 
 def combinacionJugada(cartasJugadas):
     valores, palos = dividirPaloValores(cartasJugadas)
