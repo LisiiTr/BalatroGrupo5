@@ -2,6 +2,8 @@ import mazo
 import jugadas
 import jugador
 import  os
+
+
 # contempla tanto windows, como linux y macos
 def limpiarTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -24,7 +26,7 @@ def juego(jugador):
 
 
         while (cartaSeleccionada != -1) and (len(seleccionCartas) < 5):
-            
+            limpiarTerminal()
             seleccionCartas.append(jugador['manoJugador'][cartaSeleccionada-1])
            
             mazo.mostrarCartasSelect(seleccionCartas)

@@ -38,20 +38,9 @@ Cambios a realizar para nuevas funcionalidades:
                             }
     De esta manera podemos implementar las cartas planeta, y aumkentar de nivel la combinación.
 
-- Mejorar los prints de mostrar Cartas, de esta forma se vera mas claro y quizas bonito:
-    for c in listaCartas:
-         "┌─────┐ "
-        f"| {c['nombre']:<3} | "
-         "└─────┘ "
-        f"-- {i} -- "
-        i+=1
-
-
-
 - Actualizar While de decisiones en función Juego. Genera un bucle infinito si los descartes son 0, y no valida bien el > <. 
     Cuando los descartes sean sero tiene que verificar que la decision sea 2 y los descartes 0.
-
-- Agregar funcionalidad Clear Console, para que no haya tanto texto en la consola.
+ 
 
 
 
@@ -63,36 +52,58 @@ Nuevas Funcionalidades:
 - Generar archivo tienda, donde se aplicara la tienda.
 
 - Posibilidad de deselección de cartas.
-
-- Generar diccionario de Planetas
-
-- Generar diccionario de jokers
-
-- Incorporación de ciegas.
-
+  
 - Tienda:  Van a poder comprar 3 sobres y 2 bonificadores especificos (las cuales pueden ser jokers y/o planetas). Hay que definir si pueden actualizar la tienda o no.
 
-    - Crear lista de jokers en el diccionario Jugador
+    - Generar la lista de diccionarios de Planetas
+    - Generar la lista de diccionarios de Jokers 
+    - Crear lista de JOKERS y planerasen el diccionario Jugador
 
-    - Crear función tienda, donde habra que seleccionar 1 sobre (con un valor random entre 4 y 6).
+    - Crear función tienda, en esta tendra la opcion de compra de 3 sobre y 2 cartas. 
+    def tienda(jugador):
+            
+            - Crear función donde se selecciones 2 bonificadores (planteas o jokers) randoms para la compra
+                def bonificadoras (jugador,planetas)
+                    debe seleccionar de manera random 2 cartas individuales y debera devolverlas
+                    return nuevaCarta,planeta
+        
+        Aqui se le deberan mostrar los 3 sobres. Y 2 cartas de la funcion bonificadoras. Si las selecciona se debe agregar al jugador.
+        Dependiendo lo que selecione, se debera invocar las siguientes funciones:
 
-    - Crear función donde se genere una lista de 3 jokers random
+            - Crear función donde se genere una lista de 3 jokers random.
+                def selectJocker(jugador,joker):
+                    el sistema debera seleccionar de manera random del sistema 3 jokers y mostarlos, el jugador puede seleccionar 1.
+                    la carta seleccionada se agrega al jugador
 
-    - Crear función donde se genere una lista de 3 planetas random
+            - Crear función donde se genere una lista de 3 planetas random.
+                def selectPlaneta(jugador,planetas):
+                    el sistema debera seleccionar de manera random del sistema 3 planetas y mostarlos, el jugador puede seleccionar 1.
+                    la carta seleccionada se agrega al jugador
 
-    - Crear función donde se genere una lista de 3 cartas de mazo random
+            - Crear función donde se genere una lista de 3 cartas de mazo random.
+                def selectNuevaCarta(jugador,joker):
+                    el sistema debera seleccionar de manera random del sistema 3 cartas de mazo y mostarlos, el jugador puede seleccionar 1.
+                    la carta seleccionada se agrega al jugador
 
-    - Crear función donde se selecciones 2 bonificadores (planteas o jokers) randoms para la compra
-
-    - Generar la opción de vender jokers que tiene adquiridos.
-
-    - Al entrar a la tienda el jugador podra seleccionar entre:
-                                                                - Sobre Joker (Valor entre $4 y $6)
-                                                                - Sobre Planetas (Valor entre $4 y $6)
-                                                                - Sobre de Cartas de mazo (Valor entre $4 y $6)
-                                                                - Carta Bonificadora 1 (Planeta o Joker depende de lo que salio) (Valor entre $3 y $6)
-                                                                - Carta Bonificadora 2 (Planeta o Joker depende de lo que salio) (Valor entre $3 y $6)
+    - Generar la opción de vender jokers que tiene adquiridos. (DEBE SER UNA OPCION DENTRO DE LA TIENDA, QUE REDIRIJA A ESTA FUNCION)
 
 - Una vez aplicado los jokers, aplicarlos a la hora de calcular puntajes
+    def calcularPuntaje() -> DENTRO DEL JUGADAS.PY
+    sumar la invocación a jokers. DEPENDE MUCHO DE CUALES SEAN LOS JOKERS
 
-- Una vez aplicados los jokers generar pozo incremental
+- Una vez aplicados los jokers generar pozo incremental. El pozo se establecera en 300 la primera ronda y cuando se complete una ronda la funcion nuevaRonda() 
+    ubicada en JUGADOR.PY, incrementara el pozo en un numero random de 1.2 y 1.6.
+    
+
+- Incorporación de ciegas. En este caso cada vez la ronda sea multiplicador de 3, se debera considerar una ciega. 
+    Las ciegas en principio inhabilitaran a las los palos, las cartas de ciertos palos, no suman puntos. El palo es seleccionado de forma aleatorio. 
+    Sería un def que sleccione un random de la lista palos. 
+
+
+
+
+TUPLAS:
+    - EN PALOS Y VALORES, PARRA QUE NO SEA MODIFIICABLE
+
+CONJUNTOS:
+    -
