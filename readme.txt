@@ -106,4 +106,4 @@ TUPLAS:
     - EN PALOS Y VALORES, PARRA QUE NO SEA MODIFIICABLE
 
 CONJUNTOS:
-    -
+    - Se utilizara en las funciones de los sobres de la tienda.
