@@ -1,4 +1,11 @@
 import cominaciones
+import jokers
+import  os
+
+
+# contempla tanto windows, como linux y macos
+def limpiarTerminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def descartarCartas(seleccionCartas,jugador):
@@ -13,18 +20,22 @@ def descartarCartas(seleccionCartas,jugador):
 totalPuntaje= lambda cantidadFichas,multiplicador: cantidadFichas * multiplicador
  
 def jugarCartas(jugador,cartasJugadas):
-    fichas,multiplicador = cominaciones.combinacionJugada(cartasJugadas)
-    fichas += calcularFichas(cartasJugadas)
+    limpiarTerminal()
+    fichas,multiplicador = calcularFichasMultiplicador(cartasJugadas,jugador)
     puntaje= totalPuntaje(fichas,multiplicador)
     jugador['puntaje'] += puntaje
     for carta in cartasJugadas:
         jugador['manoJugador'].remove(carta)
+    print("<---------------------------------------------------------------->")
     print(f"Fichas: {fichas} | Multiplicador: {multiplicador} | Puntaje de la jugada: {puntaje}")
-    print("----------------------------------------------------------------")
+    print("<---------------------------------------------------------------->")
     print()
     return jugador
-   
-def calcularFichas(cartasJugadas):
-    fichas = [carta['fichas'] for carta in cartasJugadas]
-    cantidadFichas = sum(fichas)
-    return cantidadFichas
+
+def calcularFichasMultiplicador(cartasJugadas,jugador):
+    cantFichas = [carta['fichas'] for carta in cartasJugadas]
+    fichas,multiplicador = cominaciones.combinacionJugada(jugador,cartasJugadas)
+    fichas += sum(cantFichas)
+    print(f"Las fichas por la combinación son: {fichas}   |   Las multiplicador develto por la combinación es: {multiplicador}")
+    fichas,multiplicador = jokers.calcularJokers(jugador,fichas, cartasJugadas, multiplicador)
+    return fichas,multiplicador

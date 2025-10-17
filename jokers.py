@@ -1,53 +1,187 @@
 import random
+import cominaciones
 
-
-jokers = (
-    #Comunes
-    {"nombre": "Par", "descripcion": "Si la mano es Par, multiplica x3.", "tipo_bonificacion": "multiplicar", "bonificacion": 3, "probabilidad": 0.70, "rareza": "común"},
-    {"nombre": "Color Favorito", "descripcion": "Mismo palo en toda la jugada suma 200 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 200, "probabilidad": 0.62, "rareza": "común"},
-    {"nombre": "Corazón Generoso", "descripcion": "Cada corazón aporta +25 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 25, "probabilidad": 0.68, "rareza": "común"},
-    {"nombre": "As de Oro", "descripcion": "Si aparece cualquier As, suma +100 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 100, "probabilidad": 0.65, "rareza": "común"},
-    {"nombre": "Rey del Multiplicador", "descripcion": "Aumenta el multiplicador base +1.", "tipo_bonificacion": "sum_multiplicador", "bonificacion": 1, "probabilidad": 0.58, "rareza": "común"},
-    {"nombre": "Dupla Segura", "descripcion": "Dobles parejas suman +150 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 150, "probabilidad": 0.60, "rareza": "común"},
-    {"nombre": "Punta y Hacha", "descripcion": "Cartas 2–5 suman +20 fichas cada una.", "tipo_bonificacion": "puntaje", "bonificacion": 20, "probabilidad": 0.66, "rareza": "común"},
-    {"nombre": "Dama Cortés", "descripcion": "Si hay al menos una Dama, +1 al multiplicador.", "tipo_bonificacion": "sum_multiplicador", "bonificacion": 1, "probabilidad": 0.55, "rareza": "común"},
-    {"nombre": "Trío Amable", "descripcion": "Si la mano es Trío, multiplica x2.", "tipo_bonificacion": "multiplicar", "bonificacion": 2, "probabilidad": 0.57, "rareza": "común"},
-    {"nombre": "Diez Limpio", "descripcion": "Cada carta 10 suma +30 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 30, "probabilidad": 0.63, "rareza": "común"},
-
-    #Raros
-    {"nombre": "Triple Doble", "descripcion": "Dobles parejas obtienen multiplicador x2 adicional.", "tipo_bonificacion": "multiplicar", "bonificacion": 2, "probabilidad": 0.42, "rareza": "raro"},
-    {"nombre": "Dama de Fortuna", "descripcion": "Si hay una Dama, +2 al multiplicador.", "tipo_bonificacion": "sum_multiplicador", "bonificacion": 2, "probabilidad": 0.40, "rareza": "raro"},
-    {"nombre": "Palo Fiel", "descripcion": "Por cada carta del mismo palo, +150 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 150, "probabilidad": 0.38, "rareza": "raro"},
-    {"nombre": "Escalera Realista", "descripcion": "Escalera o escalera real multiplica x4.", "tipo_bonificacion": "multiplicar", "bonificacion": 4, "probabilidad": 0.32, "rareza": "raro"},
-    {"nombre": "Doble As", "descripcion": "Por cada As en la mano, +2 al multiplicador.", "tipo_bonificacion": "sum_multiplicador", "bonificacion": 2, "probabilidad": 0.35, "rareza": "raro"},
-    {"nombre": "Sota Traviesa", "descripcion": "Cada J (Sota) suma +120 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 120, "probabilidad": 0.36, "rareza": "raro"},
-    {"nombre": "Masivo x3", "descripcion": "Si hay 5 cartas del mismo rango, multiplica x3.", "tipo_bonificacion": "multiplicar", "bonificacion": 3, "probabilidad": 0.28, "rareza": "raro"},
-    {"nombre": "Rey de Copas", "descripcion": "Cada Rey otorga +2 al multiplicador.", "tipo_bonificacion": "sum_multiplicador", "bonificacion": 2, "probabilidad": 0.30, "rareza": "raro"},
-
-    #Legendarios 
-    {"nombre": "Joker Comodín", "descripcion": "Full House duplica el multiplicador (x2).", "tipo_bonificacion": "multiplicar", "bonificacion": 2, "probabilidad": 0.12, "rareza": "legendario"},
-    {"nombre": "As de Picas", "descripcion": "Si hay As de picas, +500 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 500, "probabilidad": 0.10, "rareza": "legendario"},
-    {"nombre": "Corona Triple", "descripcion": "Si hay 3 figuras (J/Q/K) en la mano, multiplica x6.", "tipo_bonificacion": "multiplicar", "bonificacion": 6, "probabilidad": 0.07, "rareza": "legendario"},
-    {"nombre": "Motor Infinito", "descripcion": "Hand ganadora obtiene +5 al multiplicador base.", "tipo_bonificacion": "sum_multiplicador", "bonificacion": 5, "probabilidad": 0.06, "rareza": "legendario"},
-    {"nombre": "Tesoro Oculto", "descripcion": "Color + Escalera en la misma mano multiplica x8.", "tipo_bonificacion": "multiplicar", "bonificacion": 8, "probabilidad": 0.05, "rareza": "legendario"},
-    {"nombre": "Fortuna Eterna", "descripcion": "Si la mano supera cierto umbral de fichas, suma +800 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 800, "probabilidad": 0.04, "rareza": "legendario"}
-)
-
-joker_jugador=[{"nombre": "Par", "descripcion": "Si la mano es Par, multiplica x3.", "tipo_bonificacion": "multiplicar", "bonificacion": 3, "probabilidad": 0.70, "rareza": "común"},
-    {"nombre": "Color Favorito", "descripcion": "Mismo palo en toda la jugada suma 200 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 200, "probabilidad": 0.62, "rareza": "común"},
-    {"nombre": "Corazón Generoso", "descripcion": "Cada corazón aporta +25 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 25, "probabilidad": 0.68, "rareza": "común"},
-    {"nombre": "As de Oro", "descripcion": "Si aparece cualquier As, suma +100 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 100, "probabilidad": 0.65, "rareza": "común"},
-    {"nombre": "Rey del Multiplicador", "descripcion": "Aumenta el multiplicador base +1.", "tipo_bonificacion": "sum_multiplicador", "bonificacion": 1, "probabilidad": 0.58, "rareza": "común"},
-    ]
-
-def analizarMano(jugador):
+def analizarMano(cartasJugadas):
     analisis= {}
     conteo_valores={}
-    for carta in jugador["manoJugador"]:
-        conteo_valores
+    conteo_palos={}
+    figuras=0
+    ases=0
+    valores,palos= cominaciones.dividirPaloValores(cartasJugadas)
+    valores_unicos= set(valores)
+    palos_unicos= set(palos)
+    combinaciones = cominaciones.analizarCombinacionesJokers(cartasJugadas)
+    
+    
+    for valor in valores_unicos:
+        conteo_valores[valor]=valores.count(valor)
+    
+    dieces= valores.count(13)
+    sotas= valores.count(11)
+    damas= valores.count(12)
+    reyes= valores.count(13)
+    rango_2_5=  valores.count(2) + valores.count(3) + valores.count(4) + valores.count(5)
+    figuras= valores.count(11) + valores.count(12) + valores.count(13)
+    ases= valores.count(1)
+    corazones= palos.count('♥')
+
+    for palo in palos_unicos:
+        conteo_palos[palo]=palos.count(palo)
 
 
-def calcularJokers():
-    for joker in joker_jugador:
+    analisis["conteo_valores"]=conteo_valores
+    analisis["conteo_palos"]=conteo_palos
+    analisis["figuras"]=figuras
+    analisis["ases"]=ases
+    analisis["rango_2_5"]=rango_2_5
+    analisis["max_mismo_palo"]= max([palo for palo in analisis['conteo_palos'].values()])
 
-        if joker
+    analisis["dieces"]=dieces
+    analisis["sotas"]=sotas
+    analisis["damas"]=damas
+    analisis["reyes"]=reyes
+
+    analisis["corazones"]=corazones
+
+    analisis.update(combinaciones)   
+
+    return analisis
+        
+def calcularFichaPuntaje(joker, fichas, multiplicador, bonificacion):
+    if joker["tipo_bonificacion"] == "sum_multiplicador":
+        multiplicador += bonificacion
+    elif joker["tipo_bonificacion"] == "puntaje":
+        fichas  += bonificacion
+    elif joker["tipo_bonificacion"] == "multiplicar":
+        multiplicador = multiplicador * bonificacion
+
+    return fichas,multiplicador
+        
+
+def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador):
+
+    print(f"\n Los Jokers activados son: ")
+
+    for joker in jugador["jokers"]:
+        bonificar = False
+        nombre = joker["nombre"]
+
+        # --- COMUNES ---
+        if nombre == "Par" and analisis["par"]:
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Color Favorito" and analisis["color"]:
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Corazón Generoso" and analisis["corazones"] > 0:
+            bonificacion=  joker['bonificacion'] * analisis["corazones"]
+            bonificar = True
+
+        elif nombre == "As de Oro" and analisis["ases"] >= 1:
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Rey del Multiplicador" and analisis["reyes"] >= 1:
+            bonificacion=  joker['bonificacion'] * analisis["reyes"]
+            bonificar = True
+
+        elif nombre == "Dupla Segura" and (analisis["doble_par"] or analisis["par"]):
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Punta y Hacha" and analisis["rango_2_5"] > 0:
+            bonificacion=  joker['bonificacion'] * analisis["rango_2_5"]
+            bonificar = True
+
+        elif nombre == "Dama Cortés" and analisis["damas"] >= 1:
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Trío Amable" and analisis["trio"]:
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Diez Limpio" and analisis["dieces"] >= 1:
+            bonificacion=  joker['bonificacion'] * analisis["dieces"]
+            bonificar = True
+
+        # --- RAROS ---
+        elif nombre == "Triple Doble" and analisis["doble_par"]:
+            if analisis["doble_par"]:
+                bonificacion=  joker['bonificacion']*1.5
+            else:
+                bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Dama de Fortuna" and analisis["damas"] >= 1:
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Palo Fiel" and analisis["max_mismo_palo"] >= 2:
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Escalera Realista" and (analisis["escalera"] or analisis["escalera_corrida"]):
+            bonificacion=  joker['bonificacion']
+            bonificar = True
+
+        elif nombre == "Doble As" and analisis["ases"] >= 2:
+            bonificacion=  joker['bonificacion'] * analisis["ases"]
+            bonificar = True
+
+        elif nombre == "Sota Traviesa" and analisis["sotas"] >= 1:
+            bonificacion=  joker['bonificacion'] * analisis["sotas"]
+            bonificar = True
+
+        elif nombre == "Poker" and analisis["poker"]:
+            bonificacion=  joker['bonificacion'] 
+            bonificar = True
+
+        elif nombre == "Rey de Copas" and analisis["reyes"] >= 1:
+            bonificacion=  joker['bonificacion'] * analisis["reyes"]
+            bonificar = True
+
+        # --- LEGENDARIOS ---
+        elif nombre == "Joker Comodín" and analisis["full_house"]:
+            bonificacion=  joker['bonificacion'] 
+            bonificar = True
+
+        elif nombre == "As de Picas" and ('A♠' in cartasJugadas):
+            bonificacion=  joker['bonificacion'] 
+            bonificar = True
+
+        elif nombre == "Corona Triple" and analisis["figuras"] >= 3:
+            bonificacion=  joker['bonificacion'] 
+            bonificar = True
+
+        elif nombre == "Motor Infinito" and analisis.get("ganadora", False):
+            bonificacion=  joker['bonificacion'] 
+            bonificar = True
+
+        elif nombre == "Tesoro Oculto" and (analisis["color"] and analisis["escalera"]):
+            bonificacion=  joker['bonificacion'] 
+            bonificar = True
+
+        elif nombre == "Fortuna Eterna" and fichas > (jugador["pozo"]*0.75):
+            bonificacion=  joker['bonificacion'] 
+            bonificar = True
+
+        if bonificar:
+            print(f"{nombre}.")
+            fichas, multiplicador=calcularFichaPuntaje(joker, fichas, multiplicador,bonificacion)
+
+    print(f"\n Las fichas acumuladas son: {fichas} | El multiplicador acumulado es:{multiplicador}")
+
+    return  fichas, multiplicador
+
+    
+
+
+
+def calcularJokers(jugador,fichas, cartasJugadas, multiplicador):  
+    analisis=analizarMano(cartasJugadas)
+    detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador)
+
+    return fichas, multiplicador

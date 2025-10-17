@@ -1,7 +1,7 @@
  
 def dividirPaloValores(cartasJugadas):
-    valores = [cartasJugadas['valor'] for cartasJugadas in cartasJugadas]
-    palos   = [cartasJugadas['palo']  for cartasJugadas in cartasJugadas]
+    valores = [carta["valor"] for carta in cartasJugadas]
+    palos   = [carta["palo"]  for carta in cartasJugadas]
  
     return valores,palos
  
@@ -65,7 +65,7 @@ def fullHouse(valores):
     else:
         return False
 
-def combinacionJugada(cartasJugadas):
+def combinacionJugada(jugador, cartasJugadas):
     valores, palos = dividirPaloValores(cartasJugadas)
     valores.sort()
  
@@ -81,44 +81,79 @@ def combinacionJugada(cartasJugadas):
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Escalera Corrida")
-        return 100, 8
+        return jugador['combinaciones']["escalera_corrida"]
     elif es_poker:
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Poker")
-        return 60, 7
+        return jugador['combinaciones']["poker"]
     elif es_fullHouse:
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Full house")
-        return 40, 4
+        return jugador['combinaciones']["full_house"]
     elif es_color and (not es_escalera):
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Color")
-        return 35, 4
+        return jugador['combinaciones']["color"]
     elif es_escalera and (not es_color):
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Escalera")
-        return 30, 4
+        return jugador['combinaciones']["escalera"]
     elif es_trio:
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Trio")
-        return 30, 3
+        return jugador['combinaciones']["trio"]
     elif es_doblePar:
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Doble Par")
-        return 20, 2
+        return jugador['combinaciones']["doble_par"]
     elif es_par:
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Par")
-        return 10, 2
+        return jugador['combinaciones']["par"]
     else:
         print()
         print("----------------------------------------------------------------")
         print("La combinación jugada es: Carta Alta")
-        return 5, 1
+        return jugador['combinaciones']["carta_alta"]
+
+
+def analizarCombinacionesJokers(cartasJugadas):
+    valores, palos = dividirPaloValores(cartasJugadas)
+    valores.sort()
+    combinaciones={
+        "escalera_corrida": False,
+        "escalera": False,
+        "poker": False,
+        "color": False,
+        "trio": False,
+        "par": False,
+        "doble_par": False,
+        "full_house": False,
+        "carta_alta": False
+    }
+    es_escalera = escalera(valores)
+    es_poker = poker(valores)
+    es_color = color(palos)
+    es_trio = trio(valores)
+    es_par = par(valores)
+    es_doblePar = doblePar(valores)
+    es_fullHouse = fullHouse(valores)
+    
+    if es_color and es_escalera:
+        combinaciones["escalera_corrida"] = True
+    combinaciones["poker"] = es_poker
+    combinaciones["full_house"] = es_fullHouse
+    combinaciones["color"] = es_color
+    combinaciones["escalera"] = es_escalera
+    combinaciones["trio"] = es_trio
+    combinaciones["doble_par"] = es_doblePar
+    combinaciones["par"]  = es_par
+
+    return combinaciones

@@ -1,6 +1,6 @@
 import mazo
 import jugadas
-import jugador
+import jugador as usuario
 import  os
 
 
@@ -12,8 +12,6 @@ def limpiarTerminal():
 def juego(jugador):
     while jugador['manos'] != 0 and jugador['puntaje'] < jugador['pozo']:
         seleccionCartas=[]
-        
-        limpiarTerminal()
 
         print()
         print("----------------------------------------------------------------")
