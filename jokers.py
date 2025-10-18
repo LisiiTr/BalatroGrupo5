@@ -1,5 +1,5 @@
 import random
-import cominaciones
+import combinaciones
 
 def analizarMano(cartasJugadas):
     analisis= {}
@@ -7,10 +7,10 @@ def analizarMano(cartasJugadas):
     conteo_palos={}
     figuras=0
     ases=0
-    valores,palos= cominaciones.dividirPaloValores(cartasJugadas)
+    valores,palos= combinaciones.dividirPaloValores(cartasJugadas)
     valores_unicos= set(valores)
     palos_unicos= set(palos)
-    combinaciones = cominaciones.analizarCombinacionesJokers(cartasJugadas)
+    datos_combinaciones = combinaciones.analizarCombinacionesJokers(cartasJugadas)
     
     
     for valor in valores_unicos:
@@ -43,7 +43,7 @@ def analizarMano(cartasJugadas):
 
     analisis["corazones"]=corazones
 
-    analisis.update(combinaciones)   
+    analisis.update(datos_combinaciones)   
 
     return analisis
         

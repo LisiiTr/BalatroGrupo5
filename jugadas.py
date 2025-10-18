@@ -1,4 +1,4 @@
-import cominaciones
+import combinaciones
 import jokers
 import  os
 
@@ -34,7 +34,7 @@ def jugarCartas(jugador,cartasJugadas):
 
 def calcularFichasMultiplicador(cartasJugadas,jugador):
     cantFichas = [carta['fichas'] for carta in cartasJugadas]
-    fichas,multiplicador = cominaciones.combinacionJugada(jugador,cartasJugadas)
+    fichas,multiplicador = combinaciones.combinacionJugada(jugador,cartasJugadas)
     fichas += sum(cantFichas)
     print(f"Las fichas por la combinación son: {fichas}   |   Las multiplicador develto por la combinación es: {multiplicador}")
     fichas,multiplicador = jokers.calcularJokers(jugador,fichas, cartasJugadas, multiplicador)

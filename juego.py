@@ -8,6 +8,23 @@ import  os
 def limpiarTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def selectorCartas(jugador):
+    seleccionCartas=[]
+    mazo.mostrarCartas(jugador['manoJugador'])
+    cartaSeleccionada=int(input("\nSeleccione una carta:"))
+    while (cartaSeleccionada != -1) and (len(seleccionCartas) < 5):
+        limpiarTerminal()
+        if jugador['manoJugador'][cartaSeleccionada-1] in seleccionCartas:
+            seleccionCartas.remove(jugador['manoJugador'][cartaSeleccionada-1])  
+        else:
+            seleccionCartas.append(jugador['manoJugador'][cartaSeleccionada-1])
+        mazo.mostrarCartasSelect(seleccionCartas)
+        if len(seleccionCartas) == 5:
+            break
+        else:
+            mazo.mostrarCartas(jugador['manoJugador'])
+            cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
+    return seleccionCartas
 
 def juego(jugador):
     while jugador['manos'] != 0 and jugador['puntaje'] < jugador['pozo']:
@@ -19,21 +36,8 @@ def juego(jugador):
         print("----------------------------------------------------------------")
         print()
 
-        mazo.mostrarCartas(jugador['manoJugador'])
-        cartaSeleccionada=int(input("\nSeleccione una carta:"))
+        seleccionCartas= selectorCartas(jugador)
 
-
-        while (cartaSeleccionada != -1) and (len(seleccionCartas) < 5):
-            limpiarTerminal()
-            seleccionCartas.append(jugador['manoJugador'][cartaSeleccionada-1])
-           
-            mazo.mostrarCartasSelect(seleccionCartas)
-           
-            if len(seleccionCartas) == 5:
-                break
-            else:
-                mazo.mostrarCartas(jugador['manoJugador'])
-                cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
         decision=int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
         while (decision < 1 or decision > 2) or jugador['descartes'] == 0:
             if jugador['descartes'] == 0:

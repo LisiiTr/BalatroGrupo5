@@ -80,3 +80,20 @@ jokers = (
     {"nombre": "Tesoro Oculto", "descripcion": "Color + Escalera en la misma mano multiplica x8.", "tipo_bonificacion": "multiplicar", "bonificacion": 8, "probabilidad": 0.05, "rareza": "legendario"},
     {"nombre": "Fortuna Eterna", "descripcion": "Si la mano supera cierto umbral de fichas, suma +800 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 800, "probabilidad": 0.04, "rareza": "legendario"}
 )
+
+def seleccionarJoker(jugador,jokers):
+    jokersRandoms=[]
+    while len(jokersRandoms) < 3:
+        jokerRandom= random.choice(jokers)
+        if jokerRandom not in jokersRandoms:
+            jokersRandoms.append(jokerRandom)
+    x=1
+    for j in jokersRandoms:
+        print(f'{x}- {j["nombre"]} | {j["descripcion"]}')
+        x+=1
+    jokerIndice= int(input("Seleccione un joker:"))
+    jugador['jokers'].append(jokersRandoms[jokerIndice-1])
+    jokersLista= list(jokers)
+    jokersLista.remove(jokersRandoms[jokerIndice-1])
+    jokers = tuple(jokersLista)
+    print(jugador["jokers"])

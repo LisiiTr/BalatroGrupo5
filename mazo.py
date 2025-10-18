@@ -38,10 +38,10 @@ def mostrarCartas(listaCartas):
     linea3 = ""
     linea4 =""
     for c in listaCartas:
-        linea1 += "┌─────┐ "
-        linea2 += f"| {c['nombre']:<3} | "
-        linea3 += "└─────┘ "
-        linea4+= f"-- {i} -- "
+        linea1 += "┌───┐ "
+        linea2 += f"|{c['nombre']:<3}| "
+        linea3 += "└───┘ "
+        linea4+= f"- {i} - "
         i+=1
     print(linea1)
     print(linea2)
@@ -56,10 +56,10 @@ def mostrarCartasSelect(listaCartas):
     linea3 = ""
     linea4 =""
     for c in listaCartas:
-        linea1 += "┌─────┐ "
-        linea2 += f"| {c['nombre']:<3} | "
-        linea3 += "└─────┘ "
-        linea4+= f"-- {i} -- "
+        linea1 += "┌───┐ "
+        linea2 += f"|{c['nombre']:<3}| "
+        linea3 += "└───┘ "
+        linea4+= f"- {i} - "
         i+=1
     print(linea1)
     print(linea2)
