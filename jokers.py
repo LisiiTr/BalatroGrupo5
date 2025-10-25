@@ -66,7 +66,6 @@ def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador):
         bonificar = False
         nombre = joker["nombre"]
 
-        # --- COMUNES ---
         if nombre == "Par" and analisis["par"]:
             bonificacion=  joker['bonificacion']
             bonificar = True
@@ -107,7 +106,6 @@ def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador):
             bonificacion=  joker['bonificacion'] * analisis["dieces"]
             bonificar = True
 
-        # --- RAROS ---
         elif nombre == "Triple Doble" and analisis["doble_par"]:
             if analisis["doble_par"]:
                 bonificacion=  joker['bonificacion']*1.5
@@ -143,7 +141,6 @@ def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador):
             bonificacion=  joker['bonificacion'] * analisis["reyes"]
             bonificar = True
 
-        # --- LEGENDARIOS ---
         elif nombre == "Joker Comodín" and analisis["full_house"]:
             bonificacion=  joker['bonificacion'] 
             bonificar = True
@@ -180,8 +177,11 @@ def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador):
 
 
 
-def calcularJokers(jugador,fichas, cartasJugadas, multiplicador):  
+def calcularJokers(jugador,fichas, cartasJugadas, multiplicador):
+    print(fichas, multiplicador)
     analisis=analizarMano(cartasJugadas)
-    detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador)
+    fichas, multiplicador= detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador)
+    print(fichas, multiplicador)
+
 
     return fichas, multiplicador
