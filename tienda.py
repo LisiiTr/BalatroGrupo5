@@ -78,6 +78,71 @@ jokers = (
     {"nombre": "Fortuna Eterna", "descripcion": "Si la mano supera cierto umbral de fichas, suma +800 fichas.", "tipo_bonificacion": "puntaje", "bonificacion": 800, "probabilidad": 0.04, "rareza": "legendario"}
 )
 
+
+def tienda(jugador):
+    jokerCompra =jokerBonificador(jokers)
+    cartaNueva= cartaBonificadora(jugador)
+    bandera=True
+    while bandera:
+        print(f"La cantidad de monedas es: {jugador['monedas']}")
+        print(f'las opciones a comprar son: ')
+        print(f"1. carta nueva: {cartaNueva['nombre']} {cartaNueva['bonificacion_fichas']}, vale 3 monedas")
+        print(f"2. joker nuevo: {jokerCompra['nombre']}, vale 3 monedas")
+        print(f'3. sobre joker, vale 6 monedas')
+        print(f'4. sobre planetas, vale 6 monedas')
+        print(f'5. sobre cartas de mazo, vale 6 monedas')
+        opcionElegida = int(input("elija una opción de las anteriores o -1 para salir"))
+        if opcionElegida == -1:
+            bandera= False
+        elif opcionElegida == 1:
+            jugador['mazoCompleto'].append(cartaNueva)
+            cartaNueva= cartaBonificadora(jugador)
+            jugador['monedas'] -= 3
+        elif opcionElegida == 2:
+            jugador['jokers'].append(jokerCompra)
+            jokerCompra =jokerBonificador(jokers)
+            jugador['monedas'] -= 3
+        elif opcionElegida == 3:
+            seleccionarJoker(jugador,jokers)
+            jugador['monedas'] -= 6
+        elif opcionElegida == 4:
+            jugador['monedas'] -= 6
+            print("compra de planetas")
+
+        elif opcionElegida == 5:
+            jugador['monedas'] -= 6
+            print("compra de cartas")
+    return jugador
+
+
+def cartaBonificadora(jugador):
+    bonificadores_disponibles = []
+
+    nombresCartas = list(jugador['mazoCompleto'].keys())
+    nombreCartaRandom = random.choice(nombresCartas)
+
+    cartaBase = jugador['mazoCompleto'][nombreCartaRandom]
+    cartaMejorada = cartaBase.copy()
+    factorMejora = random.uniform(1.5, 2.5)
+
+    fichas_originales = cartaMejorada['fichas']
+    cartaMejorada['fichas'] = round(fichas_originales * factorMejora)
+    
+    cartaMejorada['bonificacion_fichas'] = cartaMejorada['fichas'] - fichas_originales 
+    
+    carta_bonificadora= cartaMejorada
+    return carta_bonificadora
+
+def jokerBonificador(jokers):
+    
+    joker_seleccionado = random.choice(jokers)
+    
+    joker_bonificadora= joker_seleccionado
+    
+    return joker_bonificadora
+
+
+
 def seleccionarJoker(jugador,jokers):
     jokersRandoms=[]
     while len(jokersRandoms) < 3:
