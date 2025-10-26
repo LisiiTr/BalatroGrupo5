@@ -1,4 +1,5 @@
 import random
+import juego
 
 planetas = {
     "Mercurio": {
@@ -82,23 +83,39 @@ jokers = (
 def tienda(jugador):
     jokerCompra =jokerBonificador(jokers)
     cartaNueva= cartaBonificadora(jugador)
-    bandera=True
-    while bandera:
-        print(f"La cantidad de monedas es: {jugador['monedas']}")
-        print(f'las opciones a comprar son: ')
-        print(f"1. carta nueva: {cartaNueva['nombre']} {cartaNueva['bonificacion_fichas']}, vale 3 monedas")
-        print(f"2. joker nuevo: {jokerCompra['nombre']}, vale 3 monedas")
-        print(f'3. sobre joker, vale 6 monedas')
-        print(f'4. sobre planetas, vale 6 monedas')
-        print(f'5. sobre cartas de mazo, vale 6 monedas')
-        opcionElegida = int(input("elija una opción de las anteriores o -1 para salir"))
+    
+    comprar=True
+    while comprar:
+        
+        bandera=True
+        while bandera:
+            try:
+                juego.limpiarTerminal()
+                print(f"La cantidad de monedas es: {jugador['monedas']}")
+                print(f'las opciones a comprar son: ')
+                print(f"1. carta nueva: {cartaNueva['nombre']}, con una bonificación de {cartaNueva['bonificacion_fichas']} fichas, vale 3 monedas")
+                print(f"2. joker nuevo: {jokerCompra['nombre']}, vale 3 monedas")
+                print(f'3. sobre joker, vale 6 monedas')
+                print(f'4. sobre planetas, vale 6 monedas')
+                print(f'5. sobre cartas de mazo, vale 6 monedas')
+                print(f'6. Para pasar a la siguiente ronda.')
+                opcionElegida = int(input("Elija una opción de las anteriores o -1 para salir: "))
+                while opcionElegida<1 or opcionElegida>6:
+                    opcionElegida = int(input("Elija una opción de las anteriores o -1 para salir: "))
+            except ValueError:
+                print("Debe ingresar un numero")
+            else: 
+                bandera = False
+
         if opcionElegida == -1:
             bandera= False
         elif opcionElegida == 1:
+            print(jugador['mazoCompleto'])
             jugador['mazoCompleto'].append(cartaNueva)
             cartaNueva= cartaBonificadora(jugador)
             jugador['monedas'] -= 3
         elif opcionElegida == 2:
+            print(jokerCompra)
             jugador['jokers'].append(jokerCompra)
             jokerCompra =jokerBonificador(jokers)
             jugador['monedas'] -= 3
@@ -108,29 +125,26 @@ def tienda(jugador):
         elif opcionElegida == 4:
             jugador['monedas'] -= 6
             print("compra de planetas")
-
         elif opcionElegida == 5:
             jugador['monedas'] -= 6
             print("compra de cartas")
+            
     return jugador
 
 
 def cartaBonificadora(jugador):
-    bonificadores_disponibles = []
 
-    nombresCartas = list(jugador['mazoCompleto'].keys())
-    nombreCartaRandom = random.choice(nombresCartas)
 
-    cartaBase = jugador['mazoCompleto'][nombreCartaRandom]
-    cartaMejorada = cartaBase.copy()
+
+    carta = random.choice(jugador['mazoCompleto'])
     factorMejora = random.uniform(1.5, 2.5)
 
-    fichas_originales = cartaMejorada['fichas']
-    cartaMejorada['fichas'] = round(fichas_originales * factorMejora)
+    fichas_originales = carta['fichas']
+    carta['fichas'] = round(fichas_originales * factorMejora)
     
-    cartaMejorada['bonificacion_fichas'] = cartaMejorada['fichas'] - fichas_originales 
+    carta['bonificacion_fichas'] = carta['fichas'] - fichas_originales 
     
-    carta_bonificadora= cartaMejorada
+    carta_bonificadora= carta
     return carta_bonificadora
 
 def jokerBonificador(jokers):
@@ -153,9 +167,24 @@ def seleccionarJoker(jugador,jokers):
     for j in jokersRandoms:
         print(f'{x}- {j["nombre"]} | {j["descripcion"]}')
         x+=1
-    jokerIndice= int(input("Seleccione un joker:"))
+    
+    bandera=True
+    while bandera:
+        try:
+            jokerIndice= int(input("Seleccione un joker:"))
+        except ValueError:
+            print("Debe ingresar un numero")
+        else: 
+            bandera=False
+
+    
     jugador['jokers'].append(jokersRandoms[jokerIndice-1])
     jokersLista= list(jokers)
     jokersLista.remove(jokersRandoms[jokerIndice-1])
     jokers = tuple(jokersLista)
-    print(jugador["jokers"])
+
+
+    return jugador,jokers
+
+
+

@@ -1,6 +1,6 @@
-import jugador
 import mazo
 import juego
+from tienda import tienda 
 import jugador as usuario
 
 
@@ -19,34 +19,40 @@ def jugarPartida():
             puedeJugar=False
 
         elif jugador['puntaje'] >= jugador['pozo']:
-            print()
-            print("----------------------------------------------------------------")
-            print("¡Alcanzaste el valor del pozo! Ganaste.")
-            print("----------------------------------------------------------------")
-            print()
+            print("\n----------------------------------------------------------------")
+            print("¡Alcanzaste el valor del pozo! ")
+            print("----------------------------------------------------------------\n")
+
+            jugador['monedas'] += 5 + jugador['manos'] + jugador['descartes']
+            
+            print(f"Tenes {jugador['monedas']} monedas. ¿Quisieras ir a la tienda?")
             try:
+                opcionSelect = int(input("Ingresa 1 para ir a la tienda. En caso de no querer ingresar cualquier otro numero: "))
+                if opcionSelect == 1:
+                    tienda(jugador)
+
                 jugar=int(input("Quiere jugar otra ronda? 1 para 'Si' 2 para 'No':"))
                 while jugar != 1 and jugar != 2:
                     print("¡Opción invalida!")
                     jugar=int(input("Quiere jugar otra ronda? 1 para 'Si' 2 para 'No':"))
             except ValueError:
                 print("Debe ingresar un numero")
+            
             if jugar == 1:
                 juego.limpiarTerminal()
                 usuario.nuevaRonda(jugador)
             else:
                 puedeJugar=False
-                print()
-                print("----------------------------------------------------------------")
+                print("\n----------------------------------------------------------------")
                 print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
-                print("----------------------------------------------------------------")
-                print()
+                print("----------------------------------------------------------------\n")
+
 
 
 activo=True
 while activo:
     juego.limpiarTerminal()
-    print("Elija una de las siguientes opciones o -1 para dejar cerrar el programa: \n 1. Jugar nueva partida. \n 2. Continuar Partida. \n 3. Ver ranking. \n 4. Ver jokers.")
+    print("Elija una de las siguientes opciones o -1 para cerrar el programa: \n 1. Jugar nueva partida. \n 2. Continuar Partida. \n 3. Ver ranking. \n 4. Ver jokers.")
 
     bandera=True
     while bandera:

@@ -45,6 +45,6 @@ def calcularFichasMultiplicador(cartasJugadas,jugador):
     except Exception as e:
         print("Ha ocurrido un error: ",e)
 
-    print(f"Las fichas por la combinación son: {fichas}   |   Las multiplicador develto por la combinación es: {multiplicador}")
+    print(f"Las fichas por la combinación son: {fichas}   |   El multiplicador develto por la combinación es: {multiplicador}")
     fichas,multiplicador = jokers.calcularJokers(jugador,fichas, cartasJugadas, multiplicador)
     return fichas,multiplicador

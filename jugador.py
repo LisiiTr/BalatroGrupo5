@@ -13,7 +13,7 @@ def crearJugador():
     jugador['mazoCompleto'] = mazo.crearMazoCompleto()
     jugador['mazoRonda'] = jugador['mazoCompleto'].copy()  
     jugador['manoJugador'] = []
-    jugador['monedas'] = []
+    jugador['monedas'] = 0
     jugador['jokers'] = []
     jugador['combinaciones'] = {
                                 "carta_alta": (5, 1),
@@ -43,3 +43,12 @@ def nuevaRonda(jugador):
     print()
     mazo.repartirCartas(10, jugador)
     juego.juego(jugador)
+
+def mostrarJokersJugador(jugador):
+    if len(jugador["jokers"]) > 0:
+        i=1
+        for joker in jugador["jokers"]:
+            print(f"{i}. {joker['nombre']}: {joker['nombre']}")
+            i+=1
+    else:
+        print("No hay jokers adquiridos")

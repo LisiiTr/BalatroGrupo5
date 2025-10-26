@@ -4,9 +4,18 @@ import jugador as usuario
 import  os
 
 
-# contempla tanto windows, como linux y macos
 def limpiarTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def hud(jugador):
+    print()
+    print("----------------------------------------------------------------")
+    print(f"Jugador: {jugador['nombre']}  |  Manos: {jugador['manos']}  |  Descartes: {jugador['descartes']}  |  Puntaje / Pozo: {jugador['puntaje']}/{jugador['pozo']}")
+    print("----------------------------------------------------------------")
+    print()
+    usuario.mostrarJokersJugador(jugador)
+
+
 
 def selectorCartas(jugador):
     seleccionCartas=[]
@@ -14,19 +23,21 @@ def selectorCartas(jugador):
     bandera=True
     while bandera:
         try:
-
+            
+            hud(jugador)
+            
             if len(seleccionCartas) >0:
                 mazo.mostrarCartasSelect(seleccionCartas)
                 mazo.mostrarCartas(jugador['manoJugador'])
 
                 cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
-                while cartaSeleccionada<1 or cartaSeleccionada>10:
+                while cartaSeleccionada<1 and cartaSeleccionada != -1:
                     cartaSeleccionada=int(input("\nSeleccione un indice proporcionado o -1: "))
             else:
                 mazo.mostrarCartas(jugador['manoJugador'])
 
                 cartaSeleccionada=int(input("\nSeleccione una carta:"))
-                while cartaSeleccionada<1 or cartaSeleccionada>10:
+                while cartaSeleccionada<1 and cartaSeleccionada != -1:
                     cartaSeleccionada=int(input("\nSeleccione un indice proporcionado: "))
 
             
@@ -39,13 +50,17 @@ def selectorCartas(jugador):
                     seleccionCartas.remove(jugador['manoJugador'][cartaSeleccionada-1])  
                 else:
                     seleccionCartas.append(jugador['manoJugador'][cartaSeleccionada-1])
-                mazo.mostrarCartasSelect(seleccionCartas)
+                
                 if len(seleccionCartas) == 5:
                     bandera = False
                     break
                 else:
+                    hud(jugador)
+                    mazo.mostrarCartasSelect(seleccionCartas)
                     mazo.mostrarCartas(jugador['manoJugador'])
                     cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
+                    while cartaSeleccionada<1 and cartaSeleccionada != -1:
+                        cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
                     if cartaSeleccionada == -1:
                         bandera= False
         except ValueError:
@@ -61,12 +76,6 @@ def selectorCartas(jugador):
 def juego(jugador):
     while jugador['manos'] != 0 and jugador['puntaje'] < jugador['pozo']:
         seleccionCartas=[]
-
-        print()
-        print("----------------------------------------------------------------")
-        print(f"Jugador: {jugador['nombre']} | Puntaje / Pozo: {jugador['puntaje']}/{jugador['pozo']}")
-        print("----------------------------------------------------------------")
-        print()
 
         seleccionCartas= selectorCartas(jugador)
         mazo.mostrarCartasSelect(seleccionCartas)

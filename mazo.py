@@ -8,17 +8,18 @@ def crearMazoCompleto():
         "6": 6, "7": 7, "8": 8, "9": 9,
         "10": 10, "J": 11, "Q": 12, "K": 13
     }
-    mazo = {}
+    mazo = []
     for palo in palos:
         for etiqueta in rangos:
             valor= rangos[etiqueta]
             nombre=f"{etiqueta}{palo}"
-            mazo[nombre] = {
+            carta = {
                 "nombre": nombre,
                 "valor": valor,
                 "palo": palo,
                 "fichas": fichasValor(valor),
             }
+            mazo.append(carta)
     return mazo
  
 def fichasValor(valor):
@@ -68,7 +69,7 @@ def mostrarCartasSelect(listaCartas):
  
 def repartirCartas(cantCartas,jugador):
     for i in range(cantCartas):
-        indice = random.choice(list(jugador['mazoRonda']))
-        carta = jugador['mazoRonda'].pop(indice)
+        carta = random.choice(jugador['mazoRonda'])
+        jugador['mazoRonda'].remove(carta)
         jugador['manoJugador'].append(carta)
  
