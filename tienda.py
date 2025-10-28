@@ -123,18 +123,26 @@ def tienda(jugador):
             seleccionarJoker(jugador,jokers)
             jugador['monedas'] -= 6
         elif opcionElegida == 4:
-            jugador['monedas'] -= 6
-            print("compra de planetas")
+            if jugador['monedas'] >= 6:
+                jugador['monedas'] -= 6
+                seleccionarPlaneta(jugador, planetas)
+            else:
+                print("No tenés monedas suficientes para comprar el sobre de planetas (requiere 6).")
+                input("Enter para continuar...")
         elif opcionElegida == 5:
-            jugador['monedas'] -= 6
-            print("compra de cartas")
+            if jugador['monedas'] >= 6:
+                jugador['monedas'] -= 6
+                seleccionarNuevaCarta(jugador, jugador['mazoCompleto'])
+            else:
+                print("No tenés monedas suficientes para comprar el sobre de cartas (requiere 6).")
+                input("Enter para continuar...")
+        elif opcionElegida == 6:
+            comprar = False        
             
     return jugador
 
 
 def cartaBonificadora(jugador):
-
-
 
     carta = random.choice(jugador['mazoCompleto'])
     factorMejora = random.uniform(1.5, 2.5)
@@ -145,6 +153,7 @@ def cartaBonificadora(jugador):
     carta['bonificacion_fichas'] = carta['fichas'] - fichas_originales 
     
     carta_bonificadora= carta
+    
     return carta_bonificadora
 
 def jokerBonificador(jokers):
@@ -186,5 +195,103 @@ def seleccionarJoker(jugador,jokers):
 
     return jugador,jokers
 
+def seleccionarPlaneta(jugador, planetas):
+    
+    """
+    Muestra 3 planetas aleatorios del diccionario `planetas`, permite al jugador elegir uno
+    por número (1-3) y agrega el planeta elegido a `jugador['planetas']`.
+    """
+
+    planetasRandoms = []
+    nombres_planetas = list(planetas.keys()) # Me traigo solo los nombres de los planetas
+
+    # Selecciona 3 planetas distintos
+    while len(planetasRandoms) < 3:
+        nombre_random = random.choice(nombres_planetas)
+        if nombre_random not in [p['nombre'] for p in planetasRandoms]:
+            planeta = {
+                "nombre": nombre_random,
+                "jugada": planetas[nombre_random]["jugada"],
+                "efecto": planetas[nombre_random]["efecto"],
+                "incremento": planetas[nombre_random]["incremento"]
+            }
+            planetasRandoms.append(planeta)
+
+    #Muestra los 3 planetas
+    print("\n=== PLANETAS DISPONIBLES ===")
+    for i in range(len(planetasRandoms)):
+        planeta = planetasRandoms[i]
+        print(f"{i + 1}. {planeta['nombre']} | Jugada: {planeta['jugada']}")
+        print(f"   Efecto: {planeta['efecto']}")
+        print(f"   Incremento → Fichas: +{planeta['incremento']['fichas']}, Multiplicador: +{planeta['incremento']['multiplicador']}")
+        print()
+
+    #El jugador elege un planeta
+    bandera = True
+    while bandera:
+        try:
+            indice = int(input("Seleccione el número del planeta que desea (1-3): "))
+            while indice < 1 or indice > 3:
+                indice = int(input("Número inválido. Ingrese 1, 2 o 3: "))
+        except ValueError:
+            print("Debe ingresar un número válido.")
+        else:
+            bandera = False
+
+    planeta_elegido = planetasRandoms[indice - 1]
+
+    #Guarda el planeta elegido en el jugador
+    if "planetas" not in jugador:
+        jugador["planetas"] = []
+    jugador["planetas"].append(planeta_elegido)
+
+    print(f"\nHas elegido el planeta {planeta_elegido['nombre']}.")
+    print(f"Efecto: {planeta_elegido['efecto']}")
+    print("¡Fue agregado correctamente a tu colección!\n")
+
+    return jugador
 
 
+def seleccionarNuevaCarta(jugador, mazo):
+    
+    """
+    Muestra 3 cartas aleatorias del mazo, permite al jugador elegir una (1-3) y la agrega
+    a `jugador['mazoCompleto']`
+    """
+
+    cartasRandoms = []
+
+    #Selecciona 3 cartas distintas del mazo
+    while len(cartasRandoms) < 3:
+        cartaRandom = random.choice(mazo)
+        if cartaRandom not in cartasRandoms:
+            cartasRandoms.append(cartaRandom)
+
+    #Muestra las 3 cartas disponibles
+    print("\n=== NUEVAS CARTAS DISPONIBLES ===")
+    for i in range(len(cartasRandoms)):
+        carta = cartasRandoms[i]
+        print(f"{i + 1}. {carta['nombre']} | Valor: {carta['valor']} | Palo: {carta['palo']} | Fichas: {carta['fichas']}")
+    print()
+
+    #El jugador elige una
+    bandera = True
+    while bandera:
+        try:
+            indice = int(input("Seleccione el número de la carta que desea (1-3): "))
+            while indice < 1 or indice > 3:
+                indice = int(input("Número inválido. Ingrese 1, 2 o 3: "))
+        except ValueError:
+            print("Debe ingresar un número válido.")
+        else:
+            bandera = False
+
+    carta_elegida = cartasRandoms[indice - 1]
+
+    #Agrega la carta elegida al mazo del jugador
+    jugador['mazoCompleto'].append(carta_elegida)
+
+    print(f"\nHas elegido la carta {carta_elegida['nombre']} ({carta_elegida['palo']}) con valor {carta_elegida['valor']}.")
+    print("¡Fue agregada correctamente a tu mazo!\n")
+
+    return jugador

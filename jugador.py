@@ -15,6 +15,7 @@ def crearJugador():
     jugador['manoJugador'] = []
     jugador['monedas'] = 0
     jugador['jokers'] = []
+    jugador['planetas'] = []
     jugador['combinaciones'] = {
                                 "carta_alta": (5, 1),
                                 "par": (10, 2),
