@@ -2,18 +2,52 @@ import mazo
 import jugadas
 import jugador as usuario
 import  os
-
+from itertools import zip_longest
 
 def limpiarTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def hud_cominaciones_Jokers(combinaciones, jokers):
+
+    col_izq = ["╔════════════════════════════╗","║        COMBINACIONES       ║","╚════════════════════════════╝","",]
+    for nombre, (puntos, mult) in combinaciones.items():
+        col_izq.append(f"{nombre.replace('_',' ').title():<16} | Pts:{puntos:<3} | x{mult}")
+
+    
+    if jokers:
+        col_der = [
+            "╔════════════════════════════╗",
+            "║        🎭 JOKERS 🎭        ║",
+            "╚════════════════════════════╝",
+            "",
+        ]
+    else:
+        col_der = [
+            "-- Jokers --",
+            "No hay jokers",
+        ]
+       
+    
+
+    for i, j in enumerate(jokers, 1):
+            col_der.append(f"[{i}] {j.get('nombre')}  ({j.get('rareza')}): {j.get('descripcion')}")
+    
+
+    ancho_col = 50
+    for izq, der in zip_longest(col_izq, col_der, fillvalue=""):
+        print(f"{(izq):<{ancho_col}} |   {der}")
+
+
+
 def hud(jugador):
-    print()
-    print("----------------------------------------------------------------")
-    print(f"Jugador: {jugador['nombre']}  |  Manos: {jugador['manos']}  |  Descartes: {jugador['descartes']}  |  Puntaje / Pozo: {jugador['puntaje']}/{jugador['pozo']}")
-    print("----------------------------------------------------------------")
-    print()
-    usuario.mostrarJokersJugador(jugador)
+    limpiarTerminal()
+
+    hud_cominaciones_Jokers(jugador["combinaciones"], jugador["jokers"])
+
+    print( "\n╔════════════════════════════════════════════════════════════════════════════════╗")
+    print(  f"║     Jugador: {jugador['nombre']}  |  Manos: {jugador['manos']}  |  Descartes: {jugador['descartes']}  |  Puntaje / Pozo: {jugador['puntaje']}/{jugador['pozo']}      ║")
+    print(   "╚════════════════════════════════════════════════════════════════════════════════╝ \n")
+
 
 
 
@@ -23,7 +57,6 @@ def selectorCartas(jugador):
     bandera=True
     while bandera:
         try:
-            
             hud(jugador)
             
             if len(seleccionCartas) >0:
