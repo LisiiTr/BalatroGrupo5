@@ -1,0 +1,12 @@
+[
+    {
+        "nombre": "Lisi",
+        "rondaMax": 8,
+        "puntajeTotal": 2000
+    },
+    {
+        "nombre": "Thomi",
+        "rondaMax": 1,
+        "puntajeTotal": 964
+    }
+]

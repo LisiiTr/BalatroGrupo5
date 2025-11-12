@@ -1,11 +1,6 @@
 import combinaciones
 import jokers
-import  os
-
-
-# contempla tanto windows, como linux y macos
-def limpiarTerminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
+import  juego
 
 
 def descartarCartas(seleccionCartas,jugador):
@@ -20,7 +15,8 @@ def descartarCartas(seleccionCartas,jugador):
 totalPuntaje= lambda cantidadFichas,multiplicador: cantidadFichas * multiplicador
  
 def jugarCartas(jugador,cartasJugadas):
-    limpiarTerminal()
+    juego.limpiarTerminal()
+
     
     try:
         fichas,multiplicador = calcularFichasMultiplicador(cartasJugadas,jugador)
@@ -35,6 +31,8 @@ def jugarCartas(jugador,cartasJugadas):
     print(f"Fichas: {fichas} | Multiplicador: {multiplicador} | Puntaje de la jugada: {puntaje}")
     print("<---------------------------------------------------------------->")
     print()
+    input("Enter para continuar...")
+    juego.limpiarTerminal()
     return jugador
 
 def calcularFichasMultiplicador(cartasJugadas,jugador):

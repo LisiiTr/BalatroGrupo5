@@ -1,8 +1,8 @@
 import mazo
 import juego
-from tienda import tienda 
+import tienda
 import jugador as usuario
-
+import archivos
 
 def jugarPartida():
     jugador = usuario.crearJugador()
@@ -17,7 +17,8 @@ def jugarPartida():
             print("¡Te quedaste sin manos y no alcanzate el pozo! Perdiste.")
             print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
             puedeJugar=False
-
+            usuario.sumarPuntajeRanking(jugador)
+            archivos.cargarHistorico(jugador)
         elif jugador['puntaje'] >= jugador['pozo']:
             print("\n----------------------------------------------------------------")
             print("¡Alcanzaste el valor del pozo! ")
@@ -29,12 +30,13 @@ def jugarPartida():
             try:
                 opcionSelect = int(input("Ingresa 1 para ir a la tienda. En caso de no querer ingresar cualquier otro numero: "))
                 if opcionSelect == 1:
-                    tienda(jugador)
+                    tienda.tienda(jugador)
 
                 jugar=int(input("Quiere jugar otra ronda? 1 para 'Si' 2 para 'No':"))
                 while jugar != 1 and jugar != 2:
                     print("¡Opción invalida!")
                     jugar=int(input("Quiere jugar otra ronda? 1 para 'Si' 2 para 'No':"))
+
             except ValueError:
                 print("Debe ingresar un numero")
             
@@ -43,6 +45,8 @@ def jugarPartida():
                 usuario.nuevaRonda(jugador)
             else:
                 puedeJugar=False
+                usuario.sumarPuntajeRanking(jugador)
+                archivos.cargarHistorico(jugador)
                 print("\n----------------------------------------------------------------")
                 print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
                 print("----------------------------------------------------------------\n")
@@ -67,15 +71,14 @@ while activo:
         except ValueError:
             print("Debe ingresar un numero")
 
-    juego.limpiarTerminal()
     if opcion==1:
         jugarPartida()
     elif opcion==2:
         print("Función")
     elif opcion==3:
-        print("Función")
+        archivos.leerRanking()
     elif opcion==4:
-        print("Función")
+        tienda.imprimirJokers()
     elif opcion==-1:
         activo=False
         print("Programa finalizado.")

@@ -170,7 +170,6 @@ def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador):
             fichas, multiplicador=calcularFichaPuntaje(joker, fichas, multiplicador,bonificacion)
 
     print(f"\n Las fichas acumuladas son: {fichas} | El multiplicador acumulado es:{multiplicador}")
-
     return  fichas, multiplicador
 
     

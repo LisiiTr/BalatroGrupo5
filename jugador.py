@@ -6,6 +6,7 @@ def crearJugador():
     jugador = {}
     jugador['nombre'] = input("Ingrese el nombre con el que va a jugar: ")
     jugador['puntaje'] = 0
+    jugador['puntaje_ranking'] = 0
     jugador['pozo'] = 300
     jugador['ronda'] = 1
     jugador['manos'] = 5
@@ -53,3 +54,7 @@ def mostrarJokersJugador(jugador):
             i+=1
     else:
         print("No hay jokers adquiridos")
+
+
+def sumarPuntajeRanking(jugador):
+    jugador['puntaje_ranking'] += jugador['puntaje'] 
