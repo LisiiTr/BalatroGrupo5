@@ -9,4 +9,20 @@
         "rondaMax": 1,
         "puntajeTotal": 964
     }
+][
+    {
+        "nombre": "Lisi",
+        "rondaMax": 8,
+        "puntajeTotal": 2000
+    },
+    {
+        "nombre": "Thomi",
+        "rondaMax": 1,
+        "puntajeTotal": 964
+    },
+    {
+        "nombre": "Abru",
+        "rondaMax": 2,
+        "puntajeTotal": 259
+    }
 ]
