@@ -3,49 +3,49 @@ import juego
 
 planetas = {
     "Mercurio": {
-        "jugada": "Par",
+        "jugada": "par",
         "efecto": "Aumenta las fichas base y el multiplicador del Par.",
         "incremento": {"fichas": 15, "multiplicador": 1}
     },
     "Venus": {
-        "jugada": "Doble Par",
+        "jugada": "doble_par",
         "efecto": "Aumenta las fichas base y el multiplicador del Doble Par.",
-        "incremento": {"fichas": 20, "multiplicador": 1}
+        "incremento": {"fichas": 20, "multiplicador": 2}
     },
     "Tierra": {
-        "jugada": "Trío",
+        "jugada": "trio",
         "efecto": "Aumenta las fichas base y el multiplicador del Trío.",
-        "incremento": {"fichas": 30, "multiplicador": 1}
+        "incremento": {"fichas": 30, "multiplicador": 2}
     },
     "Marte": {
-        "jugada": "Escalera",
+        "jugada": "escalera",
         "efecto": "Aumenta las fichas base y el multiplicador de la Escalera.",
-        "incremento": {"fichas": 40, "multiplicador": 1}
+        "incremento": {"fichas": 40, "multiplicador": 3}
     },
     "Júpiter": {
-        "jugada": "Color",
+        "jugada": "color",
         "efecto": "Aumenta las fichas base y el multiplicador del Color.",
-        "incremento": {"fichas": 50, "multiplicador": 1}
+        "incremento": {"fichas": 50, "multiplicador": 2}
     },
     "Saturno": {
-        "jugada": "Full House",
+        "jugada": "full_house",
         "efecto": "Aumenta las fichas base y el multiplicador del Full House.",
-        "incremento": {"fichas": 60, "multiplicador": 1}
+        "incremento": {"fichas": 60, "multiplicador": 3}
     },
     "Urano": {
-        "jugada": "Póker (4 iguales)",
+        "jugada": "poker",
         "efecto": "Aumenta las fichas base y el multiplicador del Póker.",
         "incremento": {"fichas": 70, "multiplicador": 1}
     },
     "Neptuno": {
-        "jugada": "Escalera de color",
+        "jugada": "escalera_corrida",
         "efecto": "Aumenta las fichas base y el multiplicador de la Escalera de color.",
-        "incremento": {"fichas": 80, "multiplicador": 1}
+        "incremento": {"fichas": 80, "multiplicador": 4}
     },
     "Plutón": {
-        "jugada": "Carta Alta",
+        "jugada": "carta_alta",
         "efecto": "Aumenta ligeramente las fichas base y el multiplicador de la Carta Alta.",
-        "incremento": {"fichas": 10, "multiplicador": 0}
+        "incremento": {"fichas": 10, "multiplicador": 1}
     }
 }
 
@@ -81,7 +81,7 @@ jokers = (
 
 def imprimirJokers():
     for joker in jokers:
-        print(f"Nombre: {joker['nombre']} ({joker['rareza']}): {joker['descripcion']}")
+        print(f"{joker['nombre']} ({joker['rareza']}): {joker['descripcion']}")
     input("Enter para continuar...")
 
 def tienda(jugador):
@@ -103,45 +103,43 @@ def tienda(jugador):
                 print(f'4. sobre planetas, vale 6 monedas')
                 print(f'5. sobre cartas de mazo, vale 6 monedas')
                 print(f'6. Para pasar a la siguiente ronda.')
-                opcionElegida = int(input("Elija una opción de las anteriores o -1 para salir: "))
+                opcionElegida = int(input("Elija una opción de las anteriores: "))
                 while opcionElegida<1 or opcionElegida>6:
-                    opcionElegida = int(input("Elija una opción de las anteriores o -1 para salir: "))
+                    opcionElegida = int(input("Elija una opción de las anteriores: "))
             except ValueError:
                 print("Debe ingresar un numero")
+                input("Enter para continuar...")
             else: 
                 bandera = False
 
-        if opcionElegida == 1 and jugador["monedas"]<3:
-            print(jugador['mazoCompleto'])
+        if opcionElegida == 1 and jugador["monedas"]>=3:
             jugador['mazoCompleto'].append(cartaNueva)
             cartaNueva= cartaBonificadora(jugador)
             jugador['monedas'] -= 3
-        elif opcionElegida == 2 and jugador["monedas"]<3:
-            print(jokerCompra)
+            input("Enter para continuar...")
+        elif opcionElegida == 2 and jugador["monedas"]>=3:
             jugador['jokers'].append(jokerCompra)
             jokerCompra =jokerBonificador(jokers)
             jugador['monedas'] -= 3
-        elif opcionElegida == 3 and jugador["monedas"]<6:
+            input("Enter para continuar...")
+        elif opcionElegida == 3 and jugador["monedas"]>=6:
             seleccionarJoker(jugador,jokers)
             jugador['monedas'] -= 6
-        elif opcionElegida == 4 and jugador["monedas"]<6:
-            if jugador['monedas'] >= 6:
-                jugador['monedas'] -= 6
-                seleccionarPlaneta(jugador, planetas)
-            else:
-                print("No tenés monedas suficientes para comprar el sobre de planetas (requiere 6).")
-                input("Enter para continuar...")
-        elif opcionElegida == 5 and jugador["monedas"]<6:
-            if jugador['monedas'] >= 6:
-                jugador['monedas'] -= 6
-                seleccionarNuevaCarta(jugador, jugador['mazoCompleto'])
-            else:
-                print("No tenés monedas suficientes para comprar el sobre de cartas (requiere 6).")
-                input("Enter para continuar...")
+            input("Enter para continuar...")
+        elif opcionElegida == 4 and jugador["monedas"]>=6:
+            jugador['monedas'] -= 6
+            seleccionarPlaneta(jugador, planetas)
+            input("Enter para continuar...")
+        elif opcionElegida == 5 and jugador["monedas"]>=6:
+            jugador['monedas'] -= 6
+            seleccionarNuevaCarta(jugador, jugador['mazoCompleto'])
+            input("Enter para continuar...")
         elif opcionElegida == 6:
             comprar = False
         else:
-            print("No tienes suficientes monedas para comprar esa opción.")        
+            print("No tienes suficientes monedas para comprar esa opción.") 
+            input("Enter para continuar...")
+
             
     return jugador
 
@@ -241,9 +239,12 @@ def seleccionarPlaneta(jugador, planetas):
 
     planeta_elegido = planetasRandoms[indice - 1]
 
-    if "planetas" not in jugador:
-        jugador["planetas"] = []
-    jugador["planetas"].append(planeta_elegido)
+    fichas,multiplicador = jugador["combinaciones"][planeta_elegido["jugada"]]
+    fichas += planeta_elegido['incremento']['fichas']
+    multiplicador += planeta_elegido['incremento']['multiplicador']
+    jugador["combinaciones"][planeta_elegido["jugada"]] = (fichas,multiplicador)
+
+
 
     print(f"\nHas elegido el planeta {planeta_elegido['nombre']}.")
     print(f"Efecto: {planeta_elegido['efecto']}")

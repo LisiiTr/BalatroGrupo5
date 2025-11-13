@@ -1,5 +1,6 @@
 import os
 import json
+import  juego
 
 def buscarRuta(nombre):
     rutaActual= os.path.dirname(__file__)
@@ -9,13 +10,12 @@ def buscarRuta(nombre):
 
 def traerJugadores(rutaArchivo):
     try:
-        with open(rutaArchivo,'r') as ranking:
-            datos=json.load(ranking)
-    except Exception as e:
-        print(e)
-        return []
+        with open(rutaArchivo, 'r') as ranking:
+            jugadores = json.load(ranking)
+    except (FileNotFoundError):
+        jugadores = []
     else:
-        return datos
+        return jugadores
 
 
 def cargarHistorico(jugador):
@@ -23,7 +23,7 @@ def cargarHistorico(jugador):
     rutaArchivo=buscarRuta("historico.json")
     jugadores= traerJugadores(rutaArchivo)
 
-    with open(rutaArchivo,'a') as ranking:
+    with open(rutaArchivo,'w') as ranking:
         jugadorGuardar={}
         jugadorGuardar['nombre'] = jugador['nombre']
         jugadorGuardar['rondaMax'] = jugador['ronda']
@@ -38,13 +38,17 @@ def leerRanking():
         with open(buscarRuta("historico.json"),'r') as ranking:
             datos=json.load(ranking)
 
-        datos.sort(key=lambda jugador: jugador["rondaMax"], reverse=True) 
+        datos.sort(key=lambda jugador: jugador["puntajeTotal"], reverse=True) 
 
+        juego.limpiarTerminal()
         i=1
-        for jugador in datos:
-            print(f" {i} - {jugador['nombre']}      |    Ronda {jugador['rondaMax']}     |    Puntaje total: {jugador['puntajeTotal']}")
-            i += 1
-        input("Enter para continuar...")
+        print(f"{'#':<3} | {'Nombre':<12} | {'Ronda':<6} | {'Puntaje':<7}")
+        print("-" * 40)
+
+        for i, j in enumerate(datos, 1):
+            print(f"{i:<3} | {j['nombre']:<12} | {j['rondaMax']:<6} | {j['puntajeTotal']:<7}")
+
+        input("\nEnter para continuar...")
     except Exception as e:
         print("Ha ocurrido un error ",e)
 
@@ -58,5 +62,3 @@ def guardarPartida(jugador,jokers):
 
 def cargarPartida():
     pass
-
-

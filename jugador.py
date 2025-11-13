@@ -33,10 +33,11 @@ def crearJugador():
     return jugador
  
 def nuevaRonda(jugador):
+    sumarPuntajeRanking(jugador)
     jugador['manoJugador'] = []
     jugador['mazoRonda'] = jugador['mazoCompleto'].copy()
     jugador['ronda'] += 1
-    jugador['pozo'] = round(jugador['pozo']*random.uniform(1.2,1.8))
+    jugador['pozo'] = round(jugador['pozo']*random.uniform(1.5,2))
     jugador['puntaje'] = 0
     jugador['manos'] = 5
     jugador['descartes'] = 3

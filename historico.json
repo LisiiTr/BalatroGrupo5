@@ -1,28 +1,32 @@
 [
     {
-        "nombre": "Lisi",
-        "rondaMax": 8,
-        "puntajeTotal": 2000
+        "nombre": "Abru",
+        "rondaMax": 3,
+        "puntajeTotal": 600
     },
     {
         "nombre": "Thomi",
-        "rondaMax": 1,
-        "puntajeTotal": 964
-    }
-][
-    {
-        "nombre": "Lisi",
-        "rondaMax": 8,
-        "puntajeTotal": 2000
-    },
-    {
-        "nombre": "Thomi",
-        "rondaMax": 1,
-        "puntajeTotal": 964
+        "rondaMax": 4,
+        "puntajeTotal": 1200
     },
     {
         "nombre": "Abru",
+        "rondaMax": 5,
+        "puntajeTotal": 1800
+    },
+    {
+        "nombre": "Lisandro",
+        "rondaMax": 5,
+        "puntajeTotal": 1663
+    },
+    {
+        "nombre": "Lisi",
+        "rondaMax": 7,
+        "puntajeTotal": 4640
+    },
+    {
+        "nombre": "Lauti",
         "rondaMax": 2,
-        "puntajeTotal": 259
+        "puntajeTotal": 692
     }
 ]

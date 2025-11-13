@@ -44,9 +44,9 @@ def hud(jugador):
 
     hud_cominaciones_Jokers(jugador["combinaciones"], jugador["jokers"])
 
-    print( "\n╔════════════════════════════════════════════════════════════════════════════════╗")
-    print(  f"║     Jugador: {jugador['nombre']}  |  Manos: {jugador['manos']}  |  Descartes: {jugador['descartes']}  |  Puntaje / Pozo: {jugador['puntaje']}/{jugador['pozo']}      ║")
-    print(   "╚════════════════════════════════════════════════════════════════════════════════╝ \n")
+    print("\n╔═══════════════════════════════════════════════════════════════════════════════════╗")
+    print( f"║  Jugador: {jugador['nombre']:<9}"f" | Manos: {jugador['manos']:^3}"f" | Descartes: {jugador['descartes']:^3}"f" | Puntaje/Pozo: {jugador['puntaje']:>6}/{jugador['pozo']:<8} ║")
+    print("╚═══════════════════════════════════════════════════════════════════════════════════╝\n")
 
 
 
