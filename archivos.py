@@ -2,13 +2,12 @@ import os
 import json
 import  juego
 
-def buscarRuta(nombre):
-    rutaActual= os.path.dirname(__file__)
-    rutaArchivo= os.path.join(rutaActual, nombre)
+def buscarRuta(nombre): #devolvemos la ruta del archivo que querramos usar con su respectivo nombre
+    rutaArchivo= os.path.join(os.path.dirname(__file__), nombre)
 
     return rutaArchivo
 
-def traerJugadores(rutaArchivo):
+def traerJugadores(rutaArchivo): #se leen los jugadores del ranking
     try:
         with open(rutaArchivo, 'r') as ranking:
             jugadores = json.load(ranking)
@@ -18,7 +17,7 @@ def traerJugadores(rutaArchivo):
         return jugadores
 
 
-def cargarHistorico(jugador):
+def cargarHistorico(jugador): #se cargan los jugadores en el ranking histórico
 
     rutaArchivo=buscarRuta("historico.json")
     jugadores= traerJugadores(rutaArchivo)
@@ -33,7 +32,7 @@ def cargarHistorico(jugador):
         json.dump(jugadores,ranking,indent=4)
 
 
-def leerRanking():
+def leerRanking(): #se muestran los datos del ranking en pantalla
     try:
         with open(buscarRuta("historico.json"),'r') as ranking:
             datos=json.load(ranking)
@@ -56,7 +55,7 @@ def leerRanking():
 
 
 
-def guardarPartida(jugador,jokers):
+def guardarPartida(jugador,jokers): 
     pass
 
 

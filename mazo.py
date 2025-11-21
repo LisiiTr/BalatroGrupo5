@@ -1,6 +1,7 @@
 import random
 
-def crearMazoCompleto():
+
+def crearMazoCompleto(): #Creación del mazo
     palos = ["♠", "♥", "♦", "♣"]
     rangos = {
         "A": 1,
@@ -22,7 +23,7 @@ def crearMazoCompleto():
             mazo.append(carta)
     return mazo
  
-def fichasValor(valor):
+def fichasValor(valor): #Asignación de fichas a cada carta
     if valor == 1:        
         return 11
     elif 2 <= valor <= 10:
@@ -31,7 +32,7 @@ def fichasValor(valor):
         return 10 
     
 
-def mostrarCartas(listaCartas):
+def mostrarCartas(listaCartas): #Se muestran las cartas en mano al usuario
     print("\nLas cartas en mano son:")
     i=1
     linea1 = ""
@@ -49,7 +50,7 @@ def mostrarCartas(listaCartas):
     print(linea3)
     print(linea4)
  
-def mostrarCartasSelect(listaCartas):
+def mostrarCartasSelect(listaCartas): #se muestran las cartas seleccionadas por el usuario
     print("\nLas cartas seleccionadas son:")
     i=1
     linea1 = ""
@@ -67,7 +68,7 @@ def mostrarCartasSelect(listaCartas):
     print(linea3)
     print(linea4)
  
-def repartirCartas(cantCartas,jugador):
+def repartirCartas(cantCartas,jugador): #se reparten las cartas al jugador cada vez que sea necesario
     for i in range(cantCartas):
         carta = random.choice(jugador['mazoRonda'])
         jugador['mazoRonda'].remove(carta)
