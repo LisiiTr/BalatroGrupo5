@@ -115,16 +115,20 @@ def juego(jugador):
         bandera=True
         while bandera:
             try:
-                decision=int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
-                while (decision < 1 or decision > 2) or jugador['descartes'] == 0:
-                    if jugador['descartes'] == 0:
-                        decision=int(input("No tiene mas descartes, debes jugar las cartas:"))
-                    else:
-                        decision=int(input("Valor invalido! Ingrese 1 si quiere jugar, o 2 si quiere descartar:"))
+                decision = int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar: "))
+
+                if jugador['descartes'] == 0 and decision == 2:
+                    print("No tienes más descartes, debes jugar las cartas.")
+                    continue
+
+                if decision not in (1, 2):
+                    print("Valor inválido. Ingrese 1 para jugar o 2 para descartar.")
+                    continue
+
+                bandera = False
+
             except ValueError:
-                print("Debe ingresar un numero")
-            else:
-                bandera=False
+                print("Debe ingresar un número.")
                 
 
         if decision == 1:

@@ -1,13 +1,13 @@
  
-def dividirPaloValores(cartasJugadas):
-    valores = [carta["valor"] for carta in cartasJugadas]
+def dividirPaloValores(cartasJugadas): #se separan los valores y los palos de las cartas
+    valores = [carta["valor"] for carta in cartasJugadas] 
     palos   = [carta["palo"]  for carta in cartasJugadas]
  
     return valores,palos
  
  
 # Combinaciones
-def escalera(valores):
+def escalera(valores): #se evalúa la jugada escalera
     if len(valores) == 5:
         for i in range(len(valores) - 1):
             if valores[i] + 1 != valores[i + 1]:
@@ -16,25 +16,25 @@ def escalera(valores):
     else:
         return False
  
-def color(palos):
+def color(palos): #se evalúa la jugada color
     if len(palos) == 5:
         if palos.count(palos[1]) == 5:
             return True
     return False
  
-def poker(valores):
+def poker(valores): #se evalúa la jugada poker
     for v in valores:
         if valores.count(v) == 4:
             return True
     return False
  
-def par(valores):
+def par(valores): #se evalúa la jugada par
     for v in valores:
         if valores.count(v) == 2:
             return True
     return False
  
-def doblePar(valores):
+def doblePar(valores): #se evalúa la jugada doble par
     cantPares = []
     for v in valores:
         if valores.count(v) == 2:
@@ -45,13 +45,13 @@ def doblePar(valores):
     else:
         return False
  
-def trio(valores):
+def trio(valores): #se evalúa la jugada trio
     for v in valores:
         if valores.count(v) == 3:
             return True
     return False
  
-def fullHouse(valores):
+def fullHouse(valores): #se evalúa la jugada fullhouse
     cantPares = []
     cantTrios = []
     for v in valores:
@@ -65,7 +65,7 @@ def fullHouse(valores):
     else:
         return False
 
-def combinacionJugada(jugador, cartasJugadas):
+def combinacionJugada(jugador, cartasJugadas): #se le muestra al jugador la jugada hecha
     valores, palos = dividirPaloValores(cartasJugadas)
     valores.sort()
  
@@ -124,7 +124,7 @@ def combinacionJugada(jugador, cartasJugadas):
         return jugador['combinaciones']["carta_alta"]
 
 
-def analizarCombinacionesJokers(cartasJugadas):
+def analizarCombinacionesJokers(cartasJugadas): #se analizan las combinaciones para pasarle al análisis de jokers
     valores, palos = dividirPaloValores(cartasJugadas)
     valores.sort()
     combinaciones={

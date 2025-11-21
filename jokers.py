@@ -1,7 +1,7 @@
 import random
 import combinaciones
 
-def analizarMano(cartasJugadas):
+def analizarMano(cartasJugadas): #Analiza la mano calculando los datos necesarios para activar los jokers.
     analisis= {}
     conteo_valores={}
     conteo_palos={}
@@ -47,7 +47,7 @@ def analizarMano(cartasJugadas):
 
     return analisis
         
-def calcularFichaPuntaje(joker, fichas, multiplicador, bonificacion):
+def calcularFichaPuntaje(joker, fichas, multiplicador, bonificacion): #Calcula la bonificación del joker activado
     if joker["tipo_bonificacion"] == "sum_multiplicador":
         multiplicador += bonificacion
     elif joker["tipo_bonificacion"] == "puntaje":
@@ -58,7 +58,7 @@ def calcularFichaPuntaje(joker, fichas, multiplicador, bonificacion):
     return fichas,multiplicador
         
 
-def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador):
+def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador): #Se fija si los jokers se activan o no
 
     print(f"\n Los Jokers activados son: ")
 
@@ -176,11 +176,7 @@ def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador):
 
 
 
-def calcularJokers(jugador,fichas, cartasJugadas, multiplicador):
-    print(fichas, multiplicador)
+def calcularJokers(jugador,fichas, cartasJugadas, multiplicador): #Función principal que llama analizar y se fija si se activa
     analisis=analizarMano(cartasJugadas)
     fichas, multiplicador= detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador)
-    print(fichas, multiplicador)
-
-
     return fichas, multiplicador
