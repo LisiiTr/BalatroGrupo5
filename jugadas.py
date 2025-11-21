@@ -3,7 +3,7 @@ import jokers
 import  juego
 
 
-def descartarCartas(seleccionCartas,jugador):
+def descartarCartas(seleccionCartas,jugador): #Descarte de cartas seleccionadas
     print(jugador['manoJugador'])
     for carta in seleccionCartas:
         print(carta)
@@ -14,7 +14,7 @@ def descartarCartas(seleccionCartas,jugador):
 
 totalPuntaje= lambda cantidadFichas,multiplicador: cantidadFichas * multiplicador
  
-def jugarCartas(jugador,cartasJugadas):
+def jugarCartas(jugador,cartasJugadas): #Jugar cartas seleccionadas
     juego.limpiarTerminal()
 
     
@@ -35,7 +35,7 @@ def jugarCartas(jugador,cartasJugadas):
     juego.limpiarTerminal()
     return jugador
 
-def calcularFichasMultiplicador(cartasJugadas,jugador):
+def calcularFichasMultiplicador(cartasJugadas,jugador): #Calcular y mostrar fichas y multiplicador de la combinacion jugada
     try:
         cantFichas = [carta['fichas'] for carta in cartasJugadas]
         fichas,multiplicador = combinaciones.combinacionJugada(jugador,cartasJugadas)
@@ -43,6 +43,6 @@ def calcularFichasMultiplicador(cartasJugadas,jugador):
     except Exception as e:
         print("Ha ocurrido un error: ",e)
 
-    print(f"Las fichas por la combinación son: {fichas}   |   El multiplicador develto por la combinación es: {multiplicador}")
+    print(f"Las fichas por la combinación son: {fichas}   |   El multiplicador devuelto por la combinación es: {multiplicador}")
     fichas,multiplicador = jokers.calcularJokers(jugador,fichas, cartasJugadas, multiplicador)
     return fichas,multiplicador

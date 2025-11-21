@@ -4,10 +4,10 @@ import jugador as usuario
 import  os
 from itertools import zip_longest
 
-def limpiarTerminal():
+def limpiarTerminal(): #Limpia la terminal usando libreria ´os´
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def hud_cominaciones_Jokers(combinaciones, jokers):
+def hud_cominaciones_Jokers(combinaciones, jokers): #Interfaz visual de combinaciones y jokers
 
     col_izq = ["╔════════════════════════════╗","║        COMBINACIONES       ║","╚════════════════════════════╝","",]
     for nombre, (puntos, mult) in combinaciones.items():
@@ -29,7 +29,7 @@ def hud_cominaciones_Jokers(combinaciones, jokers):
        
     
 
-    for i, j in enumerate(jokers, 1):
+    for i, j in enumerate(jokers, 1): 
             col_der.append(f"[{i}] {j.get('nombre')}  ({j.get('rareza')}): {j.get('descripcion')}")
     
 
@@ -39,7 +39,7 @@ def hud_cominaciones_Jokers(combinaciones, jokers):
 
 
 
-def hud(jugador):
+def hud(jugador): #Interfaz visual del jugador
     limpiarTerminal()
 
     hud_cominaciones_Jokers(jugador["combinaciones"], jugador["jokers"])
@@ -51,7 +51,7 @@ def hud(jugador):
 
 
 
-def selectorCartas(jugador):
+def selectorCartas(jugador): #Seleccion, deseleccion y confirmacion de cartas
     seleccionCartas=[]
 
     bandera=True
@@ -106,7 +106,7 @@ def selectorCartas(jugador):
 
     return seleccionCartas
 
-def juego(jugador):
+def juego(jugador): #Decidir si jugar o descartar las cartas seleccionadas
     while jugador['manos'] != 0 and jugador['puntaje'] < jugador['pozo']:
         seleccionCartas=[]
 

@@ -4,7 +4,7 @@ import tienda
 import jugador as usuario
 import archivos
 
-def jugarPartida():
+def jugarPartida(): #Resultado de ronda, acceso a tienda, jugar de nuevo
     jugador = usuario.crearJugador()
     juego.limpiarTerminal()
     mazo.repartirCartas(10, jugador)
@@ -52,36 +52,37 @@ def jugarPartida():
                 print("----------------------------------------------------------------\n")
 
 
+def main(): #Menu principal con opciones
+    activo=True
+    while activo:
+        juego.limpiarTerminal()
+        print("Elija una de las siguientes opciones o -1 para cerrar el programa: \n 1. Jugar nueva partida. \n 2. Continuar Partida. \n 3. Ver ranking. \n 4. Ver jokers.")
 
-activo=True
-while activo:
-    juego.limpiarTerminal()
-    print("Elija una de las siguientes opciones o -1 para cerrar el programa: \n 1. Jugar nueva partida. \n 2. Continuar Partida. \n 3. Ver ranking. \n 4. Ver jokers.")
+        bandera=True
+        while bandera:
+            try:
 
-    bandera=True
-    while bandera:
-        try:
+                opcion = int(input("Seleccione una opción segun su numeración: "))
+                while (opcion < 1 or opcion > 4) and opcion != -1:
+                    opcion = int(input("Seleccione una opción dentro de numeración dada: "))
 
-            opcion = int(input("Seleccione una opción segun su numeración: "))
-            while (opcion < 1 or opcion > 4) and opcion != -1:
-                opcion = int(input("Seleccione una opción dentro de numeración dada: "))
+                bandera=False
 
-            bandera=False
+            except ValueError:
+                print("Debe ingresar un numero")
 
-        except ValueError:
-            print("Debe ingresar un numero")
+        if opcion==1:
+            jugarPartida()
+        elif opcion==2:
+            print("Función")
+        elif opcion==3:
+            archivos.leerRanking()
+        elif opcion==4:
+            tienda.imprimirJokers()
+        elif opcion==-1:
+            activo=False
+            print("Programa finalizado.")
 
-    if opcion==1:
-        jugarPartida()
-    elif opcion==2:
-        print("Función")
-    elif opcion==3:
-        archivos.leerRanking()
-    elif opcion==4:
-        tienda.imprimirJokers()
-    elif opcion==-1:
-        activo=False
-        print("Programa finalizado.")
-
+main()
 
  
