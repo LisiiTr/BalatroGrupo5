@@ -28,5 +28,15 @@
         "nombre": "Lauti",
         "rondaMax": 2,
         "puntajeTotal": 692
+    },
+    {
+        "nombre": "lauti",
+        "rondaMax": 4,
+        "puntajeTotal": 4182
+    },
+    {
+        "nombre": "lauti",
+        "rondaMax": 10,
+        "puntajeTotal": 120301
     }
 ]

@@ -5,6 +5,21 @@ def dividirPaloValores(cartasJugadas): #se separan los valores y los palos de la
  
     return valores,palos
  
+def fullHouse(valores): #se evalúa la jugada fullhouse
+    cantPares = []
+    cantTrios = []
+    valores_unicos = set(valores)
+    
+    for v in valores_unicos:
+        if valores.count(v) == 3:
+            cantTrios.append(v)
+        if valores.count(v) == 2:
+            cantPares.append(v)
+
+    if len(cantTrios) == 1 and len(cantPares) == 1:
+        return True
+    else:
+        return False
  
 # Combinaciones
 def escalera(valores): #se evalúa la jugada escalera
@@ -51,19 +66,7 @@ def trio(valores): #se evalúa la jugada trio
             return True
     return False
  
-def fullHouse(valores): #se evalúa la jugada fullhouse
-    cantPares = []
-    cantTrios = []
-    for v in valores:
-        if valores.count(v) == 3:
-            cantTrios.append(v)
-    for v in valores:
-        if valores.count(v) == 2:
-            cantPares.append(v)
-    if len(cantTrios) == 1 and len(cantPares) == 1:
-        return True
-    else:
-        return False
+
 
 def combinacionJugada(jugador, cartasJugadas): #se le muestra al jugador la jugada hecha
     valores, palos = dividirPaloValores(cartasJugadas)
@@ -157,3 +160,4 @@ def analizarCombinacionesJokers(cartasJugadas): #se analizan las combinaciones p
     combinaciones["par"]  = es_par
 
     return combinaciones
+

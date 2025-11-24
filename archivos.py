@@ -1,6 +1,6 @@
 import os
 import json
-import  juego
+import juego
 
 def buscarRuta(nombre): #devolvemos la ruta del archivo que querramos usar con su respectivo nombre
     rutaArchivo= os.path.join(os.path.dirname(__file__), nombre)
@@ -53,11 +53,88 @@ def leerRanking(): #se muestran los datos del ranking en pantalla
 
 
 
+def traerPartidas():
+    try:
+        with open(buscarRuta("partidas_guardadas.json"), "r") as partidas_guardadas:
+            partidas = json.load(partidas_guardadas)
+    except Exception as e:
+        print("Ha ocurrido un error al traer partidas.")
+        partidas= dict()
+    
+    return partidas
 
+def guardarPartida(jugador): 
+    
+    partida= f"{jugador['nombre']}-{jugador['ronda']}"
 
-def guardarPartida(jugador,jokers): 
-    pass
+    partidas = dict()
+    partidas = traerPartidas()
+    try:
+        partidas[partida] = jugador
+    except Exception as e:
+        print("Ha ocurrido un error agregar partida al dict.")
 
+    try:
+        with open(buscarRuta(f"partidas_guardadas.json"), "w") as partidas_guardadas:
+            json.dump(partidas,partidas_guardadas,indent=4)
+    except Exception as e:
+        print("Ha ocurrido un error.")
+    else: 
+        print("La parida se guardo con exito!!")
+        input("Enter para continuar...")
+    
+
+def mostrarPartidasGuardadas():
+    partidas= traerPartidas()
+
+    if partidas == {}:
+        return -1 , []
+    else:
+        print("\nLas partidas guardadas son:\n")
+        print(f"{'N°':<4} {'Jugador':<15} {'Ronda':<10}")
+        print("-" * 32)
+
+        for i, jugador in enumerate(partidas.values(), start=1):
+            print(f"{i:<4} {jugador['nombre']:<15} {jugador['ronda']:<10}")
+        
+        nombres_partidas = [nombre for nombre in partidas.keys()]
+
+        try:
+            opcion=int(input("Seleccióne la partida que desea continuar: "))
+            while opcion < 1 or opcion> len(partidas):
+                opcion=int(input(f"Opción invalida, debe ser entre 1 y {len(partidas)} Seleccióne la partida que desea continuar: "))
+        except ValueError:
+            print("Ha ocurrido un error. Debe ingresar un numero")
+            input("\nEnter para continuar...")
+            juego.limpiarTerminal()
+        
+        return opcion , nombres_partidas
 
 def cargarPartida():
-    pass
+    indice , nombres_partidas = mostrarPartidasGuardadas()
+    if indice == -1:
+        jugador = {}
+        return jugador
+    else:
+        try:
+            with open(buscarRuta(f"partidas_guardadas.json"), "r") as partida_guardada:
+                partidas = json.load(partida_guardada)
+                
+                jugador = partidas[nombres_partidas[indice-1]]
+
+                del partidas[nombres_partidas[indice-1]]
+                
+            try:
+                with open(buscarRuta("partidas_guardadas.json"), "w") as partidas_guardadas:
+                    json.dump(partidas,partidas_guardadas,indent=4)
+            except Exception as e:
+                print("Ha ocurrido un error.")
+
+            print(f"La partida de {jugador['nombre']} en la ronda {jugador['ronda']} con un puntaje/pozo de {jugador['puntaje']}/{jugador['pozo']} ")
+        except Exception as e:
+            print("Ha ocurrido un error.")
+        else:
+            print("Partida cargada correctamente!!")
+            input("Enter para continuar...")
+            return jugador
+
