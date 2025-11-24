@@ -61,12 +61,15 @@ def selectorCartas(jugador): #Seleccion, deseleccion y confirmacion de cartas
             
             if len(seleccionCartas) >0:
                 mazo.mostrarCartasSelect(seleccionCartas)
+                print("\nLas cartas en mano son:")
                 mazo.mostrarCartas(jugador['manoJugador'])
 
-                cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
+                cartaSeleccionada = int(input("\nElegí una carta (o seleccioná una ya elegida para quitarla). Ingresá -1 para finalizar: "))
+
                 while cartaSeleccionada<1 and cartaSeleccionada != -1:
                     cartaSeleccionada=int(input("\nSeleccione un indice proporcionado o -1: "))
             else:
+                print("\nLas cartas en mano son:")
                 mazo.mostrarCartas(jugador['manoJugador'])
 
                 cartaSeleccionada=int(input("\nSeleccione una carta:"))
@@ -90,6 +93,7 @@ def selectorCartas(jugador): #Seleccion, deseleccion y confirmacion de cartas
                 else:
                     hud(jugador)
                     mazo.mostrarCartasSelect(seleccionCartas)
+                    print("\nLas cartas en mano son:")
                     mazo.mostrarCartas(jugador['manoJugador'])
                     cartaSeleccionada=int(input("\nSeleccione una carta o -1 para terminar:"))
                     while cartaSeleccionada<1 and cartaSeleccionada != -1:
@@ -98,8 +102,12 @@ def selectorCartas(jugador): #Seleccion, deseleccion y confirmacion de cartas
                         bandera= False
         except ValueError:
             print("Debe ingresar un numero")
+            input("\nEnter para continuar...")
+            limpiarTerminal()
         except IndexError:
             print("Debe ingresar una carta disponible")
+            input("\nEnter para continuar...")
+            limpiarTerminal()
         finally:
             limpiarTerminal()
 
@@ -129,6 +137,8 @@ def juego(jugador): #Decidir si jugar o descartar las cartas seleccionadas
 
             except ValueError:
                 print("Debe ingresar un número.")
+                input("\nEnter para continuar...")
+                limpiarTerminal()
                 
 
         if decision == 1:
@@ -136,7 +146,10 @@ def juego(jugador): #Decidir si jugar o descartar las cartas seleccionadas
             jugadas.jugarCartas(jugador,seleccionCartas)
             jugador['manos'] -= 1
         elif decision == 2 and jugador['descartes'] > 0:
-            print("El jugador decidio descartar sus cartas")
+            limpiarTerminal()
+            print("El jugador decidio descartar las cartas")
+            mazo.mostrarCartas(seleccionCartas)
+            input("\nEnter para continuar...")
             jugadas.descartarCartas(seleccionCartas,jugador)
             jugador['descartes'] -= 1
         mazo.repartirCartas(len(seleccionCartas),jugador)

@@ -4,9 +4,7 @@ import  juego
 
 
 def descartarCartas(seleccionCartas,jugador): #Descarte de cartas seleccionadas
-    print(jugador['manoJugador'])
     for carta in seleccionCartas:
-        print(carta)
         jugador['manoJugador'].remove(carta)
     return jugador
  
