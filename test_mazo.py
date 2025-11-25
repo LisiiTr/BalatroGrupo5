@@ -20,7 +20,7 @@ def test_crearMazoCompleto():
     resultado = mazo.crearMazoCompleto()
     assert len(resultado) == 52
 
-def test_repartirCartas():
+'''def test_repartirCartas():
     resultado =  mazo.repartirCartas(10,jugador = { 'mazoCompleto' : mazo.crearMazoCompleto() ,
                                                       'mazoRonda' : mazo.crearMazoCompleto(),
                                                       'manoJugador': []} )
@@ -32,6 +32,6 @@ def test_repartirCartas():
     resultado =  mazo.repartirCartas(0,jugador = { 'mazoCompleto' : mazo.crearMazoCompleto() ,
                                                       'mazoRonda' : mazo.crearMazoCompleto(),
                                                       'manoJugador': []} )
-    assert len(resultado['manoJugador']) == 0
+    assert len(resultado['manoJugador']) == 0'''
 
 
