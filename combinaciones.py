@@ -9,7 +9,7 @@ def fullHouse(valores): #se evalúa la jugada fullhouse
     cantPares = []
     cantTrios = []
     valores_unicos = set(valores)
-    
+     
     for v in valores_unicos:
         if valores.count(v) == 3:
             cantTrios.append(v)
@@ -66,7 +66,12 @@ def trio(valores): #se evalúa la jugada trio
             return True
     return False
  
+def mostarTituloCombinacion(nombre):
+    titulo = f"Combinación: {nombre}"
+    linea = f"║ {titulo:^41} ║"
 
+    print("╔═══════════════════════════════════════════╗")
+    print(linea)
 
 def combinacionJugada(jugador, cartasJugadas): #se le muestra al jugador la jugada hecha
     valores, palos = dividirPaloValores(cartasJugadas)
@@ -81,49 +86,31 @@ def combinacionJugada(jugador, cartasJugadas): #se le muestra al jugador la juga
     es_fullHouse = fullHouse(valores)
  
     if es_escalera and es_color:
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Escalera Corrida")
+        mostarTituloCombinacion("Escalera corrida")
         return jugador['combinaciones']["escalera_corrida"]
     elif es_poker:
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Poker")
+        mostarTituloCombinacion("Póker")
         return jugador['combinaciones']["poker"]
     elif es_fullHouse:
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Full house")
+        mostarTituloCombinacion("Full House")
         return jugador['combinaciones']["full_house"]
     elif es_color and (not es_escalera):
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Color")
+        mostarTituloCombinacion("Color")
         return jugador['combinaciones']["color"]
     elif es_escalera and (not es_color):
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Escalera")
+        mostarTituloCombinacion("Escalera")
         return jugador['combinaciones']["escalera"]
     elif es_trio:
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Trio")
+        mostarTituloCombinacion("Trio")
         return jugador['combinaciones']["trio"]
     elif es_doblePar:
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Doble Par")
+        mostarTituloCombinacion("Doble Par")
         return jugador['combinaciones']["doble_par"]
     elif es_par:
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Par")
+        mostarTituloCombinacion("Par")
         return jugador['combinaciones']["par"]
     else:
-        print()
-        print("----------------------------------------------------------------")
-        print("La combinación jugada es: Carta Alta")
+        mostarTituloCombinacion("Carta Alta")
         return jugador['combinaciones']["carta_alta"]
 
 
