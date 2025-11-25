@@ -9,33 +9,39 @@ def limpiarTerminal(): #Limpia la terminal usando libreria ´os´
 
 def hud_cominaciones_Jokers(combinaciones, jokers): #Interfaz visual de combinaciones y jokers
 
-    col_izq = ["╔════════════════════════════╗","║        COMBINACIONES       ║","╚════════════════════════════╝","",]
-    for nombre, (puntos, mult) in combinaciones.items():
-        col_izq.append(f"{nombre.replace('_',' ').title():<16} | Pts:{puntos:<3} | x{mult}")
+    col_izq = [
+        "╔════════════════════════════════════════════════════════╗",
+        "║                    COMBINACIONES                       ║",
+        "╚════════════════════════════════════════════════════════╝",
+    ]
 
-    
+    for nombre, (puntos, mult) in combinaciones.items():
+        linea = f" {nombre.replace('_',' ').title():<21} ║ Pts:{puntos:<10} ║ x{mult:<3}"
+        col_izq.append(linea)
+
     if jokers:
         col_der = [
             "╔════════════════════════════╗",
-            "║        🎭 JOKERS 🎭        ║",
+            "║           JOKERS           ║",
             "╚════════════════════════════╝",
             "",
         ]
     else:
         col_der = [
-            "-- Jokers --",
-            "No hay jokers",
+            "╔════════════════════════════╗",
+            "║           JOKERS           ║",
+            "╚════════════════════════════╝",
+            "",
+            "        No hay jokers        ",
         ]
-       
-    
 
     for i, j in enumerate(jokers, 1): 
             col_der.append(f"[{i}] {j.get('nombre')}  ({j.get('rareza')}): {j.get('descripcion')}")
     
 
-    ancho_col = 50
+    ancho_col = 60
     for izq, der in zip_longest(col_izq, col_der, fillvalue=""):
-        print(f"{(izq):<{ancho_col}} |   {der}")
+        print(f"{(izq):<{ancho_col}} ║   {der}")
 
 
 
@@ -44,9 +50,9 @@ def hud(jugador): #Interfaz visual del jugador
 
     hud_cominaciones_Jokers(jugador["combinaciones"], jugador["jokers"])
 
-    print("\n╔═══════════════════════════════════════════════════════════════════════════════════╗")
-    print( f"║  Jugador: {jugador['nombre']:<9}"f" | Manos: {jugador['manos']:^3}"f" | Descartes: {jugador['descartes']:^3}"f" | Puntaje/Pozo: {jugador['puntaje']:>6}/{jugador['pozo']:<8} ║")
-    print("╚═══════════════════════════════════════════════════════════════════════════════════╝\n")
+    print("\n╔══════════════════════╦════════════════╦════════════════════╦═══════════════════════════════╗")
+    print( f"║  Jugador: {jugador['nombre']:<9}  ║   Manos: {jugador['manos']:^3}   ║   Descartes: {jugador['descartes']:^3}   ║ Puntaje/Pozo: {jugador['puntaje']:>6}/{jugador['pozo']:<8} ║")
+    print(  "╚══════════════════════╩════════════════╩════════════════════╩═══════════════════════════════╝\n")
 
 
 

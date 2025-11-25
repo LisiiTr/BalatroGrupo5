@@ -57,10 +57,23 @@ def calcularFichaPuntaje(joker, fichas, multiplicador, bonificacion): #Calcula l
 
     return fichas,multiplicador
         
+def mostrarDetectados(detectados):
+    print( "╔═══════════════════════════════════════════╗") 
+    print(f"║                  Jokers                   ║")
+    if len(detectados)>0:
+        print("╠═══════════════════════════════════════════╣") 
+        for i,detectado in enumerate(detectados, start=1):
+            print(f"║ {i:^3}.{detectado:^37} ║") 
+        print("╚═══════════════════════════════════════════╝")
+    else:
+        print( "╠═══════════════════════════════════════════╣")
+        print(f"║            No hay detectados              ║")
+        print( "╚═══════════════════════════════════════════╝")
+
 
 def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador): #Se fija si los jokers se activan o no
 
-    print(f"\n Los Jokers activados son: ")
+    detectados = []
 
     for joker in jugador["jokers"]:
         bonificar = False
@@ -166,10 +179,10 @@ def detectarJokers(jugador,cartasJugadas, analisis, fichas, multiplicador): #Se 
             bonificar = True
 
         if bonificar:
-            print(f"{nombre}.")
+            detectados.append(nombre)
             fichas, multiplicador=calcularFichaPuntaje(joker, fichas, multiplicador,bonificacion)
-
-    print(f"\n Las fichas acumuladas son: {fichas} | El multiplicador acumulado es:{multiplicador}")
+        
+    mostrarDetectados(detectados)
     return  fichas, multiplicador
 
     

@@ -41,11 +41,19 @@ def leerRanking(): #se muestran los datos del ranking en pantalla
 
         juego.limpiarTerminal()
         i=1
-        print(f"{'#':<3} | {'Nombre':<12} | {'Ronda':<6} | {'Puntaje':<7}")
-        print("-" * 40)
+        print("╔═══════╦══════════════╦═════════╦═══════════╗")
+        print("║  Pos  ║    Nombre    ║  Ronda  ║  Puntaje  ║")
+        print("╠═══════╬══════════════╬═════════╬═══════════╣")
 
-        for i, j in enumerate(datos, 1):
-            print(f"{i:<3} | {j['nombre']:<12} | {j['rondaMax']:<6} | {j['puntajeTotal']:<7}")
+        for i, jugador in enumerate(datos, 1):
+            num      = f"{i:^5}"
+            nombre   = f"{jugador['nombre']:^12}"        
+            ronda    = f"{jugador['rondaMax']:^7}"       
+            puntaje  = f"{jugador['puntajeTotal']:^9}"   
+            
+            print(f"║ {num} ║ {nombre} ║ {ronda} ║ {puntaje} ║")
+
+        print("╚═══════╩══════════════╩═════════╩═══════════╝")
 
         input("\nEnter para continuar...")
     except Exception as e:
@@ -78,7 +86,7 @@ def guardarPartida(jugador):
         with open(buscarRuta(f"partidas_guardadas.json"), "w") as partidas_guardadas:
             json.dump(partidas,partidas_guardadas,indent=4)
     except Exception as e:
-        print("Ha ocurrido un error.")
+        print("Ocurrió un error al guardar la partida.")
     else: 
         print("La parida se guardo con exito!!")
         input("Enter para continuar...")
@@ -90,13 +98,25 @@ def mostrarPartidasGuardadas():
     if partidas == {}:
         return -1 , []
     else:
-        print("\nLas partidas guardadas son:\n")
-        print(f"{'N°':<4} {'Jugador':<15} {'Ronda':<10}")
-        print("-" * 32)
+
+        print("╔══════╦══════════════╦═════════╗")
+        print("║  N°  ║    Nombre    ║  Ronda  ║")
+        print("╠══════╬══════════════╬═════════╣")
 
         for i, jugador in enumerate(partidas.values(), start=1):
-            print(f"{i:<4} {jugador['nombre']:<15} {jugador['ronda']:<10}")
-        
+            num      = f"{i:^4}"
+            nombre   = f"{jugador['nombre']:^12}"        
+            ronda    = f"{jugador['ronda']:^7}"         
+            
+            print(f"║ {num} ║ {nombre} ║ {ronda} ║")
+
+        print("╚══════╩══════════════╩═════════╝")
+
+
+
+
+
+
         nombres_partidas = [nombre for nombre in partidas.keys()]
 
         try:
