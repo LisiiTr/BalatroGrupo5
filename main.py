@@ -94,7 +94,7 @@ def main(): #Menu principal con opciones
         elif opcion==3:
             archivos.leerRanking()
         elif opcion==4:
-            tienda.imprimirJokers()
+            usuario.imprimirJokers()
         elif opcion==-1:
             activo=False
             print("Programa finalizado.")
