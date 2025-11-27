@@ -101,7 +101,7 @@ def tienda(jugador): #Función que nos permite comprar cartas bonificadoras o so
             jugador['monedas'] -= 3
             input("Enter para continuar...")
         elif opcionElegida == 3 and jugador["monedas"]>=6:
-            seleccionarJoker(jugador,jugador['jokersDisponibles'])
+            seleccionarJoker(jugador)
             jugador['monedas'] -= 6
             input("Enter para continuar...")
         elif opcionElegida == 4 and jugador["monedas"]>=6:
