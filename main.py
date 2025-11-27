@@ -49,6 +49,7 @@ def jugarPartida(jugador): #Resultado de ronda, acceso a tienda, jugar de nuevo
             if jugar == 1:
                 juego.limpiarTerminal()
                 usuario.nuevaRonda(jugador)
+                mazo.repartirCartas(10, jugador)
             else:   
                 puedeJugar=False
                 usuario.nuevaRonda(jugador)
@@ -87,6 +88,7 @@ def main(): #Menu principal con opciones
         elif opcion==2:
             jugador = archivos.cargarPartida()
             if jugador != {}:
+                mazo.repartirCartas(10, jugador)
                 jugarPartida(jugador)
             else:
                 print("No hay partidas guardadas. Debe iniciar una nueva partida.")

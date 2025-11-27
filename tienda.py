@@ -173,9 +173,9 @@ def seleccionarJoker(jugador,jokers):#Función del sobre de Jokers, se agarran a
 
     
     jugador['jokers'].append(jokersRandoms[jokerIndice-1])
-    jokersLista= list(jugador['jokersDisponibles'])
+    jokersLista= jugador['jokersDisponibles']
     jokersLista.remove(jokersRandoms[jokerIndice-1])
-    jugador['jokersDisponibles'] = tuple(jokersLista)
+    jugador['jokersDisponibles'] = jokersLista
 
 
     return jugador

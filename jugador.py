@@ -33,8 +33,10 @@ jokers = [
 
 
 def imprimirJokers(): #Imprime los jokers. Función que se llama desde el menu principal.
-    for joker in jokers:
-        print(f"{joker['nombre']} ({joker['rareza']}): {joker['descripcion']}")
+    juego.limpiarTerminal()
+    print("Los jokers habilitados son:\n")
+    for i , joker in enumerate (jokers,start=1):
+        print(f"{i}: { joker['nombre']} ({joker['rareza']}): {joker['descripcion']}")
     input("Enter para continuar...")
 
 
