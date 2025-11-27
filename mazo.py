@@ -67,7 +67,7 @@ def mostrarCartasSelect(listaCartas): #se muestran las cartas seleccionadas por 
     print(linea3)
     print(linea4)
  
-def repartirCartas(cantCartas,jugador): #se reparten las cartas al jugador cada vez que sea necesario
+def repartirCartas(cantCartas,jugador,imprimir): #se reparten las cartas al jugador cada vez que sea necesario
     cartas_repartidas=[]
     for i in range(cantCartas):
         carta = random.choice(jugador['mazoRonda'])
@@ -76,8 +76,11 @@ def repartirCartas(cantCartas,jugador): #se reparten las cartas al jugador cada 
         cartas_repartidas.append(carta)
     
     juego.limpiarTerminal()
-    print(f"Se agregaron a su mano las siguientes {cantCartas} cartas: \n")
-    mostrarCartas(cartas_repartidas)
-    input("\nEnter para continuar...")
+    if imprimir:
+        print("╔════════════════════════════════════════════════════════╗")
+        print(f"║    Se agregaron a su mano las siguientes {cantCartas:<2} cartas:    ║")
+        print("╚════════════════════════════════════════════════════════╝")
+        mostrarCartas(cartas_repartidas)
+        input("\nEnter para continuar...")
     
     return jugador 

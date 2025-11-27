@@ -13,15 +13,18 @@ def jugarPartida(jugador): #Resultado de ronda, acceso a tienda, jugar de nuevo
         
         if jugador['puntaje'] < jugador['pozo'] and jugador['manos'] == 0:
             print("¡Te quedaste sin manos y no alcanzate el pozo! Perdiste.")
-            print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
+            print("╔════════════════════════════════════════════════════════╗")
+            print(f"║      Ultima ronda alcanzada:{jugador['ronda']:<3} ¡Hasta la próxima!     ║")
+            print("╚════════════════════════════════════════════════════════╝")
+            input("\nEnter para continuar...")
             puedeJugar=False
             usuario.sumarPuntajeRanking(jugador)
             archivos.cargarHistorico(jugador)
         elif jugador['puntaje'] >= jugador['pozo']:
             juego.limpiarTerminal()
-            print("\n----------------------------------------------------------------")
-            print("¡Alcanzaste el valor del pozo! ")
-            print("----------------------------------------------------------------\n")
+            print("╔════════════════════════════════════════════════════════╗")
+            print("║             ¡Alcanzaste el valor del pozo!             ║")
+            print("╚════════════════════════════════════════════════════════╝")
 
             jugador['monedas'] += 5 + jugador['manos'] + jugador['descartes']
             
@@ -49,16 +52,15 @@ def jugarPartida(jugador): #Resultado de ronda, acceso a tienda, jugar de nuevo
             if jugar == 1:
                 juego.limpiarTerminal()
                 usuario.nuevaRonda(jugador)
-                mazo.repartirCartas(10, jugador)
+                mazo.repartirCartas(10, jugador,False)
             else:   
                 puedeJugar=False
                 usuario.nuevaRonda(jugador)
                 archivos.guardarPartida(jugador)
                 usuario.sumarPuntajeRanking(jugador)
-                print("\n----------------------------------------------------------------")
-                print(f"Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!")
-                print("----------------------------------------------------------------\n")
-
+                print("╔════════════════════════════════════════════════════════╗")
+                print(f"║  Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!  ║")
+                print("╚════════════════════════════════════════════════════════╝")
 
 def main(): #Menu principal con opciones
     activo=True
@@ -83,12 +85,12 @@ def main(): #Menu principal con opciones
 
         if opcion==1:
             jugador = usuario.crearJugador()
-            mazo.repartirCartas(10, jugador)
+            mazo.repartirCartas(10, jugador,False)
             jugarPartida(jugador)
         elif opcion==2:
             jugador = archivos.cargarPartida()
             if jugador != {}:
-                mazo.repartirCartas(10, jugador)
+                mazo.repartirCartas(10, jugador,False)
                 jugarPartida(jugador)
             else:
                 print("No hay partidas guardadas. Debe iniciar una nueva partida.")

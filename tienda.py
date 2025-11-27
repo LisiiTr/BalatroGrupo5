@@ -65,7 +65,7 @@ def tienda(jugador): #Función que nos permite comprar cartas bonificadoras o so
 
 
                 print( "╔═══════════════════════════════════════════════════════════╗")
-                print(f"║                MONEDAS DISPONIBLES: {jugador['monedas']:<21}║")
+                print(f"║                MONEDAS DISPONIBLES: {jugador['monedas']:<22}║")
                 print( "╠═══════════════════════════════════════════════════════════╣")
                 print( "║                          TIENDA                           ║")
                 print( "╠═══════════════════════════════════════════════════════════╣")

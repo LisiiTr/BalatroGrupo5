@@ -107,11 +107,15 @@ def selectorCartas(jugador): #Seleccion, deseleccion y confirmacion de cartas
                     if cartaSeleccionada == -1:
                         bandera= False
         except ValueError:
-            print("Debe ingresar un numero")
+            print("╔════════════════════════════════════════════════════════╗")
+            print("║                Debe ingresar un numero                 ║")
+            print("╚════════════════════════════════════════════════════════╝")
             input("\nEnter para continuar...")
             limpiarTerminal()
         except IndexError:
-            print("Debe ingresar una carta disponible")
+            print("╔════════════════════════════════════════════════════════╗")
+            print("║           Debe ingresar una carta disponible           ║")
+            print("╚════════════════════════════════════════════════════════╝")
             input("\nEnter para continuar...")
             limpiarTerminal()
         finally:
@@ -158,4 +162,4 @@ def juego(jugador): #Decidir si jugar o descartar las cartas seleccionadas
             input("\nEnter para continuar...")
             jugadas.descartarCartas(seleccionCartas,jugador)
             jugador['descartes'] -= 1
-        mazo.repartirCartas(len(seleccionCartas),jugador)
+        mazo.repartirCartas(len(seleccionCartas),jugador,True)

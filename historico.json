@@ -38,5 +38,15 @@
         "nombre": "lauti",
         "rondaMax": 10,
         "puntajeTotal": 120301
+    },
+    {
+        "nombre": "Thom",
+        "rondaMax": 1,
+        "puntajeTotal": 72
+    },
+    {
+        "nombre": "2",
+        "rondaMax": 1,
+        "puntajeTotal": 63
     }
 ]
