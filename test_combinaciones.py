@@ -25,10 +25,10 @@ def testEscalera():
 	assert resultado == True
 	resultado = combinaciones.escalera([9,10,11,12,13])
 	assert resultado == True
-	resultado = combinaciones.escalera([5,4,3,2,1]) #La escalera es solo ascendente?
-	assert resultado == False
+	resultado = combinaciones.escalera([5,4,3,2,1])
+	assert resultado == True
 	resultado = combinaciones.escalera([10,9,12,11,13])
-	assert resultado == False	
+	assert resultado == True	
 	resultado = combinaciones.escalera([2,3,4])
 	assert resultado == False
 	resultado = combinaciones.escalera([2,3])

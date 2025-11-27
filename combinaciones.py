@@ -23,6 +23,7 @@ def fullHouse(valores): #se evalúa la jugada fullhouse
  
 # Combinaciones
 def escalera(valores): #se evalúa la jugada escalera
+    valores.sort()
     if len(valores) == 5:
         for i in range(len(valores) - 1):
             if valores[i] + 1 != valores[i + 1]:
@@ -75,7 +76,6 @@ def mostarTituloCombinacion(nombre):
 
 def combinacionJugada(jugador, cartasJugadas): #se le muestra al jugador la jugada hecha
     valores, palos = dividirPaloValores(cartasJugadas)
-    valores.sort()
  
     es_escalera = escalera(valores)
     es_poker = poker(valores)
