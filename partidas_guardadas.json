@@ -1,1 +1,894 @@
-{}
+{
+    "lichi-2": {
+        "nombre": "lichi",
+        "puntaje": 0,
+        "puntaje_ranking": 304,
+        "pozo": 498,
+        "ronda": 2,
+        "manos": 5,
+        "descartes": 3,
+        "mazoCompleto": [
+            {
+                "nombre": "A\u2660",
+                "valor": 1,
+                "palo": "\u2660",
+                "fichas": 11
+            },
+            {
+                "nombre": "2\u2660",
+                "valor": 2,
+                "palo": "\u2660",
+                "fichas": 2
+            },
+            {
+                "nombre": "3\u2660",
+                "valor": 3,
+                "palo": "\u2660",
+                "fichas": 3
+            },
+            {
+                "nombre": "4\u2660",
+                "valor": 4,
+                "palo": "\u2660",
+                "fichas": 4
+            },
+            {
+                "nombre": "5\u2660",
+                "valor": 5,
+                "palo": "\u2660",
+                "fichas": 5
+            },
+            {
+                "nombre": "6\u2660",
+                "valor": 6,
+                "palo": "\u2660",
+                "fichas": 6
+            },
+            {
+                "nombre": "7\u2660",
+                "valor": 7,
+                "palo": "\u2660",
+                "fichas": 7
+            },
+            {
+                "nombre": "8\u2660",
+                "valor": 8,
+                "palo": "\u2660",
+                "fichas": 8
+            },
+            {
+                "nombre": "9\u2660",
+                "valor": 9,
+                "palo": "\u2660",
+                "fichas": 9
+            },
+            {
+                "nombre": "10\u2660",
+                "valor": 10,
+                "palo": "\u2660",
+                "fichas": 20,
+                "bonificacion_fichas": 10
+            },
+            {
+                "nombre": "J\u2660",
+                "valor": 11,
+                "palo": "\u2660",
+                "fichas": 10
+            },
+            {
+                "nombre": "Q\u2660",
+                "valor": 12,
+                "palo": "\u2660",
+                "fichas": 10
+            },
+            {
+                "nombre": "K\u2660",
+                "valor": 13,
+                "palo": "\u2660",
+                "fichas": 10
+            },
+            {
+                "nombre": "A\u2665",
+                "valor": 1,
+                "palo": "\u2665",
+                "fichas": 11
+            },
+            {
+                "nombre": "2\u2665",
+                "valor": 2,
+                "palo": "\u2665",
+                "fichas": 2
+            },
+            {
+                "nombre": "3\u2665",
+                "valor": 3,
+                "palo": "\u2665",
+                "fichas": 3
+            },
+            {
+                "nombre": "4\u2665",
+                "valor": 4,
+                "palo": "\u2665",
+                "fichas": 4
+            },
+            {
+                "nombre": "5\u2665",
+                "valor": 5,
+                "palo": "\u2665",
+                "fichas": 5
+            },
+            {
+                "nombre": "6\u2665",
+                "valor": 6,
+                "palo": "\u2665",
+                "fichas": 6
+            },
+            {
+                "nombre": "7\u2665",
+                "valor": 7,
+                "palo": "\u2665",
+                "fichas": 7
+            },
+            {
+                "nombre": "8\u2665",
+                "valor": 8,
+                "palo": "\u2665",
+                "fichas": 8
+            },
+            {
+                "nombre": "9\u2665",
+                "valor": 9,
+                "palo": "\u2665",
+                "fichas": 9
+            },
+            {
+                "nombre": "10\u2665",
+                "valor": 10,
+                "palo": "\u2665",
+                "fichas": 10
+            },
+            {
+                "nombre": "J\u2665",
+                "valor": 11,
+                "palo": "\u2665",
+                "fichas": 10
+            },
+            {
+                "nombre": "Q\u2665",
+                "valor": 12,
+                "palo": "\u2665",
+                "fichas": 10
+            },
+            {
+                "nombre": "K\u2665",
+                "valor": 13,
+                "palo": "\u2665",
+                "fichas": 10
+            },
+            {
+                "nombre": "A\u2666",
+                "valor": 1,
+                "palo": "\u2666",
+                "fichas": 11
+            },
+            {
+                "nombre": "2\u2666",
+                "valor": 2,
+                "palo": "\u2666",
+                "fichas": 2
+            },
+            {
+                "nombre": "3\u2666",
+                "valor": 3,
+                "palo": "\u2666",
+                "fichas": 3
+            },
+            {
+                "nombre": "4\u2666",
+                "valor": 4,
+                "palo": "\u2666",
+                "fichas": 4
+            },
+            {
+                "nombre": "5\u2666",
+                "valor": 5,
+                "palo": "\u2666",
+                "fichas": 5
+            },
+            {
+                "nombre": "6\u2666",
+                "valor": 6,
+                "palo": "\u2666",
+                "fichas": 6
+            },
+            {
+                "nombre": "7\u2666",
+                "valor": 7,
+                "palo": "\u2666",
+                "fichas": 7
+            },
+            {
+                "nombre": "8\u2666",
+                "valor": 8,
+                "palo": "\u2666",
+                "fichas": 8
+            },
+            {
+                "nombre": "9\u2666",
+                "valor": 9,
+                "palo": "\u2666",
+                "fichas": 9
+            },
+            {
+                "nombre": "10\u2666",
+                "valor": 10,
+                "palo": "\u2666",
+                "fichas": 10
+            },
+            {
+                "nombre": "J\u2666",
+                "valor": 11,
+                "palo": "\u2666",
+                "fichas": 10
+            },
+            {
+                "nombre": "Q\u2666",
+                "valor": 12,
+                "palo": "\u2666",
+                "fichas": 10
+            },
+            {
+                "nombre": "K\u2666",
+                "valor": 13,
+                "palo": "\u2666",
+                "fichas": 10
+            },
+            {
+                "nombre": "A\u2663",
+                "valor": 1,
+                "palo": "\u2663",
+                "fichas": 11
+            },
+            {
+                "nombre": "2\u2663",
+                "valor": 2,
+                "palo": "\u2663",
+                "fichas": 4,
+                "bonificacion_fichas": 2
+            },
+            {
+                "nombre": "3\u2663",
+                "valor": 3,
+                "palo": "\u2663",
+                "fichas": 3
+            },
+            {
+                "nombre": "4\u2663",
+                "valor": 4,
+                "palo": "\u2663",
+                "fichas": 4
+            },
+            {
+                "nombre": "5\u2663",
+                "valor": 5,
+                "palo": "\u2663",
+                "fichas": 5
+            },
+            {
+                "nombre": "6\u2663",
+                "valor": 6,
+                "palo": "\u2663",
+                "fichas": 6
+            },
+            {
+                "nombre": "7\u2663",
+                "valor": 7,
+                "palo": "\u2663",
+                "fichas": 7
+            },
+            {
+                "nombre": "8\u2663",
+                "valor": 8,
+                "palo": "\u2663",
+                "fichas": 8
+            },
+            {
+                "nombre": "9\u2663",
+                "valor": 9,
+                "palo": "\u2663",
+                "fichas": 9
+            },
+            {
+                "nombre": "10\u2663",
+                "valor": 10,
+                "palo": "\u2663",
+                "fichas": 10
+            },
+            {
+                "nombre": "J\u2663",
+                "valor": 11,
+                "palo": "\u2663",
+                "fichas": 10
+            },
+            {
+                "nombre": "Q\u2663",
+                "valor": 12,
+                "palo": "\u2663",
+                "fichas": 10
+            },
+            {
+                "nombre": "K\u2663",
+                "valor": 13,
+                "palo": "\u2663",
+                "fichas": 10
+            },
+            {
+                "nombre": "2\u2663",
+                "valor": 2,
+                "palo": "\u2663",
+                "fichas": 4,
+                "bonificacion_fichas": 2
+            }
+        ],
+        "mazoRonda": [
+            {
+                "nombre": "A\u2660",
+                "valor": 1,
+                "palo": "\u2660",
+                "fichas": 11
+            },
+            {
+                "nombre": "2\u2660",
+                "valor": 2,
+                "palo": "\u2660",
+                "fichas": 2
+            },
+            {
+                "nombre": "3\u2660",
+                "valor": 3,
+                "palo": "\u2660",
+                "fichas": 3
+            },
+            {
+                "nombre": "4\u2660",
+                "valor": 4,
+                "palo": "\u2660",
+                "fichas": 4
+            },
+            {
+                "nombre": "5\u2660",
+                "valor": 5,
+                "palo": "\u2660",
+                "fichas": 5
+            },
+            {
+                "nombre": "6\u2660",
+                "valor": 6,
+                "palo": "\u2660",
+                "fichas": 6
+            },
+            {
+                "nombre": "7\u2660",
+                "valor": 7,
+                "palo": "\u2660",
+                "fichas": 7
+            },
+            {
+                "nombre": "8\u2660",
+                "valor": 8,
+                "palo": "\u2660",
+                "fichas": 8
+            },
+            {
+                "nombre": "9\u2660",
+                "valor": 9,
+                "palo": "\u2660",
+                "fichas": 9
+            },
+            {
+                "nombre": "10\u2660",
+                "valor": 10,
+                "palo": "\u2660",
+                "fichas": 20,
+                "bonificacion_fichas": 10
+            },
+            {
+                "nombre": "J\u2660",
+                "valor": 11,
+                "palo": "\u2660",
+                "fichas": 10
+            },
+            {
+                "nombre": "Q\u2660",
+                "valor": 12,
+                "palo": "\u2660",
+                "fichas": 10
+            },
+            {
+                "nombre": "K\u2660",
+                "valor": 13,
+                "palo": "\u2660",
+                "fichas": 10
+            },
+            {
+                "nombre": "A\u2665",
+                "valor": 1,
+                "palo": "\u2665",
+                "fichas": 11
+            },
+            {
+                "nombre": "2\u2665",
+                "valor": 2,
+                "palo": "\u2665",
+                "fichas": 2
+            },
+            {
+                "nombre": "3\u2665",
+                "valor": 3,
+                "palo": "\u2665",
+                "fichas": 3
+            },
+            {
+                "nombre": "4\u2665",
+                "valor": 4,
+                "palo": "\u2665",
+                "fichas": 4
+            },
+            {
+                "nombre": "5\u2665",
+                "valor": 5,
+                "palo": "\u2665",
+                "fichas": 5
+            },
+            {
+                "nombre": "6\u2665",
+                "valor": 6,
+                "palo": "\u2665",
+                "fichas": 6
+            },
+            {
+                "nombre": "7\u2665",
+                "valor": 7,
+                "palo": "\u2665",
+                "fichas": 7
+            },
+            {
+                "nombre": "8\u2665",
+                "valor": 8,
+                "palo": "\u2665",
+                "fichas": 8
+            },
+            {
+                "nombre": "9\u2665",
+                "valor": 9,
+                "palo": "\u2665",
+                "fichas": 9
+            },
+            {
+                "nombre": "10\u2665",
+                "valor": 10,
+                "palo": "\u2665",
+                "fichas": 10
+            },
+            {
+                "nombre": "J\u2665",
+                "valor": 11,
+                "palo": "\u2665",
+                "fichas": 10
+            },
+            {
+                "nombre": "Q\u2665",
+                "valor": 12,
+                "palo": "\u2665",
+                "fichas": 10
+            },
+            {
+                "nombre": "K\u2665",
+                "valor": 13,
+                "palo": "\u2665",
+                "fichas": 10
+            },
+            {
+                "nombre": "A\u2666",
+                "valor": 1,
+                "palo": "\u2666",
+                "fichas": 11
+            },
+            {
+                "nombre": "2\u2666",
+                "valor": 2,
+                "palo": "\u2666",
+                "fichas": 2
+            },
+            {
+                "nombre": "3\u2666",
+                "valor": 3,
+                "palo": "\u2666",
+                "fichas": 3
+            },
+            {
+                "nombre": "4\u2666",
+                "valor": 4,
+                "palo": "\u2666",
+                "fichas": 4
+            },
+            {
+                "nombre": "5\u2666",
+                "valor": 5,
+                "palo": "\u2666",
+                "fichas": 5
+            },
+            {
+                "nombre": "6\u2666",
+                "valor": 6,
+                "palo": "\u2666",
+                "fichas": 6
+            },
+            {
+                "nombre": "7\u2666",
+                "valor": 7,
+                "palo": "\u2666",
+                "fichas": 7
+            },
+            {
+                "nombre": "8\u2666",
+                "valor": 8,
+                "palo": "\u2666",
+                "fichas": 8
+            },
+            {
+                "nombre": "9\u2666",
+                "valor": 9,
+                "palo": "\u2666",
+                "fichas": 9
+            },
+            {
+                "nombre": "10\u2666",
+                "valor": 10,
+                "palo": "\u2666",
+                "fichas": 10
+            },
+            {
+                "nombre": "J\u2666",
+                "valor": 11,
+                "palo": "\u2666",
+                "fichas": 10
+            },
+            {
+                "nombre": "Q\u2666",
+                "valor": 12,
+                "palo": "\u2666",
+                "fichas": 10
+            },
+            {
+                "nombre": "K\u2666",
+                "valor": 13,
+                "palo": "\u2666",
+                "fichas": 10
+            },
+            {
+                "nombre": "A\u2663",
+                "valor": 1,
+                "palo": "\u2663",
+                "fichas": 11
+            },
+            {
+                "nombre": "2\u2663",
+                "valor": 2,
+                "palo": "\u2663",
+                "fichas": 4,
+                "bonificacion_fichas": 2
+            },
+            {
+                "nombre": "3\u2663",
+                "valor": 3,
+                "palo": "\u2663",
+                "fichas": 3
+            },
+            {
+                "nombre": "4\u2663",
+                "valor": 4,
+                "palo": "\u2663",
+                "fichas": 4
+            },
+            {
+                "nombre": "5\u2663",
+                "valor": 5,
+                "palo": "\u2663",
+                "fichas": 5
+            },
+            {
+                "nombre": "6\u2663",
+                "valor": 6,
+                "palo": "\u2663",
+                "fichas": 6
+            },
+            {
+                "nombre": "7\u2663",
+                "valor": 7,
+                "palo": "\u2663",
+                "fichas": 7
+            },
+            {
+                "nombre": "8\u2663",
+                "valor": 8,
+                "palo": "\u2663",
+                "fichas": 8
+            },
+            {
+                "nombre": "9\u2663",
+                "valor": 9,
+                "palo": "\u2663",
+                "fichas": 9
+            },
+            {
+                "nombre": "10\u2663",
+                "valor": 10,
+                "palo": "\u2663",
+                "fichas": 10
+            },
+            {
+                "nombre": "J\u2663",
+                "valor": 11,
+                "palo": "\u2663",
+                "fichas": 10
+            },
+            {
+                "nombre": "Q\u2663",
+                "valor": 12,
+                "palo": "\u2663",
+                "fichas": 10
+            },
+            {
+                "nombre": "K\u2663",
+                "valor": 13,
+                "palo": "\u2663",
+                "fichas": 10
+            },
+            {
+                "nombre": "2\u2663",
+                "valor": 2,
+                "palo": "\u2663",
+                "fichas": 4,
+                "bonificacion_fichas": 2
+            }
+        ],
+        "manoJugador": [],
+        "monedas": 0,
+        "jokers": [
+            {
+                "nombre": "Color Favorito",
+                "descripcion": "Mismo palo en toda la jugada suma 200 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 200,
+                "probabilidad": 0.62,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Doble As",
+                "descripcion": "Por cada As en la mano, +2 al multiplicador.",
+                "tipo_bonificacion": "sum_multiplicador",
+                "bonificacion": 2,
+                "probabilidad": 0.35,
+                "rareza": "raro"
+            }
+        ],
+        "planetas": [],
+        "combinaciones": {
+            "carta_alta": [
+                5,
+                1
+            ],
+            "par": [
+                10,
+                2
+            ],
+            "doble_par": [
+                20,
+                2
+            ],
+            "trio": [
+                30,
+                3
+            ],
+            "escalera": [
+                30,
+                4
+            ],
+            "color": [
+                35,
+                4
+            ],
+            "full_house": [
+                40,
+                4
+            ],
+            "poker": [
+                60,
+                7
+            ],
+            "escalera_corrida": [
+                100,
+                8
+            ]
+        },
+        "jokersDisponibles": [
+            {
+                "nombre": "Par",
+                "descripcion": "Si la mano es Par, multiplica x3.",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 3,
+                "probabilidad": 0.7,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Coraz\u00f3n Generoso",
+                "descripcion": "Cada coraz\u00f3n aporta +25 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 25,
+                "probabilidad": 0.68,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "As de Oro",
+                "descripcion": "Si aparece cualquier As, suma +100 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 100,
+                "probabilidad": 0.65,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Rey del Multiplicador",
+                "descripcion": "Aumenta el multiplicador base +1.",
+                "tipo_bonificacion": "sum_multiplicador",
+                "bonificacion": 1,
+                "probabilidad": 0.58,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Dupla Segura",
+                "descripcion": "Parejas suman +150 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 150,
+                "probabilidad": 0.6,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Punta y Hacha",
+                "descripcion": "Cartas 2\u20135 suman +20 fichas cada una.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 20,
+                "probabilidad": 0.66,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Dama Cort\u00e9s",
+                "descripcion": "Si hay al menos una Dama, +1 al multiplicador.",
+                "tipo_bonificacion": "sum_multiplicador",
+                "bonificacion": 1,
+                "probabilidad": 0.55,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Tr\u00edo Amable",
+                "descripcion": "Si la mano es Tr\u00edo, multiplica x2.",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 2,
+                "probabilidad": 0.57,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Diez Limpio",
+                "descripcion": "Cada carta 10 suma +30 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 30,
+                "probabilidad": 0.63,
+                "rareza": "com\u00fan"
+            },
+            {
+                "nombre": "Triple Doble",
+                "descripcion": "Dobles parejas obtienen multiplicador x2 adicional.",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 2,
+                "probabilidad": 0.42,
+                "rareza": "raro"
+            },
+            {
+                "nombre": "Dama de Fortuna",
+                "descripcion": "Si hay una Dama, +2 al multiplicador.",
+                "tipo_bonificacion": "sum_multiplicador",
+                "bonificacion": 2,
+                "probabilidad": 0.4,
+                "rareza": "raro"
+            },
+            {
+                "nombre": "Palo Fiel",
+                "descripcion": "Por cada carta del mismo palo, +80 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 80,
+                "probabilidad": 0.38,
+                "rareza": "raro"
+            },
+            {
+                "nombre": "Escalera Realista",
+                "descripcion": "Escalera o escalera real multiplica x4.",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 4,
+                "probabilidad": 0.32,
+                "rareza": "raro"
+            },
+            {
+                "nombre": "Sota Traviesa",
+                "descripcion": "Cada J (Sota) suma +120 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 120,
+                "probabilidad": 0.36,
+                "rareza": "raro"
+            },
+            {
+                "nombre": "Poker",
+                "descripcion": "Si hay 4 cartas del mismo rango, multiplica x3.",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 3,
+                "probabilidad": 0.28,
+                "rareza": "raro"
+            },
+            {
+                "nombre": "Rey de Copas",
+                "descripcion": "Cada Rey otorga +2 al multiplicador.",
+                "tipo_bonificacion": "sum_multiplicador",
+                "bonificacion": 2,
+                "probabilidad": 0.3,
+                "rareza": "raro"
+            },
+            {
+                "nombre": "Joker Comod\u00edn",
+                "descripcion": "Full House duplica el multiplicador (x4).",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 4,
+                "probabilidad": 0.12,
+                "rareza": "legendario"
+            },
+            {
+                "nombre": "As de Picas",
+                "descripcion": "Si hay As de picas, +500 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 500,
+                "probabilidad": 0.1,
+                "rareza": "legendario"
+            },
+            {
+                "nombre": "Corona Triple",
+                "descripcion": "Si hay 3 figuras (J/Q/K) en la mano, multiplica x6.",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 6,
+                "probabilidad": 0.07,
+                "rareza": "legendario"
+            },
+            {
+                "nombre": "Motor Infinito",
+                "descripcion": "Hand ganadora obtiene +5 al multiplicador base.",
+                "tipo_bonificacion": "sum_multiplicador",
+                "bonificacion": 5,
+                "probabilidad": 0.06,
+                "rareza": "legendario"
+            },
+            {
+                "nombre": "Tesoro Oculto",
+                "descripcion": "Color + Escalera en la misma mano multiplica x8.",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 8,
+                "probabilidad": 0.05,
+                "rareza": "legendario"
+            },
+            {
+                "nombre": "Fortuna Eterna",
+                "descripcion": "Si la mano supera cierto umbral de fichas, suma +800 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 800,
+                "probabilidad": 0.04,
+                "rareza": "legendario"
+            }
+        ]
+    }
+}

@@ -48,5 +48,15 @@
         "nombre": "2",
         "rondaMax": 1,
         "puntajeTotal": 63
+    },
+    {
+        "nombre": "lisi",
+        "rondaMax": 1,
+        "puntajeTotal": 240
+    },
+    {
+        "nombre": "lichu",
+        "rondaMax": 3,
+        "puntajeTotal": 2531
     }
 ]

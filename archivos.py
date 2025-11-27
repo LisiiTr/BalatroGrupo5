@@ -88,7 +88,7 @@ def guardarPartida(jugador):
     except Exception as e:
         print("Ocurrió un error al guardar la partida.")
     else: 
-        print("La parida se guardo con exito!!")
+        print("La partida se guardo con exito!!")
         input("Enter para continuar...")
     
 
@@ -99,28 +99,25 @@ def mostrarPartidasGuardadas():
         return -1 , []
     else:
 
-        print("╔══════╦══════════════╦═════════╗")
-        print("║  N°  ║    Nombre    ║  Ronda  ║")
-        print("╠══════╬══════════════╬═════════╣")
-
-        for i, jugador in enumerate(partidas.values(), start=1):
-            num      = f"{i:^4}"
-            nombre   = f"{jugador['nombre']:^12}"        
-            ronda    = f"{jugador['ronda']:^7}"         
-            
-            print(f"║ {num} ║ {nombre} ║ {ronda} ║")
-
-        print("╚══════╩══════════════╩═════════╝")
-
-
-
-
-
-
-        nombres_partidas = [nombre for nombre in partidas.keys()]
+       
         invalido = True
         while invalido:
             try:
+                print("╔══════╦══════════════╦═════════╗")
+                print("║  N°  ║    Nombre    ║  Ronda  ║")
+                print("╠══════╬══════════════╬═════════╣")
+
+                for i, jugador in enumerate(partidas.values(), start=1):
+                    num      = f"{i:^4}"
+                    nombre   = f"{jugador['nombre']:^12}"        
+                    ronda    = f"{jugador['ronda']:^7}"         
+                    
+                    print(f"║ {num} ║ {nombre} ║ {ronda} ║")
+
+                print("╚══════╩══════════════╩═════════╝")
+
+
+                nombres_partidas = [nombre for nombre in partidas.keys()]
                 opcion=int(input("Seleccione el N° de la partida que desea continuar, o -1 para volver atras: "))
                 if opcion == -1:
                     return -2 , nombres_partidas

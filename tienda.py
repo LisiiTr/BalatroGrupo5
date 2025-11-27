@@ -107,7 +107,6 @@ def tienda(jugador): #Función que nos permite comprar cartas bonificadoras o so
         elif opcionElegida == 4 and jugador["monedas"]>=6:
             jugador['monedas'] -= 6
             seleccionarPlaneta(jugador, planetas)
-            input("Enter para continuar...")
         elif opcionElegida == 5 and jugador["monedas"]>=6:
             jugador['monedas'] -= 6
             seleccionarNuevaCarta(jugador, jugador['mazoCompleto'])
@@ -153,17 +152,20 @@ def seleccionarJoker(jugador,jokers):#Función del sobre de Jokers, se agarran a
         jokerRandom= random.choice(jugador['jokersDisponibles'])
         if jokerRandom not in jokersRandoms:
             jokersRandoms.append(jokerRandom)
-    x=1
-    
+        
     
     bandera=True
     while bandera:
-        for j in jokersRandoms:
-            print(f'{x}- {j["nombre"]} | {j["descripcion"]}')
-            x+=1
+        for i,j in enumerate (jokersRandoms,start=1):
+            print(f'{i}- {j["nombre"]} | {j["descripcion"]}')
+            
 
         try:
             jokerIndice= int(input("Seleccione un joker:"))
+            while jokerIndice < 1 or jokerIndice > 3:
+                jokerIndice= int(input("La selección debe ser entre 1 y 3. Seleccione un joker:"))
+
+
         except ValueError:
             print("Ha ocurrido un error. Debe ingresar un numero")
             input("\nEnter para continuar...")

@@ -129,10 +129,10 @@ def juego(jugador): #Decidir si jugar o descartar las cartas seleccionadas
         seleccionCartas=[]
 
         seleccionCartas= selectorCartas(jugador)
-        mazo.mostrarCartasSelect(seleccionCartas)
         bandera=True
         while bandera:
             try:
+                mazo.mostrarCartasSelect(seleccionCartas)
                 decision = int(input("Ingrese 1 si quiere jugar, o 2 si quiere descartar: "))
 
                 if jugador['descartes'] == 0 and decision == 2:
@@ -163,7 +163,7 @@ def juego(jugador): #Decidir si jugar o descartar las cartas seleccionadas
             jugadas.descartarCartas(seleccionCartas,jugador)
             jugador['descartes'] -= 1
         
-        if jugador['puntaje'] < jugador['pozo']:
+        if jugador['puntaje'] < jugador['pozo'] and jugador['manos']>0:
             mazo.repartirCartas(len(seleccionCartas),jugador,True)
         else:
             mazo.repartirCartas(len(seleccionCartas),jugador,False)
