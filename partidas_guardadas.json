@@ -1,10 +1,10 @@
 {
-    "lichi-2": {
-        "nombre": "lichi",
+    "Mateo-3": {
+        "nombre": "Mateo",
         "puntaje": 0,
-        "puntaje_ranking": 304,
-        "pozo": 498,
-        "ronda": 2,
+        "puntaje_ranking": 1236,
+        "pozo": 1121,
+        "ronda": 3,
         "manos": 5,
         "descartes": 3,
         "mazoCompleto": [
@@ -66,8 +66,7 @@
                 "nombre": "10\u2660",
                 "valor": 10,
                 "palo": "\u2660",
-                "fichas": 20,
-                "bonificacion_fichas": 10
+                "fichas": 10
             },
             {
                 "nombre": "J\u2660",
@@ -253,8 +252,7 @@
                 "nombre": "2\u2663",
                 "valor": 2,
                 "palo": "\u2663",
-                "fichas": 4,
-                "bonificacion_fichas": 2
+                "fichas": 2
             },
             {
                 "nombre": "3\u2663",
@@ -321,13 +319,6 @@
                 "valor": 13,
                 "palo": "\u2663",
                 "fichas": 10
-            },
-            {
-                "nombre": "2\u2663",
-                "valor": 2,
-                "palo": "\u2663",
-                "fichas": 4,
-                "bonificacion_fichas": 2
             }
         ],
         "mazoRonda": [
@@ -389,8 +380,7 @@
                 "nombre": "10\u2660",
                 "valor": 10,
                 "palo": "\u2660",
-                "fichas": 20,
-                "bonificacion_fichas": 10
+                "fichas": 10
             },
             {
                 "nombre": "J\u2660",
@@ -576,8 +566,7 @@
                 "nombre": "2\u2663",
                 "valor": 2,
                 "palo": "\u2663",
-                "fichas": 4,
-                "bonificacion_fichas": 2
+                "fichas": 2
             },
             {
                 "nombre": "3\u2663",
@@ -644,35 +633,11 @@
                 "valor": 13,
                 "palo": "\u2663",
                 "fichas": 10
-            },
-            {
-                "nombre": "2\u2663",
-                "valor": 2,
-                "palo": "\u2663",
-                "fichas": 4,
-                "bonificacion_fichas": 2
             }
         ],
         "manoJugador": [],
-        "monedas": 0,
-        "jokers": [
-            {
-                "nombre": "Color Favorito",
-                "descripcion": "Mismo palo en toda la jugada suma 200 fichas.",
-                "tipo_bonificacion": "puntaje",
-                "bonificacion": 200,
-                "probabilidad": 0.62,
-                "rareza": "com\u00fan"
-            },
-            {
-                "nombre": "Doble As",
-                "descripcion": "Por cada As en la mano, +2 al multiplicador.",
-                "tipo_bonificacion": "sum_multiplicador",
-                "bonificacion": 2,
-                "probabilidad": 0.35,
-                "rareza": "raro"
-            }
-        ],
+        "monedas": 20,
+        "jokers": [],
         "planetas": [],
         "combinaciones": {
             "carta_alta": [
@@ -719,7 +684,15 @@
                 "tipo_bonificacion": "multiplicar",
                 "bonificacion": 3,
                 "probabilidad": 0.7,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
+            },
+            {
+                "nombre": "Color Favorito",
+                "descripcion": "Mismo palo en toda la jugada suma 200 fichas.",
+                "tipo_bonificacion": "puntaje",
+                "bonificacion": 200,
+                "probabilidad": 0.62,
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "Coraz\u00f3n Generoso",
@@ -727,7 +700,7 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 25,
                 "probabilidad": 0.68,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "As de Oro",
@@ -735,7 +708,7 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 100,
                 "probabilidad": 0.65,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "Rey del Multiplicador",
@@ -743,7 +716,7 @@
                 "tipo_bonificacion": "sum_multiplicador",
                 "bonificacion": 1,
                 "probabilidad": 0.58,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "Dupla Segura",
@@ -751,7 +724,7 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 150,
                 "probabilidad": 0.6,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "Punta y Hacha",
@@ -759,7 +732,7 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 20,
                 "probabilidad": 0.66,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "Dama Cort\u00e9s",
@@ -767,7 +740,7 @@
                 "tipo_bonificacion": "sum_multiplicador",
                 "bonificacion": 1,
                 "probabilidad": 0.55,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "Tr\u00edo Amable",
@@ -775,7 +748,7 @@
                 "tipo_bonificacion": "multiplicar",
                 "bonificacion": 2,
                 "probabilidad": 0.57,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "Diez Limpio",
@@ -783,7 +756,7 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 30,
                 "probabilidad": 0.63,
-                "rareza": "com\u00fan"
+                "rareza": "Com\u00fan"
             },
             {
                 "nombre": "Triple Doble",
@@ -791,7 +764,7 @@
                 "tipo_bonificacion": "multiplicar",
                 "bonificacion": 2,
                 "probabilidad": 0.42,
-                "rareza": "raro"
+                "rareza": "Raro"
             },
             {
                 "nombre": "Dama de Fortuna",
@@ -799,7 +772,7 @@
                 "tipo_bonificacion": "sum_multiplicador",
                 "bonificacion": 2,
                 "probabilidad": 0.4,
-                "rareza": "raro"
+                "rareza": "Raro"
             },
             {
                 "nombre": "Palo Fiel",
@@ -807,7 +780,7 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 80,
                 "probabilidad": 0.38,
-                "rareza": "raro"
+                "rareza": "Raro"
             },
             {
                 "nombre": "Escalera Realista",
@@ -815,7 +788,15 @@
                 "tipo_bonificacion": "multiplicar",
                 "bonificacion": 4,
                 "probabilidad": 0.32,
-                "rareza": "raro"
+                "rareza": "Raro"
+            },
+            {
+                "nombre": "Doble As",
+                "descripcion": "Por cada As en la mano, +2 al multiplicador.",
+                "tipo_bonificacion": "sum_multiplicador",
+                "bonificacion": 2,
+                "probabilidad": 0.35,
+                "rareza": "Raro"
             },
             {
                 "nombre": "Sota Traviesa",
@@ -823,7 +804,7 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 120,
                 "probabilidad": 0.36,
-                "rareza": "raro"
+                "rareza": "Raro"
             },
             {
                 "nombre": "Poker",
@@ -831,7 +812,7 @@
                 "tipo_bonificacion": "multiplicar",
                 "bonificacion": 3,
                 "probabilidad": 0.28,
-                "rareza": "raro"
+                "rareza": "Raro"
             },
             {
                 "nombre": "Rey de Copas",
@@ -839,7 +820,7 @@
                 "tipo_bonificacion": "sum_multiplicador",
                 "bonificacion": 2,
                 "probabilidad": 0.3,
-                "rareza": "raro"
+                "rareza": "Raro"
             },
             {
                 "nombre": "Joker Comod\u00edn",
@@ -847,7 +828,7 @@
                 "tipo_bonificacion": "multiplicar",
                 "bonificacion": 4,
                 "probabilidad": 0.12,
-                "rareza": "legendario"
+                "rareza": "Legendario"
             },
             {
                 "nombre": "As de Picas",
@@ -855,7 +836,7 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 500,
                 "probabilidad": 0.1,
-                "rareza": "legendario"
+                "rareza": "Legendario"
             },
             {
                 "nombre": "Corona Triple",
@@ -863,7 +844,7 @@
                 "tipo_bonificacion": "multiplicar",
                 "bonificacion": 6,
                 "probabilidad": 0.07,
-                "rareza": "legendario"
+                "rareza": "Legendario"
             },
             {
                 "nombre": "Motor Infinito",
@@ -871,7 +852,7 @@
                 "tipo_bonificacion": "sum_multiplicador",
                 "bonificacion": 5,
                 "probabilidad": 0.06,
-                "rareza": "legendario"
+                "rareza": "Legendario"
             },
             {
                 "nombre": "Tesoro Oculto",
@@ -879,7 +860,7 @@
                 "tipo_bonificacion": "multiplicar",
                 "bonificacion": 8,
                 "probabilidad": 0.05,
-                "rareza": "legendario"
+                "rareza": "Legendario"
             },
             {
                 "nombre": "Fortuna Eterna",
@@ -887,16 +868,16 @@
                 "tipo_bonificacion": "puntaje",
                 "bonificacion": 800,
                 "probabilidad": 0.04,
-                "rareza": "legendario"
+                "rareza": "Legendario"
             }
         ]
     },
-    "lollo-2": {
-        "nombre": "lollo",
+    "Mariano-3": {
+        "nombre": "Mariano",
         "puntaje": 0,
-        "puntaje_ranking": 344,
-        "pozo": 482,
-        "ronda": 2,
+        "puntaje_ranking": 1019,
+        "pozo": 911,
+        "ronda": 3,
         "manos": 5,
         "descartes": 3,
         "mazoCompleto": [
@@ -910,8 +891,7 @@
                 "nombre": "2\u2660",
                 "valor": 2,
                 "palo": "\u2660",
-                "fichas": 5,
-                "bonificacion_fichas": 3
+                "fichas": 2
             },
             {
                 "nombre": "3\u2660",
@@ -923,8 +903,7 @@
                 "nombre": "4\u2660",
                 "valor": 4,
                 "palo": "\u2660",
-                "fichas": 8,
-                "bonificacion_fichas": 4
+                "fichas": 4
             },
             {
                 "nombre": "5\u2660",
@@ -1213,13 +1192,6 @@
                 "valor": 13,
                 "palo": "\u2663",
                 "fichas": 10
-            },
-            {
-                "nombre": "2\u2660",
-                "valor": 2,
-                "palo": "\u2660",
-                "fichas": 5,
-                "bonificacion_fichas": 3
             }
         ],
         "mazoRonda": [
@@ -1233,8 +1205,7 @@
                 "nombre": "2\u2660",
                 "valor": 2,
                 "palo": "\u2660",
-                "fichas": 5,
-                "bonificacion_fichas": 3
+                "fichas": 2
             },
             {
                 "nombre": "3\u2660",
@@ -1246,8 +1217,7 @@
                 "nombre": "4\u2660",
                 "valor": 4,
                 "palo": "\u2660",
-                "fichas": 8,
-                "bonificacion_fichas": 4
+                "fichas": 4
             },
             {
                 "nombre": "5\u2660",
@@ -1536,27 +1506,11 @@
                 "valor": 13,
                 "palo": "\u2663",
                 "fichas": 10
-            },
-            {
-                "nombre": "2\u2660",
-                "valor": 2,
-                "palo": "\u2660",
-                "fichas": 5,
-                "bonificacion_fichas": 3
             }
         ],
         "manoJugador": [],
-        "monedas": 1,
-        "jokers": [
-            {
-                "nombre": "Tr\u00edo Amable",
-                "descripcion": "Si la mano es Tr\u00edo, multiplica x2.",
-                "tipo_bonificacion": "multiplicar",
-                "bonificacion": 2,
-                "probabilidad": 0.57,
-                "rareza": "Com\u00fan"
-            }
-        ],
+        "monedas": 21,
+        "jokers": [],
         "planetas": [],
         "combinaciones": {
             "carta_alta": [
@@ -1659,6 +1613,14 @@
                 "tipo_bonificacion": "sum_multiplicador",
                 "bonificacion": 1,
                 "probabilidad": 0.55,
+                "rareza": "Com\u00fan"
+            },
+            {
+                "nombre": "Tr\u00edo Amable",
+                "descripcion": "Si la mano es Tr\u00edo, multiplica x2.",
+                "tipo_bonificacion": "multiplicar",
+                "bonificacion": 2,
+                "probabilidad": 0.57,
                 "rareza": "Com\u00fan"
             },
             {

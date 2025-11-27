@@ -41,7 +41,6 @@ def jugarPartida(jugador): #Resultado de ronda, acceso a tienda, jugar de nuevo
                         print( "║ 3. Tienda                                                 ║")
                         print( "╚═══════════════════════════════════════════════════════════╝\n")
 
-                        print(jugador['mazoCompleto'])
                         
                         opcionSelect = int(input("Ingresa una opción: "))
                         while opcionSelect < 1 or opcionSelect > 3:
