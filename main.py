@@ -89,7 +89,10 @@ def main(): #Menu principal con opciones
             jugarPartida(jugador)
         elif opcion==2:
             jugador = archivos.cargarPartida()
-            if jugador != {}:
+            if jugador == -2:
+                print("Volviste al menu!")
+                input("\nEnter para continuar...")
+            elif jugador != {}:
                 mazo.repartirCartas(10, jugador,False)
                 jugarPartida(jugador)
             else:

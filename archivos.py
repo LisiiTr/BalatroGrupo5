@@ -118,16 +118,23 @@ def mostrarPartidasGuardadas():
 
 
         nombres_partidas = [nombre for nombre in partidas.keys()]
-
-        try:
-            opcion=int(input("Seleccióne la partida que desea continuar: "))
-            while opcion < 1 or opcion> len(partidas):
-                opcion=int(input(f"Opción invalida, debe ser entre 1 y {len(partidas)} Seleccióne la partida que desea continuar: "))
-        except ValueError:
-            print("Ha ocurrido un error. Debe ingresar un numero")
-            input("\nEnter para continuar...")
-            juego.limpiarTerminal()
-        
+        invalido = True
+        while invalido:
+            try:
+                opcion=int(input("Seleccione el N° de la partida que desea continuar, o -1 para volver atras: "))
+                if opcion == -1:
+                    return -2 , nombres_partidas
+                while opcion < 1 or opcion> len(partidas):
+                    opcion=int(input(f"Opción invalida, debe ser entre 1 y {len(partidas)} Seleccione el N° de la partida que desea continuar: "))
+                    if opcion == -1:
+                        return -2 , nombres_partidas
+            except ValueError:
+                print("Ha ocurrido un error. Debe ingresar un numero")
+                input("\nEnter para continuar...")
+                juego.limpiarTerminal()
+            else:
+                invalido = False
+    
         return opcion , nombres_partidas
 
 def cargarPartida():
@@ -135,6 +142,8 @@ def cargarPartida():
     if indice == -1:
         jugador = {}
         return jugador
+    elif indice == -2:
+        return -2
     else:
         try:
             with open(buscarRuta(f"partidas_guardadas.json"), "r") as partida_guardada:

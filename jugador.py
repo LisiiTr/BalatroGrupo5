@@ -47,7 +47,7 @@ def crearJugador(): #Se inicializa el diccionario jugador con todas las variable
     jugador['puntaje_ranking'] = 0
     jugador['pozo'] = 300
     jugador['ronda'] = 1
-    jugador['manos'] = 1
+    jugador['manos'] = 5
     jugador['descartes'] = 3
     jugador['mazoCompleto'] = mazo.crearMazoCompleto()
     jugador['mazoRonda'] = jugador['mazoCompleto'].copy()  

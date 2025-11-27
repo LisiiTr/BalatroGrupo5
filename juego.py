@@ -162,4 +162,8 @@ def juego(jugador): #Decidir si jugar o descartar las cartas seleccionadas
             input("\nEnter para continuar...")
             jugadas.descartarCartas(seleccionCartas,jugador)
             jugador['descartes'] -= 1
-        mazo.repartirCartas(len(seleccionCartas),jugador,True)
+        
+        if jugador['puntaje'] < jugador['pozo']:
+            mazo.repartirCartas(len(seleccionCartas),jugador,True)
+        else:
+            mazo.repartirCartas(len(seleccionCartas),jugador,False)
