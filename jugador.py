@@ -82,10 +82,11 @@ def nuevaRonda(jugador): #Se restablecen variables del diccionario jugador y se 
     jugador['puntaje'] = 0
     jugador['manos'] = 5
     jugador['descartes'] = 3
-    print()
-    print(f"Jugador: {jugador['nombre']} | Pozo: {jugador['pozo']}")
-    print()
-
+    print( "╔════════════════════════════════════════════════════════════════╗")
+    print(f"║      Avanzaste a la Ronda {jugador['ronda']:<2}!! Pozo a alcanzar de {jugador['pozo']:<8}     ║")
+    print( "╚════════════════════════════════════════════════════════════════╝")
+    input("\nEnter para continuar...")
+    
     return jugador
 
 def mostrarJokersJugador(jugador): #Muestra los jokers que el jugador tiene en la mano

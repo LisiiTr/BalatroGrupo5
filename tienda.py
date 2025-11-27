@@ -123,7 +123,7 @@ def tienda(jugador): #Función que nos permite comprar cartas bonificadoras o so
 
 def cartaBonificadora(jugador): #Se selecciona una carta random del mazo y se le incrementan las fichas. La devuelve para que sea una opción de compra
 
-    carta = random.choice(jugador['mazoCompleto'])
+    carta = random.choice(jugador['mazoCompleto']).copy()
     factorMejora = random.uniform(1.5, 2.5)
 
     fichas_originales = carta['fichas']
@@ -244,8 +244,9 @@ def seleccionarNuevaCarta(jugador, mazo): #Función del sobre de cartas de mazo,
     cartasRandoms = []
 
     while len(cartasRandoms) < 3:
-        cartaRandom = random.choice(mazo)
+        cartaRandom = random.choice(mazo).copy()
         if cartaRandom not in cartasRandoms:
+            cartaRandom['fichas'] =  round(cartaRandom['fichas'] * random.uniform(1.5,2))
             cartasRandoms.append(cartaRandom)
 
     bandera = True

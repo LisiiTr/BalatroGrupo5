@@ -1,6 +1,6 @@
 [
     {
-        "nombre": "Abru",
+        "nombre": "Abril",
         "rondaMax": 3,
         "puntajeTotal": 600
     },
@@ -15,7 +15,7 @@
         "puntajeTotal": 1800
     },
     {
-        "nombre": "Lisandro",
+        "nombre": "Lea",
         "rondaMax": 5,
         "puntajeTotal": 1663
     },
@@ -30,33 +30,28 @@
         "puntajeTotal": 692
     },
     {
-        "nombre": "lauti",
+        "nombre": "Lucho",
         "rondaMax": 4,
         "puntajeTotal": 4182
     },
     {
-        "nombre": "lauti",
+        "nombre": "Laucha",
         "rondaMax": 10,
         "puntajeTotal": 120301
     },
     {
-        "nombre": "Thom",
-        "rondaMax": 1,
-        "puntajeTotal": 72
+        "nombre": "Lisi",
+        "rondaMax": 5,
+        "puntajeTotal": 6731.0
     },
     {
-        "nombre": "2",
-        "rondaMax": 1,
-        "puntajeTotal": 63
+        "nombre": "Lisi",
+        "rondaMax": 12,
+        "puntajeTotal": 316058.0
     },
     {
-        "nombre": "lisi",
-        "rondaMax": 1,
-        "puntajeTotal": 240
-    },
-    {
-        "nombre": "lichu",
+        "nombre": "Lisi",
         "rondaMax": 3,
-        "puntajeTotal": 2531
+        "puntajeTotal": 1754
     }
 ]

@@ -41,6 +41,7 @@ def jugarPartida(jugador): #Resultado de ronda, acceso a tienda, jugar de nuevo
                         print( "║ 3. Tienda                                                 ║")
                         print( "╚═══════════════════════════════════════════════════════════╝\n")
 
+                        print(jugador['mazoCompleto'])
                         
                         opcionSelect = int(input("Ingresa una opción: "))
                         while opcionSelect < 1 or opcionSelect > 3:
@@ -57,9 +58,9 @@ def jugarPartida(jugador): #Resultado de ronda, acceso a tienda, jugar de nuevo
                             usuario.nuevaRonda(jugador)
                             archivos.guardarPartida(jugador)
                             usuario.sumarPuntajeRanking(jugador)
-                            print("╔════════════════════════════════════════════════════════╗")
-                            print(f"║  Ultima ronda alcanzada:{jugador['ronda']} ¡Hasta la próxima!  ║")
-                            print("╚════════════════════════════════════════════════════════╝")
+                            print( "╔════════════════════════════════════════════════════════╗")
+                            print(f"║      Ultima ronda alcanzada:{jugador['ronda']:<3} ¡Hasta la próxima!     ║")
+                            print( "╚════════════════════════════════════════════════════════╝")
                         elif opcionSelect == 3:
                             tienda.tienda(jugador)
 
