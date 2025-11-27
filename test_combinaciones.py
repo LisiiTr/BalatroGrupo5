@@ -1,6 +1,6 @@
 import combinaciones
 
-def testFullHouse():
+def testFullHouse(): #Testeo de la función fllHouse
 	resultado = combinaciones.fullHouse([4,4,4,5,5])
 	assert resultado == True
 	resultado = combinaciones.fullHouse([4,5,4,5,4])
@@ -18,7 +18,7 @@ def testFullHouse():
 	resultado = combinaciones.fullHouse([4])
 	assert resultado == False
 
-def testEscalera():
+def testEscalera(): #Testeo de la función Escalera
 	resultado = combinaciones.escalera([1,2,3,4,5])
 	assert resultado == True
 	resultado = combinaciones.escalera([6,7,8,9,10])
@@ -36,7 +36,7 @@ def testEscalera():
 	resultado = combinaciones.escalera([2])
 	assert resultado == False
 
-def testPoker():
+def testPoker(): #Testeo de la función Póker
 	resultado = combinaciones.poker([2,2,2,2,5])
 	assert resultado == True
 	resultado = combinaciones.poker([4,5,4,4,4])
@@ -52,7 +52,7 @@ def testPoker():
 	resultado = combinaciones.poker([9,6,10,6,9])
 	assert resultado == False
 
-def test_par():
+def test_par(): #Testeo de la función Par
 	resultado=combinaciones.par([2,2,4,5,6])
 	assert resultado == True
 	resultado=combinaciones.par([3,3,4,4,6])
@@ -70,7 +70,7 @@ def test_par():
 	resultado=combinaciones.par([1,6,6,6,6])
 	assert resultado == False
 
-def test_doblepar():
+def test_doblepar(): #Testeo de la función Doble Par
 	resultado=combinaciones.doblePar([1,1,2,2,2])
 	assert resultado == False
 	resultado=combinaciones.doblePar([2,2,4,4,3])
@@ -84,7 +84,7 @@ def test_doblepar():
 	resultado=combinaciones.doblePar([8,9,9,9,9])
 	assert resultado == False
 
-def test_trio():
+def test_trio(): #Testeo de la función Trio
 	resultado=combinaciones.trio([1,1,2,2,2])
 	assert resultado == True
 	resultado=combinaciones.trio([1,1,1,6,5])
@@ -100,7 +100,7 @@ def test_trio():
 	resultado=combinaciones.trio([9,9,5,2,3])
 	assert resultado == False
 
-def testColor():
+def testColor(): #Testeo de la función Color
     assert combinaciones.color(['♥','♥','♥','♥','♥']) == True # True: 5 corazones
     assert combinaciones.color(['♥','♥','♣','♥','♥']) == False  # False: mezcla de palos
     assert combinaciones.color(['♥','♥','♥','♥']) == False # False: longitud distinta de 5

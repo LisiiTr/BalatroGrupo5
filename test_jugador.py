@@ -1,7 +1,7 @@
 import jugador
 
 
-def test_sumarPuntajeRanking():
+def test_sumarPuntajeRanking(): #Testea la Función sumarPuntajeRanking
     resultado = jugador.sumarPuntajeRanking(jugador={'puntaje': 200,
                                              'puntaje_ranking': 0})
     assert resultado['puntaje_ranking'] == 200

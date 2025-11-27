@@ -1,11 +1,11 @@
  
-def dividirPaloValores(cartasJugadas): #se separan los valores y los palos de las cartas
+def dividirPaloValores(cartasJugadas): #Se separan los valores y los palos de las cartas
     valores = [carta["valor"] for carta in cartasJugadas] 
     palos   = [carta["palo"]  for carta in cartasJugadas]
  
     return valores,palos
  
-def fullHouse(valores): #se evalúa la jugada fullhouse
+def fullHouse(valores): #Se evalúa la jugada fullhouse
     cantPares = []
     cantTrios = []
     valores_unicos = set(valores)
@@ -21,8 +21,7 @@ def fullHouse(valores): #se evalúa la jugada fullhouse
     else:
         return False
  
-# Combinaciones
-def escalera(valores): #se evalúa la jugada escalera
+def escalera(valores): #Se evalúa la jugada escalera
     valores.sort()
     if len(valores) == 5:
         for i in range(len(valores) - 1):
@@ -32,25 +31,25 @@ def escalera(valores): #se evalúa la jugada escalera
     else:
         return False
  
-def color(palos): #se evalúa la jugada color
+def color(palos): #Se evalúa la jugada color
     if len(palos) == 5:
         if palos.count(palos[1]) == 5:
             return True
     return False
  
-def poker(valores): #se evalúa la jugada poker
+def poker(valores): #Se evalúa la jugada poker
     for v in valores:
         if valores.count(v) == 4:
             return True
     return False
  
-def par(valores): #se evalúa la jugada par
+def par(valores): #Se evalúa la jugada par
     for v in valores:
         if valores.count(v) == 2:
             return True
     return False
  
-def doblePar(valores): #se evalúa la jugada doble par
+def doblePar(valores): #Se evalúa la jugada doble par
     cantPares = []
     for v in valores:
         if valores.count(v) == 2:
@@ -61,7 +60,7 @@ def doblePar(valores): #se evalúa la jugada doble par
     else:
         return False
  
-def trio(valores): #se evalúa la jugada trio
+def trio(valores): #Se evalúa la jugada trio
     for v in valores:
         if valores.count(v) == 3:
             return True
@@ -74,7 +73,7 @@ def mostarTituloCombinacion(nombre):
     print("╔═══════════════════════════════════════════╗")
     print(linea)
 
-def combinacionJugada(jugador, cartasJugadas): #se le muestra al jugador la jugada hecha
+def combinacionJugada(jugador, cartasJugadas): #Se le muestra al jugador la jugada hecha
     valores, palos = dividirPaloValores(cartasJugadas)
  
     es_escalera = escalera(valores)
@@ -114,7 +113,7 @@ def combinacionJugada(jugador, cartasJugadas): #se le muestra al jugador la juga
         return jugador['combinaciones']["carta_alta"]
 
 
-def analizarCombinacionesJokers(cartasJugadas): #se analizan las combinaciones para pasarle al análisis de jokers
+def analizarCombinacionesJokers(cartasJugadas): #Se analizan las combinaciones para pasarle al análisis de jokers
     valores, palos = dividirPaloValores(cartasJugadas)
     valores.sort()
     combinaciones={

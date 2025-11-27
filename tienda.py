@@ -146,7 +146,7 @@ def jokerBonificador(jokers): #Se selecciona un joker random y la devuelve para 
 
 
 
-def seleccionarJoker(jugador,jokers):#Función del sobre de Jokers, se agarran al azar 3 jokers disponibles y el usuario puede agarrar solo 1.
+def seleccionarJoker(jugador):#Función del sobre de Jokers, se agarran al azar 3 jokers disponibles y el usuario puede agarrar solo 1.
     jokersRandoms=[]
     while len(jokersRandoms) < 3:
         jokerRandom= random.choice(jugador['jokersDisponibles'])

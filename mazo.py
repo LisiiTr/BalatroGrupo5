@@ -49,7 +49,7 @@ def mostrarCartas(listaCartas): #Se muestran las cartas en mano al usuario
     print(linea3)
     print(linea4)
  
-def mostrarCartasSelect(listaCartas): #se muestran las cartas seleccionadas por el usuario
+def mostrarCartasSelect(listaCartas): #Se muestran las cartas seleccionadas por el usuario
     print("\nLas cartas seleccionadas son:")
     i=1
     linea1 = ""
@@ -67,7 +67,7 @@ def mostrarCartasSelect(listaCartas): #se muestran las cartas seleccionadas por 
     print(linea3)
     print(linea4)
  
-def repartirCartas(cantCartas,jugador,imprimir): #se reparten las cartas al jugador cada vez que sea necesario
+def repartirCartas(cantCartas,jugador,imprimir): #Se reparten las cartas al jugador cada vez que sea necesario
     cartas_repartidas=[]
     for i in range(cantCartas):
         carta = random.choice(jugador['mazoRonda'])

@@ -2,12 +2,12 @@ import os
 import json
 import juego
 
-def buscarRuta(nombre): #devolvemos la ruta del archivo que querramos usar con su respectivo nombre
+def buscarRuta(nombre): #Devolvemos la ruta del archivo que querramos usar con su respectivo nombre
     rutaArchivo= os.path.join(os.path.dirname(__file__), nombre)
 
     return rutaArchivo
 
-def traerJugadores(rutaArchivo): #se leen los jugadores del ranking
+def traerJugadores(rutaArchivo): #Se leen los jugadores del ranking
     try:
         with open(rutaArchivo, 'r') as ranking:
             jugadores = json.load(ranking)
@@ -17,7 +17,7 @@ def traerJugadores(rutaArchivo): #se leen los jugadores del ranking
         return jugadores
 
 
-def cargarHistorico(jugador): #se cargan los jugadores en el ranking histórico
+def cargarHistorico(jugador): #Se cargan los jugadores en el ranking histórico
 
     rutaArchivo=buscarRuta("historico.json")
     jugadores= traerJugadores(rutaArchivo)
@@ -32,7 +32,7 @@ def cargarHistorico(jugador): #se cargan los jugadores en el ranking histórico
         json.dump(jugadores,ranking,indent=4)
 
 
-def leerRanking(): #se muestran los datos del ranking en pantalla
+def leerRanking(): #Se muestran los datos del ranking en pantalla
     try:
         with open(buscarRuta("historico.json"),'r') as ranking:
             datos=json.load(ranking)
@@ -61,7 +61,7 @@ def leerRanking(): #se muestran los datos del ranking en pantalla
 
 
 
-def traerPartidas():
+def traerPartidas(): #Función que trae del archivo "partidas_guardadas.json" las partidas guardadas por los usuarios.
     try:
         with open(buscarRuta("partidas_guardadas.json"), "r") as partidas_guardadas:
             partidas = json.load(partidas_guardadas)
@@ -92,7 +92,7 @@ def guardarPartida(jugador):
         input("Enter para continuar...")
     
 
-def mostrarPartidasGuardadas():
+def mostrarPartidasGuardadas(): #Muestra el listado de partidas guardadas y permite la selección de una partida para continuarla.
     partidas= traerPartidas()
 
     if partidas == {}:
@@ -134,7 +134,7 @@ def mostrarPartidasGuardadas():
     
         return opcion , nombres_partidas
 
-def cargarPartida():
+def cargarPartida(): #Carga la partida seleccionada por el usuario o devuelve un valor para poder informar que no hay partidas guardadas o -2 para que se muestre que se volvió al menú anterior.
     indice , nombres_partidas = mostrarPartidasGuardadas()
     if indice == -1:
         jugador = {}

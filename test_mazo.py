@@ -1,6 +1,6 @@
 import mazo
 
-def test_fichasValor():
+def test_fichasValor(): #Testea la Función fichasValor
     resultado = mazo.fichasValor(3)
     assert resultado == 3
     resultado = mazo.fichasValor(1)

@@ -79,7 +79,7 @@ def main(): #Menu principal con opciones
 
         bandera=True
         while bandera:
-            print("Elija una de las siguientes opciones: \n 1. Nueva partida \n 2. Continuar Partida \n 3. Ver Ranking \n 4. Ver Jokers \n 5. Cerrar Programa")
+            print("Elija una de las siguientes opciones: \n 1. Nueva Partida \n 2. Continuar Partida \n 3. Ver Ranking \n 4. Ver Jokers \n 5. Cerrar Programa")
             try:
 
                 opcion = int(input("Seleccione una opción segun su numeración: "))

@@ -9,7 +9,7 @@ def descartarCartas(seleccionCartas,jugador): #Descarte de cartas seleccionadas
     return jugador
  
  
-
+#Función lambda para calcular el puntaje total.
 totalPuntaje= lambda cantidadFichas,multiplicador: cantidadFichas * multiplicador
  
 def jugarCartas(jugador,cartasJugadas): #Jugar cartas seleccionadas

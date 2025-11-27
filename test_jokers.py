@@ -1,6 +1,6 @@
 import jokers
 
-def test_calcularFichaPuntaje():
+def test_calcularFichaPuntaje(): #Testea la Función calcularFichaPuntaje 
 
     fichas , multiplicador = jokers.calcularFichaPuntaje({"nombre": "Par", "descripcion": "Si la mano es Par, multiplica x3.", "tipo_bonificacion": "multiplicar", "bonificacion": 3, "probabilidad": 0.70, "rareza": "común"}, 30, 3, 3)
     assert fichas == 30 and multiplicador == 9
